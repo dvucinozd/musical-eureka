@@ -1,15 +1,66 @@
 # Stanje — 2026-11-09
 
-**P03 software PASS. Fizički P01 boot, P02 audio i P03 USB MIDI čekaju ploču.**
-Aktivni firmware je `0.0.3-usb-midi` u `build-p03/`. P01 i P02 imagei su u
-`build/` i `build-p02/`.
+**P07 HOST / BUILD / BROWSER PASS za razvojni OTA.** P05b referentni image je `0.0.5-soundfont-dev`
+u `build-p05b/`. P06 normalni i dijagnostički build su u
+`build-p06-normal/` i `build-p06-telemetry/`. Fizički P01–P07 testovi
+čekaju ploču.
 
 ## Potvrđeni opseg
 
 ESP32-S31-Function-CoreBoard-1; port iz P4 1.0.0. **Bez microSD i WAV recordera.**
 Četiri MIDI looper trake ostaju. SoundFont je planiran iz internog flasha, s novim RAM
 ograničenjima. Zaslon/tipkalo i točan fizički primjerak još nisu određeni.
-Lokalni zvučnik ostaje zadani izlaz. Bluetooth zvučnik je potvrđeni zahtjev za P06B.
+Lokalni zvučnik ostaje zadani izlaz. P06B dodaje opcionalni razvojni Bluetooth profil.
+
+## P07
+
+- Zajednički S31 Bluetooth + OTA build prošao je build i host OTA provjeru
+  nad točnim imageom. Aplikacija zauzima 2 033 600 B, uz 1 112 128 B slobodno
+  u slotu od 3 MiB. Šest profila spremljeno je lokalno uz provjerene SHA-256
+  hashove. [Arhiva za bring-up](BRINGUP_BASELINE.md).
+- Opcionalni razvojni OTA u `build-p07/` provjerava image prije upisa,
+  zapisuje neaktivni slot pod audio maintenanceom i provjerava lokalni
+  audio pri prvom bootu. Upis i rollback na ploči čekaju fizičku provjeru.
+  [P07 postupak](P07_OTA.md) · [Dokazi](evidence/2026-11-09-p07.json).
+
+## P06B
+
+- Pinned ESP-IDF A2DP Source primjer, integrirani S31 Bluetooth profil
+  (`build-p06b/`) i lokalni profil (`build-p06b-local/`) prošli su build.
+  Host je provjerio PCM i izbor izlaza, a Chrome Web
+  kontrolu nad simuliranim API-jem. Fizičko uparivanje, kašnjenje i
+  Bluetooth/Wi-Fi/USB suživot čekaju ploču.
+  [Dokaz P06B](evidence/2026-11-09-p06b.json) · [Pilot](P06B_BLUETOOTH.md).
+
+## P06
+
+- Tri sintetičke SF2 banke daju bit-identičan host PCM kroz zamrznuti P4
+  renderer u S31 ruti, normalni S31 i S31 s telemetrijom. Replay potvrđuje
+  16 live i 32 mix sample glasa te izostanak alokacija u renderu.
+- Dijagnostički build dodaje UART prozore od 4096 blokova s event16 i
+  steady32 skupinama, maksimumom pripreme, DMA i memorijskim brojačima.
+  [Dokaz P06](evidence/2026-11-09-p06.json) · [Pilot](P06_SOUNDFONT.md).
+
+## P04 i P05
+
+- **P05b** povezuje A/B flash, Web SF2 upload, startup preset u NVS-u i render
+  za live part i četiri looper trake. Audio task utiša PA, zaustavi DMA i
+  blokira ulaze prije nego worker dobije ACK. Pri povratku primira tišinu,
+  odbacuje USB backlog i aktivira banku kroz lifecycle ACK. Boot odabire
+  najnoviju banku koju može pripremiti. Prošlo je 14 regresijskih i pet
+  ciljanih host skupova, S31 build i Chrome nad simuliranim API-jem.
+  [Dokaz P05b](evidence/2026-11-09-p05b.json) · [Fizičke provjere](STORAGE_AND_MEMORY.md#provjere-p05b).
+
+- **P04 HOST / BUILD / BROWSER PASS.** Nativni SoftAP, Web synth i četiri
+  looper trake. 14 host skupova uključuje zajedničku notu i istek Web leasea.
+  Chrome provjera na simuliranom API-ju prošla je na desktopu i mobitelu.
+  Firmware od 1161888 B koristi novu 3 MiB app particiju.
+  [Postupak provjere](P04_WEB.md) · [dokaz P04](evidence/2026-11-09-p04.json).
+- **P05a HOST / BUILD PASS.** Model NOR flasha pokriva šest djelomičnih upisa
+  i oporavak na stariju banku nakon korupcije novijeg sadržaja. Host SF2 testovi
+  pokrivaju render, lifecycle, 29 točaka neuspjele alokacije i oslobađanje
+  banke. S31 build uključuje boot čitanje s CRC/SHA-256 i SF2 preflightom.
+  [Flash format i status](STORAGE_AND_MEMORY.md) · [dokaz P05a](evidence/2026-11-09-p05a.json).
 
 ## P03
 
@@ -85,7 +136,7 @@ Logovi i identitet:
 
 ## Sljedeće
 
-Na identificiranoj ploči redom provjeriti P01 boot, P02 audio i P03 USB MIDI.
-Sljedeći software paket je P04 Web, Wi-Fi i četiri MIDI trake.
+Na identificiranoj ploči redom provjeriti P01 boot, P02 audio, P03 USB MIDI,
+P04 Web i P05 flash/audio. Zatim izvesti P06 pilot i izmjeriti cijeli blok.
 [Nastavak rada](NEXT_SESSION.md).
 

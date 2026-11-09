@@ -1,0 +1,301 @@
+python = C:\Espressif\tools\python\v6.1\venv\Scripts\python.exe
+cmake = C:\Espressif\tools\cmake\4.0.3\bin\cmake.exe
+ninja = C:\Espressif\tools\ninja\1.12.1\ninja.exe
+riscv32-esp-elf-gcc = C:\Espressif\tools\riscv32-esp-elf\esp-15.2.0_20251204\riscv32-esp-elf\bin\riscv32-esp-elf-gcc.exe
+ESP-IDF v6.1
+esp32
+esp32s2
+esp32c3
+esp32s3
+esp32c2
+esp32c6
+esp32h2
+esp32p4
+esp32c5
+esp32c61
+linux
+esp32h21
+esp32h4
+esp32s31
+Environment PASS: IDF fff9895c82d744c7237be8847347bdd1b07c6643; S31 is a preview target. No device accessed.
+[1/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/app_ota.c.obj
+[2/10] Linking C static library esp-idf\main\libmain.a
+[3/10] Performing build step for 'bootloader'
+[1/163] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_lock.c.obj
+[2/163] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/util.c.obj
+[3/163] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj
+[4/163] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj
+[5/163] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_timestamp.c.obj
+[6/163] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/util.c.obj
+[7/163] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/buffer/log_buffers.c.obj
+[8/163] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/log_format_text.c.obj
+[9/163] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/log_timestamp_common.c.obj
+[10/163] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/log_print.c.obj
+[11/163] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj
+[12/163] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj
+[13/163] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_serial_output.c.obj
+[14/163] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_cache_writeback_esp32p4_esp32s31.c.obj
+[15/163] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/log.c.obj
+[16/163] Building C object esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/src/esp_err_to_name.c.obj
+[17/163] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj
+[18/163] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj
+[19/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/esp_cpu_intr.c.obj
+[20/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/cpu_region_protect.c.obj
+[21/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/chip_info.c.obj
+[22/163] Building C object esp-idf/esp_hal_systimer/CMakeFiles/__idf_esp_hal_systimer.dir/rom_patch.c.obj
+[23/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/cpu.c.obj
+[24/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/rtc_clk_init.c.obj
+[25/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/esp_memory_utils.c.obj
+[26/163] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32s31/esp_efuse_fields.c.obj
+[27/163] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32s31/esp_efuse_table.c.obj
+[28/163] Linking C static library esp-idf\log\liblog.a
+[29/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/pmu_param.c.obj
+[30/163] Building C object esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/esp_err.c.obj
+[31/163] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_fields.c.obj
+[32/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/pmu_init.c.obj
+[33/163] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32s31/esp_efuse_utility.c.obj
+[34/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_mem.c.obj
+[35/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/rtc_clk.c.obj
+[36/163] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_api.c.obj
+[37/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_clock_init.c.obj
+[38/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/pmu_sleep.c.obj
+[39/163] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/efuse_controller/keys/with_key_purposes/esp_efuse_api_key.c.obj
+[40/163] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/rtc_time.c.obj
+[41/163] Linking C static library esp-idf\esp_rom\libesp_rom.a
+[42/163] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_utility.c.obj
+[43/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_random_esp32s31.c.obj
+[44/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_efuse.c.obj
+[45/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_encrypt.c.obj
+[46/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/secure_boot.c.obj
+[47/163] Linking C static library esp-idf\esp_common\libesp_common.a
+[48/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_random.c.obj
+[49/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common_loader.c.obj
+[50/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_sha.c.obj
+[51/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_partitions.c.obj
+[52/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_console_loader.c.obj
+[53/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_clock_loader.c.obj
+[54/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_reset_common.c.obj
+[55/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32s31/bootloader_soc.c.obj
+[56/163] Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj
+[57/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common.c.obj
+[58/163] Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp32s31/esp_crypto_clk.c.obj
+[59/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/flash_qio_mode.c.obj
+[60/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_panic.c.obj
+[61/163] Linking C static library esp-idf\esp_hw_support\libesp_hw_support.a
+[62/163] Building C object esp-idf/esp_hal_security/CMakeFiles/__idf_esp_hal_security.dir/huk_hal.c.obj
+[63/163] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/esp32s31/temperature_sensor_periph.c.obj
+[64/163] Building C object esp-idf/esp_hal_security/CMakeFiles/__idf_esp_hal_security.dir/key_mgr_hal.c.obj
+[65/163] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/esp32s31/adc_periph.c.obj
+[66/163] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/temperature_sensor_hal.c.obj
+[67/163] Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj
+[68/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_console.c.obj
+[69/163] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/adc_oneshot_hal.c.obj
+[70/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash.c.obj
+[71/163] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/adc_hal_common.c.obj
+[72/163] Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_key_mgr.c.obj
+[73/163] Linking C static library esp-idf\esp_system\libesp_system.a
+[74/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash_config_esp32s31.c.obj
+[75/163] Building C object esp-idf/esp_hal_timg/CMakeFiles/__idf_esp_hal_timg.dir/timer_hal.c.obj
+[76/163] Building C object esp-idf/esp_hal_timg/CMakeFiles/__idf_esp_hal_timg.dir/esp32s31/timer_periph.c.obj
+[77/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp_image_format.c.obj
+[78/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_init.c.obj
+[79/163] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/adc_hal.c.obj
+[80/163] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/esp32s31/spi_periph.c.obj
+[81/163] Building C object esp-idf/esp_hal_wdt/CMakeFiles/__idf_esp_hal_wdt.dir/esp32s31/mwdt_periph.c.obj
+[82/163] Building C object esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/esp_bootloader_desc.c.obj
+[83/163] Building C object esp-idf/esp_hal_wdt/CMakeFiles/__idf_esp_hal_wdt.dir/rom_patch.c.obj
+[84/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_utility.c.obj
+[85/163] Building C object esp-idf/esp_hal_mspi/CMakeFiles/__idf_esp_hal_mspi.dir/esp32s31/mspi_periph.c.obj
+[86/163] Building C object esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/spi_flash_wrap.c.obj
+[87/163] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_slave_hal.c.obj
+[88/163] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_slave_hal_iram.c.obj
+[89/163] Building C object esp-idf/esp_hal_clock/CMakeFiles/__idf_esp_hal_clock.dir/esp32s31/clk_tree_hal.c.obj
+[90/163] Linking C static library esp-idf\esp_hal_systimer\libesp_hal_systimer.a
+[91/163] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/dma2d_hal.c.obj
+[92/163] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/gdma_hal_top.c.obj
+[93/163] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_hal.c.obj
+[94/163] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_slave_hd_hal.c.obj
+[95/163] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_hal_iram.c.obj
+[96/163] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/esp32s31/dma2d_periph.c.obj
+[97/163] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/esp32s31/gdma_periph.c.obj
+[98/163] Building C object esp-idf/esp_hal_uart/CMakeFiles/__idf_esp_hal_uart.dir/uhci_hal.c.obj
+[99/163] Building C object esp-idf/esp_hal_uart/CMakeFiles/__idf_esp_hal_uart.dir/esp32s31/uart_periph.c.obj
+[100/163] Building C object esp-idf/esp_hal_regi2c/CMakeFiles/__idf_esp_hal_regi2c.dir/esp32s31/regi2c_impl.c.obj
+[101/163] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/gdma_hal_ahb_v2.c.obj
+[102/163] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32s31/bootloader_esp32s31.c.obj
+[103/163] Building C object esp-idf/esp_hal_pmu/CMakeFiles/__idf_esp_hal_pmu.dir/brownout_hal.c.obj
+[104/163] Building C object esp-idf/esp_hal_uart/CMakeFiles/__idf_esp_hal_uart.dir/uart_hal_iram.c.obj
+[105/163] Linking C static library esp-idf\efuse\libefuse.a
+[106/163] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/gdma_hal_axi.c.obj
+[107/163] Building C object esp-idf/esp_hal_pmu/CMakeFiles/__idf_esp_hal_pmu.dir/esp32s31/pau_hal.c.obj
+[108/163] Building C object esp-idf/esp_hal_usb/CMakeFiles/__idf_esp_hal_usb.dir/esp32s31/usb_dwc_periph.c.obj
+[109/163] Building C object esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj
+[110/163] Building C object esp-idf/esp_hal_usb/CMakeFiles/__idf_esp_hal_usb.dir/usb_utmi_hal.c.obj
+[111/163] Building C object esp-idf/esp_hal_uart/CMakeFiles/__idf_esp_hal_uart.dir/uart_hal.c.obj
+[112/163] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/esp32s31/rtc_io_periph.c.obj
+[113/163] Building C object esp-idf/esp_hal_pmu/CMakeFiles/__idf_esp_hal_pmu.dir/esp32s31/pmu_hal.c.obj
+[114/163] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/lldesc.c.obj
+[115/163] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/interrupts.c.obj
+[116/163] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/esp32s31/sdm_periph.c.obj
+[117/163] Building C object esp-idf/esp_hal_usb/CMakeFiles/__idf_esp_hal_usb.dir/usb_serial_jtag_hal.c.obj
+[118/163] Building C object esp-idf/esp_hal_usb/CMakeFiles/__idf_esp_hal_usb.dir/usb_dwc_hal.c.obj
+[119/163] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/dport_access_common.c.obj
+[120/163] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/sdm_hal.c.obj
+[121/163] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/esp32s31/dedic_gpio_periph.c.obj
+[122/163] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/gpio_periph.c.obj
+[123/163] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/debug_probe_periph.c.obj
+[124/163] Generating project_elf_src_esp32s31.c
+[125/163] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/gpio_hal.c.obj
+[126/163] Preprocessing linker script C:/esp/v6.1/esp-idf/components/bootloader/subproject/main/ld/esp32s31/bootloader.sections.ld.in -> D:/AI/nektarinaS31/build-p07/bootloader/ld/bootloader.sections.ld
+[127/163] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/mpi_periph.c.obj
+[128/163] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/rtc_io_hal.c.obj
+[129/163] Preprocessing linker script C:/esp/v6.1/esp-idf/components/bootloader/subproject/main/ld/esp32s31/bootloader.memory.ld.in -> D:/AI/nektarinaS31/build-p07/bootloader/ld/bootloader.memory.ld
+[130/163] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/power_supply_periph.c.obj
+[131/163] Building C object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.obj
+[132/163] Linking C static library esp-idf\bootloader_support\libbootloader_support.a
+[133/163] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj
+[134/163] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.obj
+[135/163] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32s31/efuse_hal.c.obj
+[136/163] Building C object CMakeFiles/bootloader.elf.dir/project_elf_src_esp32s31.c.obj
+[137/163] Linking C static library esp-idf\esp_security\libesp_security.a
+[138/163] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj
+[139/163] Linking C static library esp-idf\esp_hal_security\libesp_hal_security.a
+[140/163] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj
+[141/163] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.obj
+[142/163] Linking C static library esp-idf\esp_hal_ana_conv\libesp_hal_ana_conv.a
+[143/163] Linking C static library esp-idf\esp_hal_wdt\libesp_hal_wdt.a
+[144/163] Linking C static library esp-idf\esp_hal_timg\libesp_hal_timg.a
+[145/163] Linking C static library esp-idf\micro-ecc\libmicro-ecc.a
+[146/163] Linking C static library esp-idf\esp_bootloader_format\libesp_bootloader_format.a
+[147/163] Linking C static library esp-idf\spi_flash\libspi_flash.a
+[148/163] Linking C static library esp-idf\esp_hal_mspi\libesp_hal_mspi.a
+[149/163] Linking C static library esp-idf\esp_hal_clock\libesp_hal_clock.a
+[150/163] Linking C static library esp-idf\esp_hal_gpspi\libesp_hal_gpspi.a
+[151/163] Linking C static library esp-idf\esp_hal_dma\libesp_hal_dma.a
+[152/163] Linking C static library esp-idf\esp_hal_uart\libesp_hal_uart.a
+[153/163] Linking C static library esp-idf\esp_hal_regi2c\libesp_hal_regi2c.a
+[154/163] Linking C static library esp-idf\esp_hal_pmu\libesp_hal_pmu.a
+[155/163] Linking C static library esp-idf\esp_hal_usb\libesp_hal_usb.a
+[156/163] Linking C static library esp-idf\esp_hal_gpio\libesp_hal_gpio.a
+[157/163] Linking C static library esp-idf\soc\libsoc.a
+[158/163] Linking C static library esp-idf\riscv\libriscv.a
+[159/163] Linking C static library esp-idf\hal\libhal.a
+[160/163] Linking C static library esp-idf\main\libmain.a
+[161/163] Linking C executable bootloader.elf
+[162/163] Generating binary image from built executable
+esptool v5.6.0
+
+Creating ESP32-S31 image...
+
+Merged 2 ELF sections.
+
+Successfully created ESP32-S31 image.
+
+Generated D:/AI/nektarinaS31/build-p07/bootloader/bootloader.bin
+[163/163] C:\WINDOWS\system32\cmd.exe /C "cd /D D:\AI\nektarinaS31\build-p07\bootloader && C:\Espressif\tools\python\v6.1\venv\Scripts\python.exe C:/esp/v6.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x2000 D:/AI/nektarinaS31/build-p07/bootloader/bootloader.bin"
+
+Bootloader binary size 0x5b00 bytes. 0x500 bytes (5%) free.
+
+
+[4/10] No install step for 'bootloader'
+[5/10] Completed 'bootloader'
+[6/10] Generating esp-idf/esp_system/ld/sections.ld
+NOTE: C:/esp/v6.1/esp-idf/components/bt/host/nimble/Kconfig.in:1428: BT_NIMBLE_MESH_PROVISIONER: 'default 0' is not a valid bool value (only 'y' and 'n' are allowed). Value is treated as 'n'.
+NOTE: C:/esp/v6.1/esp-idf/components/fatfs/Kconfig:240: FATFS_PRINT_LLI: 'default 0' is not a valid bool value (only 'y' and 'n' are allowed). Value is treated as 'n'.
+NOTE: C:/esp/v6.1/esp-idf/components/fatfs/Kconfig:245: FATFS_PRINT_FLOAT: 'default 0' is not a valid bool value (only 'y' and 'n' are allowed). Value is treated as 'n'.
+NOTE: C:/esp/v6.1/esp-idf/components/bootloader/Kconfig.projbuild:383: Deprecation notice: hex literal '0' without '0x' prefix detected. In the next major version, hex literals will be required to have a '0x' prefix.
+NOTE: C:/esp/v6.1/esp-idf/components/bootloader/Kconfig.projbuild:423: Deprecation notice: hex literal '0' without '0x' prefix detected. In the next major version, hex literals will be required to have a '0x' prefix.
+NOTE: C:/esp/v6.1/esp-idf/components/bt/common/Kconfig.in:136: Deprecation notice: hex literal '0' without '0x' prefix detected. In the next major version, hex literals will be required to have a '0x' prefix.
+NOTE: C:/esp/v6.1/esp-idf/components/bt/host/nimble/Kconfig.in:1023: Deprecation notice: hex literal '0' without '0x' prefix detected. In the next major version, hex literals will be required to have a '0x' prefix.
+NOTE: C:/esp/v6.1/esp-idf/components/esp_hw_support\./lowpower/port/esp32p4/Kconfig.p4_rev3_mspi_workaround:6: Deprecation notice: hex literal '0' without '0x' prefix detected. In the next major version, hex literals will be required to have a '0x' prefix.
+NOTE: C:/esp/v6.1/esp-idf/components/esp_mm/Kconfig:20: Deprecation notice: hex literal '0' without '0x' prefix detected. In the next major version, hex literals will be required to have a '0x' prefix.
+NOTE: C:/esp/v6.1/esp-idf/components/openthread/Kconfig:106: Deprecation notice: hex literal '0' without '0x' prefix detected. In the next major version, hex literals will be required to have a '0x' prefix.
+
+[7/10] Building C object CMakeFiles/nektarina_s31.elf.dir/project_elf_src_esp32s31.c.obj
+[8/10] Linking CXX executable nektarina_s31.elf
+[9/10] Generating binary image from built executable
+esptool v5.6.0
+
+Creating ESP32-S31 image...
+
+Merged 3 ELF sections.
+
+Successfully created ESP32-S31 image.
+
+Generated D:/AI/nektarinaS31/build-p07/nektarina_s31.bin
+[10/10] C:\WINDOWS\system32\cmd.exe /C "cd /D D:\AI\nektarinaS31\build-p07 && C:\Espressif\tools\python\v6.1\venv\Scripts\python.exe C:/esp/v6.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app D:/AI/nektarinaS31/build-p07/partition_table/partition-table.bin D:/AI/nektarinaS31/build-p07/nektarina_s31.bin"
+nektarina_s31.bin binary size 0x130420 bytes. Smallest app partition is 0x300000 bytes. 0x1cfbe0 bytes (60%) free.
+
+Executing action: all (aliases: build)
+Running ninja in directory D:\AI\nektarinaS31\build-p07
+Executing "ninja all"...
+
+
+Project build complete. To flash, run:
+ idf.py flash
+or
+ idf.py -p PORT flash
+or
+ python -m esptool --chip esp32s31 -b 460800 --before default-reset --after hard-reset --no-stub write-flash --flash-mode dio --flash-size 16MB --flash-freq 80m 0x2000 build-p07\bootloader\bootloader.bin 0x8000 build-p07\partition_table\partition-table.bin 0x19000 build-p07\ota_data_initial.bin 0x20000 build-p07\nektarina_s31.bin
+or from the "D:\AI\nektarinaS31\build-p07" directory
+ python -m esptool --chip esp32s31 -b 460800 --before default-reset --after hard-reset --no-stub write-flash "@flash_args"
+python = C:\Espressif\tools\python\v6.1\venv\Scripts\python.exe
+cmake = C:\Espressif\tools\cmake\4.0.3\bin\cmake.exe
+ninja = C:\Espressif\tools\ninja\1.12.1\ninja.exe
+riscv32-esp-elf-gcc = C:\Espressif\tools\riscv32-esp-elf\esp-15.2.0_20251204\riscv32-esp-elf\bin\riscv32-esp-elf-gcc.exe
+ESP-IDF v6.1
+esp32
+esp32s2
+esp32c3
+esp32s3
+esp32c2
+esp32c6
+esp32h2
+esp32p4
+esp32c5
+esp32c61
+linux
+esp32h21
+esp32h4
+esp32s31
+Environment PASS: IDF fff9895c82d744c7237be8847347bdd1b07c6643; S31 is a preview target. No device accessed.
+[1/9] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D D:\AI\nektarinaS31\build-p07\bootloader && C:\Espressif\tools\python\v6.1\venv\Scripts\python.exe C:/esp/v6.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x2000 D:/AI/nektarinaS31/build-p07/bootloader/bootloader.bin"
+
+Bootloader binary size 0x5b00 bytes. 0x500 bytes (5%) free.
+
+
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/app_ota.c.obj
+[5/9] Linking C static library esp-idf\main\libmain.a
+[6/9] Generating esp-idf/esp_system/ld/sections.ld
+Skipping linker script generation, section names unchanged
+
+[7/9] Linking CXX executable nektarina_s31.elf
+[8/9] Generating binary image from built executable
+esptool v5.6.0
+
+Creating ESP32-S31 image...
+
+Merged 3 ELF sections.
+
+Successfully created ESP32-S31 image.
+
+Generated D:/AI/nektarinaS31/build-p07/nektarina_s31.bin
+[9/9] C:\WINDOWS\system32\cmd.exe /C "cd /D D:\AI\nektarinaS31\build-p07 && C:\Espressif\tools\python\v6.1\venv\Scripts\python.exe C:/esp/v6.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app D:/AI/nektarinaS31/build-p07/partition_table/partition-table.bin D:/AI/nektarinaS31/build-p07/nektarina_s31.bin"
+nektarina_s31.bin binary size 0x130590 bytes. Smallest app partition is 0x300000 bytes. 0x1cfa70 bytes (60%) free.
+
+Executing action: all (aliases: build)
+Running ninja in directory D:\AI\nektarinaS31\build-p07
+Executing "ninja all"...
+
+
+Project build complete. To flash, run:
+ idf.py flash
+or
+ idf.py -p PORT flash
+or
+ python -m esptool --chip esp32s31 -b 460800 --before default-reset --after hard-reset --no-stub write-flash --flash-mode dio --flash-size 16MB --flash-freq 80m 0x2000 build-p07\bootloader\bootloader.bin 0x8000 build-p07\partition_table\partition-table.bin 0x19000 build-p07\ota_data_initial.bin 0x20000 build-p07\nektarina_s31.bin
+or from the "D:\AI\nektarinaS31\build-p07" directory
+ python -m esptool --chip esp32s31 -b 460800 --before default-reset --after hard-reset --no-stub write-flash "@flash_args"

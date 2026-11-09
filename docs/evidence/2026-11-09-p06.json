@@ -1,0 +1,171 @@
+{
+  "date": "2026-11-09",
+  "phase": "P06",
+  "target": "esp32s31",
+  "idf_version": "6.1.0",
+  "idf_commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "p4_source_commit": "9c0cf30b556501a6bb7bd4ffe348f6d7b83bc037",
+  "git_base": "0b80cc32dad04f6db5e6daaae78b4e79bd34dc6d",
+  "worktree": "local changes",
+  "p05b_baseline": {
+    "manifest": "docs/evidence/2026-11-09-p05b.json",
+    "artifacts_verified": [
+      {
+        "path": "build-p05b/nektarina_s31.bin",
+        "bytes": 1222880,
+        "sha256": "0ef5f4826e7792f0c71300fd81dd2b5fa8dcfab14f4745af382d15f38c5a3719"
+      },
+      {
+        "path": "build-p05b/nektarina_s31.elf",
+        "bytes": 14086212,
+        "sha256": "069f7b05d5e10c3aa54b7878e469de3908858514d976fcdfcddfa7b0f13a825d"
+      },
+      {
+        "path": "build-p05b/sdkconfig",
+        "bytes": 108713,
+        "sha256": "aa580fff1e86e9ef4abcfefb2a7c0f1f2ec0a62931665f0c42d40b0d5e8a807a"
+      },
+      {
+        "path": "build-p05b/partition_table/partition-table.bin",
+        "bytes": 3072,
+        "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+      }
+    ]
+  },
+  "build": {
+    "normal": {
+      "status": "PASS",
+      "telemetry_enabled": false,
+      "image_bytes": 1222896,
+      "app_slot_bytes": 3145728,
+      "telemetry_symbols": [],
+      "artifacts": [
+        {
+          "path": "build-p06-normal/nektarina_s31.bin",
+          "bytes": 1222896,
+          "sha256": "9c7b74da2854d1349583dbcdea56e142b71bcb2b58e80905e484db5811917af8"
+        },
+        {
+          "path": "build-p06-normal/nektarina_s31.elf",
+          "bytes": 14086700,
+          "sha256": "8ba70cc872b53356c85cf074b62948f0f72e001f6088adffd1e27f0d31dab8ac"
+        },
+        {
+          "path": "build-p06-normal/sdkconfig",
+          "bytes": 108767,
+          "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+        },
+        {
+          "path": "build-p06-normal/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        }
+      ],
+      "log": {
+        "path": "docs/evidence/2026-11-09-p06-normal-build.log",
+        "bytes": 185671,
+        "sha256": "9d88d3df9c766a87919d73be288c8895bcf854c19e6af42c7f5bf547e55bc3b6"
+      }
+    },
+    "telemetry": {
+      "status": "PASS",
+      "telemetry_enabled": true,
+      "image_bytes": 1226752,
+      "app_slot_bytes": 3145728,
+      "telemetry_symbols": [
+        "audio_perf_abort",
+        "audio_perf_begin_block",
+        "audio_perf_publish",
+        "audio_perf_record",
+        "audio_perf_request",
+        "audio_perf_take"
+      ],
+      "artifacts": [
+        {
+          "path": "build-p06-telemetry/nektarina_s31.bin",
+          "bytes": 1226752,
+          "sha256": "8e1976cb8ced5be9c5b75c1abceaabfd0db4badd7109d059420b8b9340efd1e5"
+        },
+        {
+          "path": "build-p06-telemetry/nektarina_s31.elf",
+          "bytes": 14173680,
+          "sha256": "a523dca2d912f4420c566a10fcc1cfb3b6ce63cffb6e3ce2a5fd5691f87a7858"
+        },
+        {
+          "path": "build-p06-telemetry/sdkconfig",
+          "bytes": 108744,
+          "sha256": "6c5df72dc3c708ecd116766768f02bcc55d03f7929988164b867b1b3341c3272"
+        },
+        {
+          "path": "build-p06-telemetry/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        }
+      ],
+      "log": {
+        "path": "docs/evidence/2026-11-09-p06-telemetry-build.log",
+        "bytes": 191163,
+        "sha256": "74210a816f4d4c67cd8a95b33b6d9f0e97093c7b88c6c56ba83cb9f26d136929"
+      }
+    }
+  },
+  "host": {
+    "status": "PASS",
+    "regression_suites": 14,
+    "storage_suites": 5,
+    "replays": 9,
+    "variants": [
+      "pinned P4 SF2 engine in S31 route",
+      "S31 normal",
+      "S31 telemetry"
+    ],
+    "fixtures": [
+      {
+        "name": "mono",
+        "sha256": "73424ff18f324082d6d0ebe05608fd256d27e9214d5bd034ad633d4ad3aeb24b",
+        "pcm_frames": 17536,
+        "pcm_sha256": "f845a8d8719ee6821a060c4f3e98e4e1e42bb9676e33257f2cfc2b4cb5842ec8"
+      },
+      {
+        "name": "dynamic",
+        "sha256": "97c7de518f1bdcb1309c214aeeb9d317d7d81420326d0399caedc00a2c2c77d7",
+        "pcm_frames": 17536,
+        "pcm_sha256": "1dc096df4a2a02b73beca79d1d6247e1fb9de19c95dc056565e1141ab50b6e0e"
+      },
+      {
+        "name": "two_layers",
+        "sha256": "029b01bddc1628e3d70c63be045cd48189117933844677b7eb843ddb38ba0beb",
+        "pcm_frames": 17536,
+        "pcm_sha256": "461abb9200be01667e6d1339a1bf3cbc2bbe987407ffd4eac10281e498c0acec"
+      }
+    ],
+    "pcm": "float32 mono, SHA-256 equal across all variants per fixture",
+    "event16_blocks_per_replay": 8,
+    "steady32_blocks_per_replay": 128,
+    "rt_alloc_free": 0,
+    "measurement_timestamps": "synthetic in host telemetry tests",
+    "logs": [
+      {
+        "path": "docs/evidence/2026-11-09-p06-host.log",
+        "bytes": 2489,
+        "sha256": "a727eddf45714ee0a5c8212ed00ea03406b8c3d078e7952222eff40afbe6c8da"
+      },
+      {
+        "path": "docs/evidence/2026-11-09-p06-regression.log",
+        "bytes": 5495,
+        "sha256": "4034fb9bba26beea8c019c4de6cf50e096458287f4d5dc1a1249f2247cfcc7f9"
+      },
+      {
+        "path": "docs/evidence/2026-11-09-p06-storage.log",
+        "bytes": 832,
+        "sha256": "2de1d494e1c48c0ad78d3988bf954467c23f2ea366566e6135b8eb832af87153"
+      }
+    ]
+  },
+  "hardware": {
+    "status": "NOT RUN",
+    "timing": "NOT RUN",
+    "listening": "NOT RUN",
+    "soak": "NOT RUN"
+  }
+}

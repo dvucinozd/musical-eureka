@@ -1,4 +1,4 @@
-# P01 compile-only bootstrap; physical board/revision not yet identified.
+# S31 development image. Physical board validation is pending.
 # Espressif coreboard defaults at board-manager commit 391f8bc5bd15beab3f2045e677b6675def25833f.
 CONFIG_IDF_TARGET="esp32s31"
 CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_320=y
@@ -11,8 +11,8 @@ CONFIG_SPIRAM_SPEED_200M=y
 CONFIG_SPIRAM_BOOT_INIT=y
 CONFIG_SPIRAM_MEMTEST=y
 CONFIG_SPIRAM_USE_CAPS_ALLOC=y
-# Deliberately keep IDF's single-app partition table during bootstrap.
-# Production dual-OTA/data layout will be specified after storage selection.
-CONFIG_PARTITION_TABLE_SINGLE_APP=y
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="config/partitions.csv"
 CONFIG_FREERTOS_HZ=1000
 
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=6144

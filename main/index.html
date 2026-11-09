@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEKTARINA S31</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#151f31;--line:#31435f;--accent:#70dfe9;--muted:#a3b6cc}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#eef4fb;font:16px system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:18px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font-size:1.65rem;margin:0}h2{font-size:1.15rem;margin:0 0 12px}h3{font-size:1rem;margin:0}
+p{margin:.5em 0;color:var(--muted)}section,.track{border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:12px;background:var(--panel)}
+.controls,.tracks{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,165px),1fr))}
+label{display:grid;gap:4px;font-size:.86rem;color:var(--muted)}button,input,select{font:inherit;color:inherit}
+button,input[type=number],input[type=text],select{background:#202d45;border:1px solid #526988;border-radius:6px;padding:8px;min-width:0}
+button{cursor:pointer}button:hover,button:focus-visible{border-color:var(--accent)}button[aria-pressed=true]{background:#246572}
+button.danger{border-color:#b97084}.buttons{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.keyboard{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:4px;margin-top:8px}
+.key{padding:5px 0;min-height:53px;touch-action:none;background:#dce7f3;color:#102033;font-size:.75rem;font-weight:700}
+.key.sharp{background:#253750;color:#f0f6ff}.key[aria-pressed=true]{background:#77e4ea;color:#102033}
+.status{color:var(--accent)}.track{margin:0}.track p{font-size:.85rem}
+input[type=file]{max-width:100%}button:disabled{opacity:.55;cursor:default}
+@media(max-width:580px){main{padding:12px}.keyboard{grid-template-columns:repeat(7,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<main>
+<header><div><h1>NEKTARINA S31</h1><p>USB MIDI synthesizer</p></div><button id="panic" class="danger">All sound off</button></header>
+<p id="connection" class="status" role="status">Connecting…</p>
+<section id="output-panel" aria-labelledby="output-title" hidden><h2 id="output-title">Audio output</h2>
+<p id="output-status" class="status" role="status">Starting Bluetooth…</p>
+<div class="buttons">
+<button id="out-local">Use local speaker</button><button id="out-bt" disabled>Use Bluetooth speaker</button>
+</div>
+<label>Discovered speakers<select id="out-device" disabled><option value="">Choose a speaker</option></select></label>
+<div class="buttons">
+<button id="out-scan" disabled>Scan for speakers</button><button id="out-connect" disabled>Connect</button>
+<button id="out-disconnect" disabled>Disconnect</button>
+</div>
+<p id="out-error" role="status"></p>
+</section>
+<section aria-labelledby="keyboard-title"><h2 id="keyboard-title">Virtual keyboard</h2>
+<div class="buttons"><button id="oct-down">Octave −</button><button id="oct-up">Octave +</button><button id="release-all">Release keys</button></div>
+<div id="keyboard" class="keyboard"></div></section>
+<section aria-labelledby="synth-title"><h2 id="synth-title">Synth</h2><div id="synth-controls" class="controls"></div></section>
+<section aria-labelledby="bank-title"><h2 id="bank-title">SoundFont and startup preset</h2>
+<p id="current-sound">Live sound: Synth</p>
+<div class="controls">
+<label>SF2 file (up to 3 MiB)<input id="bank-file" type="file" accept=".sf2"></label>
+<label>SoundFont program<select id="bank-program" disabled><option>No bank loaded</option></select></label>
+</div>
+<div class="buttons">
+<button id="bank-upload">Upload and activate</button><button id="bank-unload" disabled>Unload from RAM</button><button id="bank-reload" disabled>Load saved bank</button><button id="bank-synth" disabled>Use synth</button>
+</div>
+<div class="buttons">
+<button id="bank-prev" disabled>Previous programs</button><button id="bank-next" disabled>Next programs</button>
+<button id="preset-save">Save startup preset</button><button id="preset-restore">Restore startup preset</button>
+</div>
+<p id="storage-status" class="status" role="status">Checking storage…</p>
+</section>
+<section aria-labelledby="loop-title"><h2 id="loop-title">MIDI looper</h2>
+<div id="transport" class="controls"></div><div id="tracks" class="tracks"></div></section>
+<section id="ota-panel" aria-labelledby="ota-title" hidden><h2 id="ota-title">Development firmware update</h2>
+<p>Release notes and stop the MIDI looper before uploading. A successful update restarts the instrument.</p>
+<div class="controls">
+<label>Firmware file<input id="ota-file" type="file" accept=".bin"></label>
+<label>Expected SHA-256<input id="ota-sha" type="text" maxlength="64" spellcheck="false" autocomplete="off"></label>
+</div>
+<div class="buttons"><button id="ota-upload">Upload and restart</button></div>
+<p id="ota-status" class="status" role="status"></p>
+</section>
+</main>
+<script>
+"use strict";
+const byId = id => document.getElementById(id);
+const states = ["Empty", "Recording", "Playing", "Overdub", "Stopped"];
+const presets = ["Analog Brass","Warm Pad","Moog Bass","Bright Lead","Retro 80s Synth","Pluck Arp","Church Organ","Space Strings","Sub Bass","Juno Strings","Perc Organ","Sci-Fi Sweep","Acid Bass","Rubber Bass","PWM Bass","Detuned Bass","Soft Sub","Laser Lead","Glide Lead","Chip Lead","Hollow Lead","Wide Saw","Velvet Pad","Digital Pad","Slow Motion","Resonant Pad","Crystal Pluck","Pulse Pluck","Synth Keys","Soft Bell","Noise Sweep","Space Drone"];
+let outgoing = Promise.resolve();
+let heartbeatPending = false;
+let storageBusy = false;
+function command(op, values = {}) {
+    if (storageBusy) return Promise.resolve();
+    const query = new URLSearchParams({op, ...values});
+    const send = async () => {
+        try {
+            const r = await fetch("/api/control?" + query, {method:"POST", keepalive:true, signal:AbortSignal.timeout(1800)});
+            if (!r.ok) throw new Error(await r.text());
+        } catch (error) { byId("connection").textContent = "Command failed: " + error.message; }
+    };
+    outgoing = outgoing.then(send);
+    return outgoing;
+}
+function addField(parent, name, title, options, index) {
+    const label = document.createElement("label");
+    label.textContent = title;
+    const field = document.createElement(options.length === 3 && options.every(Number.isFinite) ? "input" : "select");
+    field.dataset.field = name;
+    field.setAttribute("aria-label",title);
+    if (field.tagName === "INPUT") {
+        field.type = "number";
+        [field.min, field.max, field.step] = options;
+    } else {
+        options.forEach((option, i) => {
+            field.add(new Option(Array.isArray(option) ? option[1] : option, Array.isArray(option) ? option[0] : i));
+        });
+    }
+    field.addEventListener("change", () => command(name, index === undefined ? {v:field.value} : {v:field.value,i:index}));
+    label.append(field);
+    parent.append(label);
+    return field;
+}
+const synth = byId("synth-controls");
+const toggles = ["Off","On"];
+for (const [name,title,options] of [
+    ["preset","Preset",presets],["gain","Volume (0–50)",[0,50,1]],
+    ["wave","Waveform",["Sine","Triangle","Saw","Square"]],
+    ["cutoff","Cutoff (Hz)",[20,18000,1]],["resonance","Resonance (Q × 10)",[5,120,1]],
+    ["filter","Filter",["Low-pass","Band-pass","High-pass"]],
+    ["attack","Attack (ms)",[0,4000,1]],["decay","Decay (ms)",[0,4000,1]],
+    ["sustain","Sustain (%)",[0,100,1]],["env_release","Release (ms)",[0,4000,1]],
+    ["delay","Delay",toggles],["chorus","Chorus",toggles],["lfo","LFO",toggles],
+    ["arp","Arpeggiator",["Off","Up","Down","Up/down","Random","Chord"]],
+    ["arp_rate","Arp rate",["1/4","1/8","1/16","1/32"]],["arp_octaves","Arp octaves",[1,4,1]],
+    ["arp_latch","Arp latch",toggles]
+]) addField(synth,name,title,options);
+addField(byId("transport"),"bpm","Tempo (BPM)",[40,300,1]);
+addField(byId("transport"),"bars","Loop length",[[1,"1 bar"],[2,"2 bars"],[4,"4 bars"],[8,"8 bars"]]);
+const tracks = [];
+for (let i=0; i<4; ++i) {
+    const card = document.createElement("article");
+    card.className = "track";
+    const title = document.createElement("h3"); title.textContent = "Track " + (i+1);
+    const status = document.createElement("p"); status.textContent = "Empty";
+    const buttons = document.createElement("div"); buttons.className = "buttons";
+    const trigger = document.createElement("button"); trigger.textContent = "Record";
+    trigger.onclick = () => command("trigger",{i});
+    buttons.append(trigger);
+    for (const [op,label] of [["stop","Stop"],["clear","Clear"]]) {
+        const button = document.createElement("button"); button.textContent = label;
+        button.onclick = () => { if (op !== "clear" || confirm("Clear track " + (i+1) + "?")) command(op,{i}); };
+        buttons.append(button);
+    }
+    card.append(title,status,buttons);
+    const mute = addField(card,"mute","Mute",toggles,i);
+    const volume = addField(card,"volume","Track volume",[0,100,1],i);
+    const preset = addField(card,"track_preset","Track preset",presets,i);
+    byId("tracks").append(card);
+    tracks.push({status,trigger,mute,volume,preset});
+}
+const held = new Map();
+const keyNames = ["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"];
+let firstNote = 48;
+function down(id,note,button) {
+    if (storageBusy || held.has(id)) return;
+    const already = [...held.values()].some(item => item.note === note);
+    held.set(id,{note,button});
+    if (!already) command("press",{v:note});
+    button.setAttribute("aria-pressed","true");
+}
+function up(id) {
+    const item = held.get(id);
+    if (!item) return;
+    held.delete(id);
+    if ([...held.values()].some(other => other.note === item.note)) return;
+    item.button.setAttribute("aria-pressed","false");
+    command("release",{v:item.note});
+}
+function releaseAll() { for (const id of held.keys()) up(id); }
+function keyboard() {
+    const root = byId("keyboard"); root.replaceChildren();
+    for (let note=firstNote; note<=firstNote+24; ++note) {
+        const name = keyNames[note%12] + (Math.floor(note/12)-1);
+        const button = document.createElement("button");
+        button.className = "key" + (name.includes("♯") ? " sharp" : "");
+        button.textContent = name; button.setAttribute("aria-pressed","false");
+        button.onpointerdown = e => {
+            if (e.button !== 0) return;
+            button.setPointerCapture(e.pointerId);
+            down(e.pointerId,note,button);
+        };
+        for (const type of ["pointerup","pointercancel","lostpointercapture"])
+            button.addEventListener(type,e => up(e.pointerId));
+        button.onkeydown = e => {
+            if (e.code === "Space" || e.code === "Enter") { e.preventDefault(); down("key"+note,note,button); }
+        };
+        button.onkeyup = e => { if (e.code === "Space" || e.code === "Enter") up("key"+note); };
+        button.onblur = () => up("key"+note);
+        root.append(button);
+    }
+}
+keyboard();
+function octave(change) {
+    releaseAll(); firstNote = Math.max(12,Math.min(96,firstNote+change)); keyboard();
+}
+byId("oct-down").onclick = () => octave(-12);
+byId("oct-up").onclick = () => octave(12);
+byId("release-all").onclick = releaseAll;
+byId("panic").onclick = () => {releaseAll(); command("panic");};
+window.addEventListener("blur",releaseAll);
+window.addEventListener("pagehide",releaseAll);
+setInterval(() => {
+    if (!held.size || heartbeatPending) return;
+    const mask = [0,0,0,0];
+    for (const {note} of held.values()) mask[note>>>5] |= 1 << (note&31);
+    heartbeatPending = true;
+    command("hold",{m:mask.map(word => (word>>>0).toString(16).padStart(8,"0")).join("")})
+        .finally(() => {heartbeatPending = false;});
+},500);
+function setField(field,value) {
+    if (document.activeElement !== field && value !== undefined) field.value = value;
+}
+let catalog = {generation:"0",total:0,stored:0,programs:[]};
+let offset = 0;
+let live = {sf:0};
+function showBank() {
+    const program = byId("bank-program");
+    const current = catalog.programs.find(p => live.sf && live.generation === catalog.generation &&
+        p.bank === live.bank && p.program === live.program);
+    const label = current ? current.name : `Bank ${live.bank}, program ${live.program}`;
+    byId("current-sound").textContent = live.missing ? "Live sound unavailable" : live.sf ? "Live sound: " + label : "Live sound: Synth";
+    if (document.activeElement !== program) program.value = current ? current.index : "";
+    byId("bank-prev").disabled = storageBusy || offset === 0;
+    byId("bank-next").disabled = storageBusy || offset + catalog.programs.length >= catalog.total;
+    byId("bank-unload").disabled = storageBusy || !catalog.total;
+    byId("bank-reload").disabled = storageBusy || !catalog.stored || !!catalog.total;
+    byId("bank-synth").disabled = storageBusy || !live.sf;
+    program.disabled = storageBusy || !catalog.total;
+    for (const id of ["bank-upload","bank-file","preset-save","preset-restore"]) byId(id).disabled = storageBusy;
+}
+async function loadCatalog(page = 0) {
+    const r = await fetch("/api/bank?offset=" + page,{cache:"no-store",signal:AbortSignal.timeout(3000)});
+    if (!r.ok) throw new Error(await r.text());
+    catalog = await r.json();
+    offset = page;
+    const program = byId("bank-program");
+    program.replaceChildren(new Option(catalog.total ? "Choose a program" : "No bank loaded", ""));
+    for (const p of catalog.programs) program.add(new Option(`${p.bank}:${p.program} · ${p.name}`,p.index));
+    showBank();
+}
+async function storage(op, values = {}, file) {
+    if (storageBusy) return;
+    releaseAll();
+    storageBusy = true;
+    showBank();
+    const message = byId("storage-status");
+    message.textContent = file ? "Uploading and validating…" : "Working…";
+    try {
+        await outgoing;
+        const r = await fetch("/api/storage?" + new URLSearchParams({op,...values}),{
+            method:"POST", body:file, headers:file ? {"Content-Type":"application/octet-stream"} : {},
+            signal:AbortSignal.timeout(file ? 90000 : 20000)
+        });
+        if (!r.ok) throw new Error(await r.text());
+        if (["upload","unload","reload"].includes(op)) await loadCatalog();
+        message.textContent = ({
+            upload:"Bank uploaded and activated", unload:"Bank unloaded from RAM", reload:"Saved bank loaded",
+            save:"Startup preset saved", restore:"Startup preset restored", select:"Program selection queued"
+        })[op];
+    } catch (error) {
+        message.textContent = error.message;
+        try { await loadCatalog(); } catch {}
+    } finally {
+        storageBusy = false;
+        showBank();
+    }
+}
+byId("bank-upload").onclick = () => {
+    const file = byId("bank-file").files[0];
+    if (!file || file.size < 12 || file.size > 3*1024*1024) {
+        byId("storage-status").textContent = "Choose an SF2 file up to 3 MiB.";
+        return;
+    }
+    storage("upload",{},file);
+};
+byId("bank-unload").onclick = () => storage("unload");
+byId("bank-reload").onclick = () => storage("reload");
+byId("bank-synth").onclick = () => command("preset",{v:document.querySelector("#synth-controls [data-field=preset]").value});
+byId("preset-save").onclick = () => storage("save");
+byId("preset-restore").onclick = () => storage("restore");
+byId("bank-program").onchange = e => {
+    if (e.target.value !== "") storage("select",{i:e.target.value,g:catalog.generation});
+};
+function turnPage(page) {
+    loadCatalog(page).catch(error => { byId("storage-status").textContent = error.message; });
+}
+byId("bank-prev").onclick = () => turnPage(Math.max(0,offset-16));
+byId("bank-next").onclick = () => turnPage(offset+16);
+loadCatalog().then(() => {
+    if (!storageBusy) byId("storage-status").textContent = "Stop playback and release notes before changing storage.";
+}).catch(error => { byId("storage-status").textContent = error.message; });
+const outputRoutes = ["Local audio","Bluetooth audio","Audio muted"];
+const outputStates = ["Starting Bluetooth","Ready to scan","Scanning for speakers…",
+    "Connecting…","Bluetooth speaker connected","Disconnecting…","Bluetooth unavailable until restart"];
+const outputErrors = ["","Scan could not start","Connection failed","Unsupported Bluetooth audio format",
+    "Bluetooth operation timed out","Bluetooth link lost","Pairing failed or requires a legacy PIN",
+    "Bluetooth event queue overflow","Bluetooth startup failed"];
+let output = {route:0,devices:[]};
+let outputBusy = false;
+let outputCommandError = "";
+let shownDevices = "";
+function showOutput() {
+    const device = byId("out-device");
+    const key = JSON.stringify(output.devices);
+    if (key !== shownDevices) {
+        const selection = device.value;
+        device.replaceChildren(new Option("Choose a speaker",""));
+        for (const speaker of output.devices)
+            device.add(new Option(speaker.name ? `${speaker.name} · ${speaker.address}` : speaker.address,speaker.address));
+        if (output.devices.some(speaker => speaker.address === selection)) device.value = selection;
+        shownDevices = key;
+    }
+    byId("output-status").textContent = outputRoutes[output.route] + " · " + outputStates[output.state];
+    byId("out-local").disabled = outputBusy || !output.requested;
+    byId("out-bt").disabled = outputBusy || !output.ready || !!output.requested;
+    byId("out-scan").disabled = outputBusy || output.state !== 1;
+    device.disabled = outputBusy || output.state !== 1 || !output.devices.length;
+    byId("out-connect").disabled = device.disabled || !device.value;
+    byId("out-disconnect").disabled = outputBusy || ![3,4].includes(output.state);
+    byId("out-error").textContent = outputCommandError || outputErrors[output.error] || "";
+}
+async function pollOutput() {
+    if (!outputBusy && !storageBusy) {
+        try {
+            const r = await fetch("/api/output",{cache:"no-store",signal:AbortSignal.timeout(1800)});
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            output = await r.json();
+            if (!output.available) return;
+            byId("output-panel").hidden = false;
+            showOutput();
+        } catch {
+            if (!byId("output-panel").hidden) byId("out-error").textContent = "Output status unavailable";
+        }
+    }
+    setTimeout(pollOutput,700);
+}
+async function outputCommand(op, values = {}) {
+    if (outputBusy || storageBusy) return;
+    outputBusy = true;
+    outputCommandError = "";
+    showOutput();
+    try {
+        const r = await fetch("/api/output?" + new URLSearchParams({op,...values}),
+            {method:"POST",signal:AbortSignal.timeout(1800)});
+        if (!r.ok) throw new Error(await r.text());
+    } catch (error) { outputCommandError = error.message; }
+    finally { outputBusy = false; showOutput(); }
+}
+byId("out-device").onchange = showOutput;
+byId("out-local").onclick = () => outputCommand("local");
+byId("out-bt").onclick = () => outputCommand("bluetooth");
+byId("out-scan").onclick = () => outputCommand("scan");
+byId("out-connect").onclick = () => outputCommand("connect",{address:byId("out-device").value.replaceAll(":","")});
+byId("out-disconnect").onclick = () => outputCommand("disconnect");
+pollOutput();
+byId("ota-upload").onclick = async () => {
+    if (storageBusy || outputBusy) return;
+    const file = byId("ota-file").files[0];
+    const sha = byId("ota-sha").value.trim();
+    const message = byId("ota-status");
+    if (!file || !file.size || file.size > 3*1024*1024 || !/^[0-9a-f]{64}$/i.test(sha)) {
+        message.textContent = "Choose a firmware file up to 3 MiB and enter its expected SHA-256.";
+        return;
+    }
+    if (!confirm("Upload this firmware and restart the instrument?")) return;
+    releaseAll();
+    storageBusy = true;
+    byId("ota-upload").disabled = true;
+    message.textContent = "Uploading and verifying…";
+    try {
+        await outgoing;
+        const r = await fetch("/api/firmware",{
+            method:"POST", body:file, signal:AbortSignal.timeout(120000),
+            headers:{"Content-Type":"application/octet-stream","X-Firmware-SHA256":sha}
+        });
+        const result = await r.text();
+        if (!r.ok) throw new Error(result);
+        message.textContent = result + " Reconnect to the instrument to verify the boot.";
+    } catch (error) {
+        message.textContent = "Update result: " + error.message;
+        byId("ota-upload").disabled = false;
+    } finally { storageBusy = false; }
+};
+async function poll() {
+    if (storageBusy) {setTimeout(poll,400); return;}
+    try {
+        const r = await fetch("/api/status",{cache:"no-store",signal:AbortSignal.timeout(1800)});
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        const s = await r.json();
+        byId("ota-panel").hidden = !s.ota;
+        byId("connection").textContent = s.state === 4 ? "Audio fault" :
+            s.state === 6 ? "Audio paused for storage" : "Connected · " + (outputRoutes[output.route] || outputRoutes[0]);
+        live = s.sound || {sf:0};
+        showBank();
+        for (const field of document.querySelectorAll("#synth-controls [data-field], #transport [data-field]"))
+            setField(field,s[field.dataset.field]);
+        tracks.forEach((track,i) => {
+            const t = s.tracks[i];
+            track.status.textContent = states[t.state] + " · " + t.events + " events" + (t.sf ? " · SF2" : "");
+            track.trigger.textContent = ["Record","Play","Overdub","Play","Play"][t.state];
+            setField(track.mute,t.mute); setField(track.volume,t.volume); setField(track.preset,t.preset);
+        });
+    } catch { byId("connection").textContent = "Device unavailable"; }
+    setTimeout(poll,400);
+}
+poll();
+</script>
+</body>
+</html>

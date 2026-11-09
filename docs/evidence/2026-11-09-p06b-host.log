@@ -1,0 +1,3 @@
+gcc.exe (Rev13, Built by MSYS2 project) 15.2.0
+P06B host PASS: local default, DMA drain, mute on link loss, explicit local recovery
+P06B host PASS: queue cap, wrap, generation cutoff, 48k and 44.1k PCM, channel duplication, silence

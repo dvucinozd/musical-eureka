@@ -179,6 +179,35 @@ static void s5_no_voice_without_end(void)
     assert(ev(SYNTH_SOURCE_WEB, now_epoch(), 65, false) && sounding(65) == 0);
 }
 
+static void oscillator_shared_key(void)
+{
+    synth_init(&s, NULL);
+    synth_set_arp_mode(&s, SYNTH_ARP_OFF);
+    synth_web_keys_t keys = {0};
+    const midi_event_t on = {.type = MIDI_EVENT_NOTE_ON, .note = {60, 90}};
+    const midi_event_t off = {.type = MIDI_EVENT_NOTE_OFF, .note = {60, 0}};
+    assert(synth_sound_event_from(&s, SYNTH_SOURCE_USB, synth_live_epoch(&s), &on));
+    synth_web_key(&keys, &s, 60, true, 100);
+    assert(s.note_on_count == 1);
+    synth_web_keys_expire(&keys, &s, 100 + SYNTH_WEB_KEY_LEASE_US);
+    assert(s.note_off_count == 0 && s.key_claims[SYNTH_SOURCE_USB][60]);
+    synth_web_key(&keys, &s, 60, true, 2000000);
+    synth_release_source(&s, SYNTH_SOURCE_USB);
+    assert(s.note_off_count == 0 && s.key_claims[SYNTH_SOURCE_WEB][60]);
+    assert(synth_sound_event_from(&s, SYNTH_SOURCE_USB, synth_live_epoch(&s), &off));
+    assert(s.note_off_count == 0);
+    synth_web_key(&keys, &s, 60, false, 2000100);
+    assert(s.note_off_count == 1);
+
+    synth_set_arp_mode(&s, SYNTH_ARP_UP);
+    synth_set_arp_latch(&s, true);
+    assert(synth_sound_event_from(&s, SYNTH_SOURCE_USB, synth_live_epoch(&s), &on));
+    synth_web_key(&keys, &s, 64, true, 3000000);
+    assert(s.arp.held_count == 2);
+    synth_release_source(&s, SYNTH_SOURCE_USB);
+    assert(s.arp.latch && s.arp.held_count == 1 && s.arp.held_notes[0] == 64);
+}
+
 int main(void)
 {
     s2_sources();
@@ -187,6 +216,7 @@ int main(void)
     s4_web_hold();
     batch_hold();
     s5_no_voice_without_end();
+    oscillator_shared_key();
     puts("SF06 note ownership PASS: S1 capture epoch, S2 per-source Note Off, S3 USB tombstones, S4 Web hold never starts a note, S5 no voice without an end");
     return 0;
 }

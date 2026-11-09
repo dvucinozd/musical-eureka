@@ -1,4 +1,7 @@
 #include <inttypes.h>
+#include "app_storage.h"
+#include "app_wifi.h"
+#include "app_web.h"
 #include "audio_hal.h"
 #include "driver/uart.h"
 #include "sdkconfig.h"
@@ -9,7 +12,19 @@
 #include "esp_psram.h"
 #include "esp_system.h"
 #include "midi_ingress.h"
+#include "nvs_flash.h"
 #include "usb_midi_host.h"
+
+#ifdef CONFIG_NEKTAR_P07_OTA
+#include "app_ota.h"
+#endif
+#ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
+#include "bt_output.h"
+#endif
+#ifdef CONFIG_NEKTAR_P06_TELEMETRY
+#include "audio_perf.h"
+#include "audio_controls.h"
+#endif
 
 #if !CONFIG_IDF_TARGET_ESP32S31
 #error "NEKTARINA S31 requires ESP32-S31"
@@ -22,7 +37,15 @@ static void log_boot(void)
     uint32_t flash_bytes = 0;
     esp_chip_info(&chip);
     esp_err_t flash_result = esp_flash_get_size(NULL, &flash_bytes);
-    ESP_LOGI(tag, "project=nektarina_s31 stage=P03 idf=%s", esp_get_idf_version());
+#if defined(CONFIG_NEKTAR_P07_OTA)
+    ESP_LOGI(tag, "project=nektarina_s31 stage=P07-ota idf=%s", esp_get_idf_version());
+#elif defined(CONFIG_NEKTAR_P06B_BLUETOOTH)
+    ESP_LOGI(tag, "project=nektarina_s31 stage=P06B-bluetooth idf=%s", esp_get_idf_version());
+#elif defined(CONFIG_NEKTAR_P06_TELEMETRY)
+    ESP_LOGI(tag, "project=nektarina_s31 stage=P06-telemetry idf=%s", esp_get_idf_version());
+#else
+    ESP_LOGI(tag, "project=nektarina_s31 stage=P05b idf=%s", esp_get_idf_version());
+#endif
     ESP_LOGI(tag, "target=%s cores=%u revision=%u cpu_mhz=%d reset_reason=%d",
              CONFIG_IDF_TARGET, (unsigned)chip.cores, (unsigned)chip.revision,
              CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ, (int)esp_reset_reason());
@@ -55,15 +78,90 @@ static void log_audio(void)
              status.midi_receive_to_dispatch_max_us);
 }
 
+#ifdef CONFIG_NEKTAR_P06_TELEMETRY
+static void log_perf_bucket(uint32_t id, const char *name, const audio_perf_bucket_t *bucket)
+{
+    ESP_LOGI("S31_P06", "window=%" PRIu32 " group=%s blocks=%" PRIu32
+             " max_prepare_us=%" PRIu32 " over_2200=%" PRIu32 " deadlines=%" PRIu32,
+             id, name, bucket->blocks, bucket->max_us, bucket->over_target, bucket->deadlines);
+}
+
+static void log_perf_heap(const char *name, uint32_t caps)
+{
+    ESP_LOGI("S31_P06", "heap=%s free=%zu min_free_since_boot=%zu largest=%zu", name,
+             heap_caps_get_free_size(caps), heap_caps_get_minimum_free_size(caps),
+             heap_caps_get_largest_free_block(caps));
+}
+
+static void arm_perf(void)
+{
+    audio_control_status_t controls;
+    if (audio_get_status().state != AUDIO_LIVE || !audio_get_controls(&controls) ||
+        !audio_perf_request()) {
+        ESP_LOGW("S31_P06", "Arm rejected: audio must be live and previous window collected");
+        return;
+    }
+    ESP_LOGI("S31_P06", "armed blocks=%u sf=%d generation=%" PRIu64 " bank=%u program=%u "
+             "arp=%u delay=%u chorus=%u gain=%u bpm=%u bars=%u",
+             AUDIO_PERF_BLOCKS, controls.sound.engine == SOUND_SF2, controls.sound.bank_generation,
+             (unsigned)controls.sound.bank, (unsigned)controls.sound.program,
+             (unsigned)controls.config.arp_mode, (unsigned)controls.config.delay_enable,
+             (unsigned)controls.config.chorus_enable, (unsigned)controls.config.master_gain_permille,
+             (unsigned)controls.looper.bpm, (unsigned)controls.looper.bars);
+}
+
+static void log_perf(void)
+{
+    audio_perf_window_t window;
+    if (!audio_perf_take(&window)) {
+        ESP_LOGW("S31_P06", "No completed window");
+        return;
+    }
+    ESP_LOGI("S31_P06", "window=%" PRIu32 " result=%u start_us=%" PRIi64 " end_us=%" PRIi64
+             " generation=%" PRIu64 " bank=%u program=%u"
+             " invalid_trace=%" PRIu32 " usb_dispatches=%" PRIu32 " web_blocks=%" PRIu32
+             " write_path_max_us=%" PRIu32 " start_gap_max_us=%" PRIu32 " long_gaps=%" PRIu32
+             " dma_queue_overflows=%" PRIu32 " stack_min_free_bytes=%" PRIu32,
+             window.id, (unsigned)window.result, window.start_us, window.end_us,
+             window.sound.bank_generation, (unsigned)window.sound.bank, (unsigned)window.sound.program,
+             window.invalid_trace, window.usb_events, window.web_blocks, window.write_max_us,
+             window.gap_max_us, window.long_gaps, window.dma_overflows, window.stack_high_water);
+    log_perf_bucket(window.id, "all", &window.all);
+    log_perf_bucket(window.id, "event16", &window.event16);
+    log_perf_bucket(window.id, "steady32", &window.steady32);
+    log_perf_heap("internal", MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT);
+    log_perf_heap("dma", MALLOC_CAP_INTERNAL | MALLOC_CAP_DMA);
+    log_perf_heap("psram", MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
+    log_audio();
+}
+#endif
+
 void app_main(void)
 {
     log_boot();
+    esp_err_t nvs = nvs_flash_init();
+    /* Radio/PHY initialization can touch NVS. Finish it before audio starts. */
+    esp_err_t wifi = nvs == ESP_OK ? app_wifi_start() : nvs;
+#ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
+    esp_err_t bt = bt_output_start();
+    if (bt != ESP_OK) ESP_LOGE("S31_BT", "Bluetooth setup failed: %s", esp_err_to_name(bt));
+#endif
     esp_err_t err = audio_start();
     if (err != ESP_OK) {
         ESP_LOGE("S31_P03", "Audio setup failed: %s", esp_err_to_name(err));
-    } else {
+    } else app_storage_boot();
+#ifdef CONFIG_NEKTAR_P07_OTA
+    app_ota_check_boot(err == ESP_OK && wifi == ESP_OK
+#ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
+                       && bt == ESP_OK
+#endif
+    );
+#endif
+    if (err == ESP_OK) {
         err = midi_ingress_start();
         if (err != ESP_OK) ESP_LOGE("S31_P03", "USB MIDI setup failed: %s", esp_err_to_name(err));
+        err = wifi == ESP_OK ? app_web_start() : wifi;
+        if (err != ESP_OK) ESP_LOGE("S31_P04", "Web setup failed: %s", esp_err_to_name(err));
     }
 
     /* UART0 uses the same pins and baud rate as the boot console. */
@@ -73,6 +171,9 @@ void app_main(void)
         return;
     }
     ESP_LOGI("S31_P03", "UART0 commands: ? status, t one low-level C4 probe before live MIDI");
+#ifdef CONFIG_NEKTAR_P06_TELEMETRY
+    ESP_LOGI("S31_P06", "UART0 commands: p arm timing window, P read completed window");
+#endif
     for (;;) {
         uint8_t command;
         if (uart_read_bytes(UART_NUM_0, &command, 1, pdMS_TO_TICKS(100)) != 1) continue;
@@ -84,6 +185,12 @@ void app_main(void)
             } else {
                 ESP_LOGW("S31_P03", "Probe rejected. Query audio status with ?");
             }
+#ifdef CONFIG_NEKTAR_P06_TELEMETRY
+        } else if (command == 'p') {
+            arm_perf();
+        } else if (command == 'P') {
+            log_perf();
+#endif
         }
     }
 }

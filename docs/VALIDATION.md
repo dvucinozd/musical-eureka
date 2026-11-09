@@ -22,7 +22,10 @@ trajanje, hardver/port i sirovi log. NOT RUN nije PASS. Predlošci su u `docs/te
 Pretraživati aktivni kod, ne `reference/`, `build/` i povijesni audit. Riječi `record`
 u MIDI looperu i WAV-format host PCM testnom izlazu nisu same po sebi kršenje opsega.
 
-## Predloženi S31 performance ugovor (zaključati prije P06)
+## S31 performance ugovor za P06
+
+Postupak za dijagnostički build, kratki pilot i odvajanje steady/event blokova
+je u [P06 SoundFont](P06_SOUNDFONT.md). Kriteriji služe za engineering pilot.
 
 - 48 kHz / 128 frameova daje period **2666,67 µs**. Mjeri se potpuna priprema bloka,
   DMA underrun/service gap, latencija, min/free/largest heap i stack high-water.

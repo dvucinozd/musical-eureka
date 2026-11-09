@@ -35,7 +35,7 @@ try {
     Run-Test 'review_fixes' @('-I','components/synth/include','-I','components/midi/include') @('tests/synth/test_review_fixes.c','components/synth/synth.c','components/synth/synth_looper.c','components/synth/synth_web_keys.c')
     Run-Test 'electronic_bank' @('-I','components/synth/include','-I','components/midi/include') @('tests/synth/test_electronic_bank.c','components/synth/synth.c','components/synth/synth_looper.c')
     Run-Test 'sound_transition' @('-I','components/synth/include') @('tests/synth/test_sound_transition.c','components/synth/synth_sound.c')
-    Write-Host "P03 host suites PASS (outputs: $outputDir)"
+    Write-Host "Host suites PASS (outputs: $outputDir)"
 } finally {
     Pop-Location
 }

@@ -1,0 +1,30 @@
+menu "NEKTARINA S31"
+    config NEKTAR_AP_PASSWORD
+        string "Local SoftAP WPA2 password"
+        default "nektarina-s31"
+        help
+            Development default. Set a private 8–63 character passphrase for
+            deployed instruments. The device serves Web controls on this AP.
+
+    config NEKTAR_P06_TELEMETRY
+        bool "P06 SoundFont timing windows over UART0"
+        default n
+        help
+            Opt-in diagnostic image. Observe real input and render traffic
+            through a bounded audio window triggered from the UART console.
+
+    config NEKTAR_P06B_BLUETOOTH
+        bool "P06B Classic Bluetooth speaker development profile"
+        depends on BT_ENABLED && BT_CLASSIC_ENABLED && BT_A2DP_ENABLE
+        depends on !BT_BLE_ENABLED && !BT_A2DP_USE_EXTERNAL_CODEC && !BT_CTRL_BR_EDR_LK_STORE_EN
+        default n
+        help
+            Starts on the local speaker. Enables optional A2DP Source with
+            session-only bonding and the existing local Wi-Fi Web interface.
+
+    config NEKTAR_P07_OTA
+        bool "P07 development OTA with bootloader rollback"
+        depends on BOOTLOADER_APP_ROLLBACK_ENABLE && !BOOTLOADER_APP_ANTI_ROLLBACK
+        depends on !SECURE_BOOT && !SECURE_SIGNED_APPS_NO_SECURE_BOOT
+        default n
+endmenu

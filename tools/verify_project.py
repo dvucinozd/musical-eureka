@@ -28,7 +28,7 @@ if reference.exists():
             errors.append("Reference changed/missing: " + item["path"])
 
 partitions = []
-for line in (root / "config/partitions.proposed.csv").read_text(encoding="utf-8").splitlines():
+for line in (root / "config/partitions.csv").read_text(encoding="utf-8").splitlines():
     if not line.strip() or line.lstrip().startswith("#"):
         continue
     name, kind, subtype, offset, size, *_ = [field.strip() for field in line.split(",")]
@@ -46,6 +46,6 @@ for previous, current in zip(partitions, partitions[1:]):
         errors.append(f"Partition overlap: {previous[2]} / {current[2]}")
 if errors:
     raise SystemExit("\n".join(errors))
-print(f"PASS: {len(markdown)} Markdown files, local links, source manifest and {len(partitions)} proposed partitions.")
+print(f"PASS: {len(markdown)} Markdown files, local links, source manifest and {len(partitions)} partitions.")
 print(f"Reference hashes: {'verified' if reference.exists() else 'not checked (local export absent)'}; no hardware accessed.")
 

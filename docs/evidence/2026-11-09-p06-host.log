@@ -1,0 +1,23 @@
+gcc.exe (Rev13, Built by MSYS2 project) 15.2.0
+Running reference/mono
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7\fixtures\mono.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+Running normal/mono
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7\fixtures\mono.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+Running telemetry/mono
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7\fixtures\mono.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+PCM IDENTICAL mono fixture_sha256=73424ff18f324082d6d0ebe05608fd256d27e9214d5bd034ad633d4ad3aeb24b frames=17536 pcm_sha256=f845a8d8719ee6821a060c4f3e98e4e1e42bb9676e33257f2cfc2b4cb5842ec8
+Running reference/dynamic
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7\fixtures\dynamic.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+Running normal/dynamic
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7\fixtures\dynamic.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+Running telemetry/dynamic
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7\fixtures\dynamic.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+PCM IDENTICAL dynamic fixture_sha256=97c7de518f1bdcb1309c214aeeb9d317d7d81420326d0399caedc00a2c2c77d7 frames=17536 pcm_sha256=1dc096df4a2a02b73beca79d1d6247e1fb9de19c95dc056565e1141ab50b6e0e
+Running reference/two_layers
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7\fixtures\two_layers.sf2 layers=2 event16=8 steady32=128 RT alloc/free=0
+Running normal/two_layers
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7\fixtures\two_layers.sf2 layers=2 event16=8 steady32=128 RT alloc/free=0
+Running telemetry/two_layers
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7\fixtures\two_layers.sf2 layers=2 event16=8 steady32=128 RT alloc/free=0
+PCM IDENTICAL two_layers fixture_sha256=029b01bddc1628e3d70c63be045cd48189117933844677b7eb843ddb38ba0beb frames=17536 pcm_sha256=461abb9200be01667e6d1339a1bf3cbc2bbe987407ffd4eac10281e498c0acec
+P06 host replay PASS (C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-24a8558c-efe8-4312-afe9-02df600f17b7)

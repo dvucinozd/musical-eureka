@@ -1,0 +1,7 @@
+PASS bank store: bounds, slot generations, 6 torn operations, readback, header CRC, older-slot recovery
+HOST ONLY dynamic32 voices128frames CPU us avg=323.3 max=1000.0; P4 timing unmeasured
+PASS SF02 contracts pitch octave/segmentation1-64-128, invalid indices/bounds/counts, 64-event burst, 256 regions, short-loop/root0/key127, exclusive layers, keyscale
+typed peak samples=4512 metadata=47936 voices=8688 channels=480 instance=768
+PASS SF03 host lifecycle: stale/busy/cancel/prepfail/BANK_IN_USE/fault/detach, delayed ACK, 100 real bank cycles, RT alloc/free=0
+PASS fixture=tests/soundfont/fixtures/mono.sf2 prepare_allocations=29 failure_points=29 cycles=100 RT_alloc_free=0
+P05a host suites PASS

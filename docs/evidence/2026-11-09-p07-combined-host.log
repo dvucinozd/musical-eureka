@@ -1,0 +1,139 @@
+=== regression ===
+Running usb_midi_desc
+All usb_midi_desc tests passed!
+Running usb_midi_lifecycle
+In file included from tests/usb_midi_host/test_usb_midi_lifecycle.c:134:
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c: In function 'log_hex':
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c:225:33: warning: unused parameter 'label' [-Wunused-parameter]
+  225 | static void log_hex(const char *label, const uint8_t *data, size_t len)
+      |                     ~~~~~~~~~~~~^~~~~
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c: In function 'log_device':
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c:252:30: warning: unused variable 'speeds' [-Wunused-variable]
+  252 |     static const char *const speeds[] = {"low", "full", "high"};
+      |                              ^~~~~~
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c:249:32: warning: unused parameter 'addr' [-Wunused-parameter]
+  249 | static void log_device(uint8_t addr, const usb_device_desc_t *dd, const usb_config_desc_t *cd,
+      |                        ~~~~~~~~^~~~
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c: In function 'handle_new_device':
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c:331:20: warning: unused variable 'session' [-Wunused-variable]
+  331 |     const uint32_t session = next_session();
+      |                    ^~~~~~~
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c: In function 'handle_dev_gone':
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c:349:20: warning: unused variable 'session' [-Wunused-variable]
+  349 |     const uint32_t session = atomic_load(&s_session);
+      |                    ^~~~~~~
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c: At top level:
+D:/AI/nektarinaS31/components/usb_midi_host/usb_midi_host.c:38:20: warning: 'TAG' defined but not used [-Wunused-variable]
+   38 | static const char *TAG = "usb_midi";
+      |                    ^~~
+All usb_midi_lifecycle tests passed!
+Running midi_ingress
+PASS USB MIDI ingress: sustain, disconnect, stale epoch, overflow, block budget, probe, maintenance
+Running midi_parser
+All midi_parser unit tests passed!
+Running midi_queue
+All midi_queue unit tests passed!
+Running synth
+=== Running Polyphonic Synth Unit Tests ===
+test_review_regressions PASSED
+test_synth_init PASSED
+test_synth_note_to_freq PASSED
+test_synth_polyphony_16_voices PASSED (voice stealing verified)
+test_synth_chords_and_clipping PASSED
+test_synth_sustain_pedal PASSED
+test_synth_pitch_bend_poly PASSED
+test_synth_waveforms PASSED (all 4 waveforms verified with 4-note chord)
+test_synth_filter_attenuation PASSED (open RMS=0.0777 vs closed RMS=0.0038)
+test_synth_filter_stability PASSED (resonant sweep without blowup or NaN)
+test_synth_presets PASSED (all presets and Program Change verified)
+test_synth_mod_wheel PASSED (Mod wheel sweeps cutoff from 1400.0 Hz to 15839.2 Hz)
+test_synth_cc_cutoff_resonance PASSED
+test_synth_lfo_vibrato PASSED (Vibrato swept freq between 415.3 Hz and 466.2 Hz)
+test_synth_delay_effect PASSED (Delay echo energy verified: 23.5401)
+test_synth_chorus_effect PASSED (Smooth chorus modulation without artifact)
+test_synth_cc_fx PASSED (MIDI CC 91, 93, 76, 77 verified)
+test_synth_arpeggiator_up_down PASSED
+test_synth_arpeggiator_octaves PASSED
+test_synth_arpeggiator_chord PASSED
+test_synth_arpeggiator_midi_cc PASSED
+test_synth_m9_integration PASSED (all 32 presets and Arp+FX integration verified)
+test_synth_m15_dsp PASSED (PWM, Sub-Osc, Noise, all 32 presets verified)
+test_synth_m16_scope PASSED (peak=9094, rms=4188, 64-sample buffer verified)
+=== All Polyphonic Synth Unit Tests PASSED ===
+Running finite_clamp
+Finite clamps bit-identical: 4M bit patterns, bounds, signed-zero, subnormal PASS
+Running review_dsp
+Output gain=50 peak=0.508705
+Output gain=25 peak=0.254352
+October review DSP regressions PASSED (mute, tails, sample/gate timing, tempo, range, reset, new features)
+Running web_keys
+Web key chords, refresh, timeout release, arp and bounds PASSED
+Running note_ownership
+SF06 note ownership PASS: S1 capture epoch, S2 per-source Note Off, S3 USB tombstones, S4 Web hold never starts a note, S5 no voice without an end
+Running looper
+=== Running 4-Track Multi-Timbral Looper Unit Tests ===
+4-Track Multi-Timbral Looper unit tests PASSED!
+Running review_fixes
+R1 event_at_100: peak_before_100=0 (expected 0)
+R1 on100_off110: whole_block_peak=0.0683025 (expected >0)
+R2 panic: running=0 state=4 peak_after_panic=0 (expected silence)
+R3 channel_change: voice_state=0 peak=0 (expected released)
+R4 web_key_channel2: on_count=1 peak=0.0401836 (expected note)
+R5 muted_stopped: env_before=0.794401 env_after=0 (expected 0)
+R5 unmute_stopped: peak=0 (expected silence)
+R6 real_time_sustain: config=0 voice_sustain=0 env=0 (expected 0)
+R7 timbre_noise_unison: identical_pcm=0 (expected changed output)
+R8 full_buffer: events=256 held=0 last_type=0 (note-off was dropped)
+Extended input/ADSR/wrap/capacity/12-preset parity/32-voice regressions PASS
+Review acceptance: 0 failures
+Running electronic_bank
+32 electronic presets: stable IDs, valid configs, MIDI, cycle, looper and non-silent bounded audio PASS
+Running sound_transition
+sound_transition: PASS (pure host core; no audio/ingress integration)
+Host suites PASS (outputs: C:\Users\Daniel\AppData\Local\Temp\nektarina-tests-7083f9da-2712-413d-9fa6-4a5b5a2f8e39)
+
+=== storage ===
+PASS bank store: bounds, slot generations, 6 torn operations, readback, header CRC, older-slot recovery
+HOST ONLY dynamic32 voices128frames CPU us avg=326.7 max=1000.0; P4 timing unmeasured
+PASS SF02 contracts pitch octave/segmentation1-64-128, invalid indices/bounds/counts, 64-event burst, 256 regions, short-loop/root0/key127, exclusive layers, keyscale
+typed peak samples=4512 metadata=47936 voices=8688 channels=480 instance=768
+PASS SF03 host lifecycle: stale/busy/cancel/prepfail/BANK_IN_USE/fault/detach, delayed ACK, 100 real bank cycles, RT alloc/free=0
+PASS fixture=tests/soundfont/fixtures/mono.sf2 prepare_allocations=29 failure_points=29 cycles=100 RT_alloc_free=0
+P05a host suites PASS
+PASS P05b audio adapter: PCM, event cap, four SF2 tracks, swap ACK, stale ID, preset schema, unload
+P05b host suites PASS
+
+=== pcm ===
+gcc.exe (Rev13, Built by MSYS2 project) 15.2.0
+Running reference/mono
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9\fixtures\mono.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+Running normal/mono
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9\fixtures\mono.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+Running telemetry/mono
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9\fixtures\mono.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+PCM IDENTICAL mono fixture_sha256=73424ff18f324082d6d0ebe05608fd256d27e9214d5bd034ad633d4ad3aeb24b frames=17536 pcm_sha256=f845a8d8719ee6821a060c4f3e98e4e1e42bb9676e33257f2cfc2b4cb5842ec8
+Running reference/dynamic
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9\fixtures\dynamic.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+Running normal/dynamic
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9\fixtures\dynamic.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+Running telemetry/dynamic
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9\fixtures\dynamic.sf2 layers=1 event16=8 steady32=128 RT alloc/free=0
+PCM IDENTICAL dynamic fixture_sha256=97c7de518f1bdcb1309c214aeeb9d317d7d81420326d0399caedc00a2c2c77d7 frames=17536 pcm_sha256=1dc096df4a2a02b73beca79d1d6247e1fb9de19c95dc056565e1141ab50b6e0e
+Running reference/two_layers
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9\fixtures\two_layers.sf2 layers=2 event16=8 steady32=128 RT alloc/free=0
+Running normal/two_layers
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9\fixtures\two_layers.sf2 layers=2 event16=8 steady32=128 RT alloc/free=0
+Running telemetry/two_layers
+PASS fixture=C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9\fixtures\two_layers.sf2 layers=2 event16=8 steady32=128 RT alloc/free=0
+PCM IDENTICAL two_layers fixture_sha256=029b01bddc1628e3d70c63be045cd48189117933844677b7eb843ddb38ba0beb frames=17536 pcm_sha256=461abb9200be01667e6d1339a1bf3cbc2bbe987407ffd4eac10281e498c0acec
+P06 host replay PASS (C:\Users\Daniel\AppData\Local\Temp\nektarina-p06-74e5cd68-7c07-4eaf-8202-9c82728d95a9)
+
+=== bt ===
+gcc.exe (Rev13, Built by MSYS2 project) 15.2.0
+P06B host PASS: local default, DMA drain, mute on link loss, explicit local recovery
+P06B host PASS: queue cap, wrap, generation cutoff, 48k and 44.1k PCM, channel duplication, silence
+
+=== ota ===
+gcc.exe (Rev13, Built by MSYS2 project) 15.2.0
+P07 HOST PASS: real S31 image, P4 chip, old profile, size, truncation, segment, checksum, SHA-256
+P07 HOST PASS: successful commit and six injected failures before boot selection

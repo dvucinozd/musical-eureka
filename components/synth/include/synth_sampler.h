@@ -3,8 +3,8 @@
 #include "synth_sound.h"
 #include <stddef.h>
 
-/* HOST EXPERIMENT ONLY. No application installs these ops. No bank pointer is
- * stored in synth; context belongs to the audio adapter that resolves part IDs.
+/* No bank pointer is stored in synth. Context belongs to the audio adapter
+ * that resolves part IDs.
  * All callbacks bounded and audio-owned, no allocation/free/I/O/log/wait.
  * validate must ensure explicit generation/bank/program exists and reserve its
  * lifetime through completion. complete releases the reservation (also fault).

@@ -1,8 +1,9 @@
 # Arhitektura porta
 
 Ovo je arhitektura za P02–P07. P02 uključuje profil ploče, ES8311 izlaz i MIDI/synth
-jezgru, a P03 USB MIDI host i MIDI ingress. Web kontrola, flash bank store i SF
-worker slijede u svojim fazama.
+jezgru, a P03 USB MIDI host i MIDI ingress. P04 uključuje Web kontrolu, nativni
+Wi-Fi i četiri looper trake. P05 uključuje A/B pohranu, startup preset, SF2
+worker i renderer. P06 i P06B kvalificiraju izvedbu i opcionalni BT izlaz.
 
 ```mermaid
 flowchart LR
@@ -26,10 +27,11 @@ flowchart LR
 - `midi/`, `synth/`, `soundfont/`: prenijeti zamrznutu logiku, bez promjene DSP algoritama
   dok se ne ustanovi S31 baseline. Looper je sample-timed MIDI sequencer, ne audio recorder.
 - `usb_midi_host/`: jedan vlasnik submit/claim/release i session invalidation pri disconnectu.
-- `bank_store/`: flash slotovi, header/CRC/SHA, recovery i read adapter; bez `/sdcard` VFS-a.
-- `settings/`: NVS s verzioniranim blobovima i explicit save; ne spremati svaki CC.
-- `app_soundfont/`: worker čita banku, validira i priprema engine izvan RT-a; stari životni
-  ciklus i ACK oslobađanje ostaju. Greška ne smije ostaviti stale pointer u audio tasku.
+- `bank_store/`: flash slotovi, header/CRC/SHA i recovery.
+- `main/app_storage.c`: jedini runtime storage vlasnik je HTTP task. Čita i
+  validira banku, priprema engine i eksplicitno sprema NVS preset.
+- `audio_hal/audio_sampler.c`: RT vlasništvo banke i pet partova. Worker
+  oslobađa prethodnu banku nakon lifecycle ACK-a.
 - `app_wifi/`, `app_web/`: nativni Wi-Fi; radio lifecycle i Web HOLD release testirati ponovno.
 - Display: zasebni opcionalni adapter; prvi build ne smije zahtijevati LCD niti tipku.
 
@@ -57,19 +59,11 @@ MIDI testove zbog zajedničke riječi „record”. Ponovno generirati Web `.inc
 
 ## Bluetooth zvučnik — P06B
 
-Lokalni zvučnik ostaje zadani izlaz. Predloženi Web izbor je `Postavke → Izlaz zvuka`
-s lokalnim zvučnikom i uparenim Bluetooth zvučnikom. Prvi kandidat je klasični A2DP
-Source s Bluedroidom. Pinned ESP-IDF 6.1.0 sadrži primjer `a2dp_source` koji navodi
-ESP32-S31. [Espressif primjer za v6.1](https://github.com/espressif/esp-idf/tree/v6.1/examples/bluetooth/bluedroid/classic_bt/a2dp_source).
-
-Predviđen je jedan aktivni izlaz. Audio task proizvodi isti miks, a Bluetooth radnik
-preuzima PCM iz ograničenog reda bez čekanja u renderu. Radnik obrađuje uparivanje,
-format i ritam prijenosa prema dogovorenom formatu prijamnika. Pri promjeni izlaza
-primijeniti mute i rampu. Za prekid veze početni prijedlog je ostati utišan uz prikaz
-statusa i ponuditi ručni povratak na lokalni zvučnik.
-
-Prije integracije potvrditi build A2DP Source primjera i izmjeriti memoriju.
-Na ploči ispitati uparivanje, povratak izlaza, rad uz Wi-Fi i USB MIDI te kašnjenje
-od MIDI događaja do čujnog zvuka. Bluetooth buffering ulazi u zaseban budžet
-latencije. Glavni audio task zadržava isti rok obrade bloka.
+Lokalni zvučnik je zadan. Opcionalni razvojni profil dodaje Web odjeljak
+**Audio output** i Classic A2DP Source kroz Bluedroid. Zasebni Bluetooth task
+vodi skeniranje, spajanje i pokretanje streama. Audio task predaje isti miks
+u fiksni PCM red bez čekanja, a I2S tijekom Bluetooth reprodukcije daje ritam
+tihim PCM blokovima. Izgubljena veza utišava izlaz dok korisnik ponovno ne
+spoji zvučnik ili odabere lokalni izlaz.
+[P06B postupak i granice](P06B_BLUETOOTH.md).
 

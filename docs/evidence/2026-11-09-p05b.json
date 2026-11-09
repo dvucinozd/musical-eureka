@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-09",
+  "phase": "P05b",
+  "version": "0.0.5-soundfont-dev",
+  "target": "esp32s31",
+  "idf_version": "6.1.0",
+  "idf_commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "git_base": "0b80cc32dad04f6db5e6daaae78b4e79bd34dc6d",
+  "worktree": "local changes based on git_base",
+  "build": "PASS",
+  "app_partition_bytes": 3145728,
+  "image_bytes": 1222880,
+  "linked_symbols": [
+    "audio_storage_begin",
+    "audio_storage_end",
+    "app_storage_boot",
+    "app_storage_upload",
+    "app_storage_save_preset",
+    "bank_store_replace",
+    "sf_bank_prepare",
+    "sf_part_render",
+    "sf_lc_audio_boundary",
+    "nvs_commit"
+  ],
+  "host": {
+    "status": "PASS",
+    "regression_suites": 14,
+    "targeted_suites": 5,
+    "coverage": [
+      "six simulated NOR flash interruptions",
+      "older-slot fallback",
+      "maintenance timeout versus ACK",
+      "SF2 PCM and four track bindings",
+      "bank replacement ACK and allocator lifetime",
+      "NSP1 canonical schema",
+      "USB packet cutoff after resume"
+    ]
+  },
+  "browser": {
+    "status": "PASS",
+    "engine": "Chrome via installed Playwright",
+    "browser_plugin": "unavailable",
+    "api": "local mock",
+    "url": "http://127.0.0.1:59764/",
+    "viewports": [
+      "1280x900",
+      "390x844"
+    ],
+    "coverage": [
+      "empty upload rejection",
+      "raw upload request",
+      "paginated program selection",
+      "preset save/restore",
+      "synth selection",
+      "unload/reload"
+    ]
+  },
+  "hardware": "NOT RUN",
+  "files": [
+    {
+      "path": "build-p05b/nektarina_s31.bin",
+      "bytes": 1222880,
+      "sha256": "0ef5f4826e7792f0c71300fd81dd2b5fa8dcfab14f4745af382d15f38c5a3719"
+    },
+    {
+      "path": "build-p05b/nektarina_s31.elf",
+      "bytes": 14086212,
+      "sha256": "069f7b05d5e10c3aa54b7878e469de3908858514d976fcdfcddfa7b0f13a825d"
+    },
+    {
+      "path": "build-p05b/sdkconfig",
+      "bytes": 108713,
+      "sha256": "aa580fff1e86e9ef4abcfefb2a7c0f1f2ec0a62931665f0c42d40b0d5e8a807a"
+    },
+    {
+      "path": "build-p05b/partition_table/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p05b-build.log",
+      "bytes": 190937,
+      "sha256": "7cf65ed248abcd48a8f19f72e040ab7b48d57a40afa8f62c32f3b668de017c44"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p05b-host.log",
+      "bytes": 832,
+      "sha256": "c6cfd022fd51bc9763239a3072d67d0c7aaba17305f9273295fa43abcd1528f4"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p05b-regression.log",
+      "bytes": 5495,
+      "sha256": "0cf2d2911b6034bd37782e439676348d03ebf9e367bc51f630a84c6d9f86b10e"
+    },
+    {
+      "path": "main/index.html",
+      "bytes": 15885,
+      "sha256": "6746fbca79ff81a7a8aec7efe8efd475c3781c7304ea4606f94e774def31f05f"
+    }
+  ]
+}

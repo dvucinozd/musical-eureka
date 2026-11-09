@@ -1,0 +1,362 @@
+{
+  "date": "2026-11-09",
+  "target": "esp32s31",
+  "idf_version": "6.1.0",
+  "idf_commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "archive_directory": "build-bringup-kit",
+  "hardware": "NOT RUN",
+  "combined": {
+    "status": "PASS",
+    "app_bytes": 2033600,
+    "slot_bytes": 3145728,
+    "free_slot_bytes": 1112128,
+    "sdkconfig_flags": [
+      "NEKTAR_P06B_BLUETOOTH",
+      "BT_A2DP_ENABLE",
+      "ESP_COEX_SW_COEXIST_ENABLE",
+      "NEKTAR_P07_OTA",
+      "BOOTLOADER_APP_ROLLBACK_ENABLE"
+    ],
+    "linked_symbols": [
+      "bt_output_start",
+      "esp_a2d_source_init",
+      "__wrap_config_new",
+      "__wrap_config_save",
+      "app_ota_install",
+      "esp_ota_set_boot_partition",
+      "esp_ota_mark_app_valid_cancel_rollback",
+      "output_command_handler",
+      "ota_handler",
+      "nektar_ota_profile"
+    ],
+    "build_log": {
+      "path": "docs/evidence/2026-11-09-p07-combined-build.log",
+      "bytes": 223351,
+      "sha256": "d33a8ee22b9a1f8610535061b2846cce178dc4d8b4e08402ac2d7bbd3a95d2b7"
+    },
+    "host_log": {
+      "path": "docs/evidence/2026-11-09-p07-combined-host.log",
+      "bytes": 9224,
+      "sha256": "543f1d6550c85be92926c5f91a9fdfaa32421e0d694dda8a31bc5f6b91024dd4"
+    }
+  },
+  "profiles": [
+    {
+      "id": "bootstrap",
+      "original_build": "build",
+      "build_evidence": "docs/evidence/2026-11-09-startup.json",
+      "sdkconfig_overlays": [],
+      "artifacts": [
+        {
+          "path": "bootloader/bootloader.bin",
+          "bytes": 23168,
+          "sha256": "015909148e69b003c550238001b4ec34b598282a1aab3d7aa0f8d72ed2e75efe"
+        },
+        {
+          "path": "flash_app_args",
+          "bytes": 80,
+          "sha256": "124e340fd07d7d244a56e9655645126c21ed6f94c596d5d558f73a0dcc5d5e4d"
+        },
+        {
+          "path": "flash_project_args",
+          "bytes": 158,
+          "sha256": "5b886606ab4838355e49583f28eb055ee44c06fe1533cb180cd715859d12165b"
+        },
+        {
+          "path": "flasher_args.json",
+          "bytes": 951,
+          "sha256": "935d9fdf96b22f3afd057b8ad07e59f03d064dbb51efc69fb96cba5f369cb610"
+        },
+        {
+          "path": "nektarina_s31.bin",
+          "bytes": 202160,
+          "sha256": "41fb5c60d4f967802e638b4dc4d326c20253f2e4ddc1a47507616550f5d5dfe1"
+        },
+        {
+          "path": "nektarina_s31.elf",
+          "bytes": 5098020,
+          "sha256": "309e9f06ef2ac35b0eb257ba49759593744437ce8dcb92db7d7ee4bd7aca921c"
+        },
+        {
+          "path": "partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+        }
+      ]
+    },
+    {
+      "id": "local",
+      "original_build": "build-p07-local",
+      "build_evidence": "docs/evidence/2026-11-09-p07.json",
+      "sdkconfig_overlays": [],
+      "artifacts": [
+        {
+          "path": "bootloader/bootloader.bin",
+          "bytes": 23168,
+          "sha256": "1bcbc8faaaf4f3ded0b9a8d3c9e82c1e636baa7c94621f3d9f9b29763928ff46"
+        },
+        {
+          "path": "flash_app_args",
+          "bytes": 80,
+          "sha256": "6c6f53c8b23e67bde4cb0bc90835d5284b8eeaceb40a3b618f7809ce824d11b9"
+        },
+        {
+          "path": "flash_project_args",
+          "bytes": 188,
+          "sha256": "fa320f9c2aaa7835d46e67a4570755f2eae9eb801bc4939ccac2b1b0a90aa8d8"
+        },
+        {
+          "path": "flasher_args.json",
+          "bytes": 1095,
+          "sha256": "4fde36fb8cc16846a0b75b5638556b4e6567627a21d37963a63b74817af04ab9"
+        },
+        {
+          "path": "nektarina_s31.bin",
+          "bytes": 1228992,
+          "sha256": "46edced01b95adfa76933f4cbba6c97e742b8e472a7b065fb8d0bdb1df3ce822"
+        },
+        {
+          "path": "nektarina_s31.elf",
+          "bytes": 14093340,
+          "sha256": "d8d821514c4c0b0f6ae4eda36ea04991f04cc4862cf7cd397a464011fde8d20a"
+        },
+        {
+          "path": "ota_data_initial.bin",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        {
+          "path": "partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        },
+        {
+          "path": "sdkconfig",
+          "bytes": 108767,
+          "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+        }
+      ]
+    },
+    {
+      "id": "soundfont-telemetry",
+      "original_build": "build-p06-telemetry",
+      "build_evidence": "docs/evidence/2026-11-09-p06.json",
+      "sdkconfig_overlays": [
+        "config/sdkconfig.p06.defaults"
+      ],
+      "artifacts": [
+        {
+          "path": "bootloader/bootloader.bin",
+          "bytes": 23168,
+          "sha256": "4904836a6251fbeb0f4f8c16de5ee0457fa53cff3425705c2a9f929fd13c8ee7"
+        },
+        {
+          "path": "flash_app_args",
+          "bytes": 80,
+          "sha256": "6c6f53c8b23e67bde4cb0bc90835d5284b8eeaceb40a3b618f7809ce824d11b9"
+        },
+        {
+          "path": "flash_project_args",
+          "bytes": 188,
+          "sha256": "fa320f9c2aaa7835d46e67a4570755f2eae9eb801bc4939ccac2b1b0a90aa8d8"
+        },
+        {
+          "path": "flasher_args.json",
+          "bytes": 1095,
+          "sha256": "4fde36fb8cc16846a0b75b5638556b4e6567627a21d37963a63b74817af04ab9"
+        },
+        {
+          "path": "nektarina_s31.bin",
+          "bytes": 1226752,
+          "sha256": "8e1976cb8ced5be9c5b75c1abceaabfd0db4badd7109d059420b8b9340efd1e5"
+        },
+        {
+          "path": "nektarina_s31.elf",
+          "bytes": 14173680,
+          "sha256": "a523dca2d912f4420c566a10fcc1cfb3b6ce63cffb6e3ce2a5fd5691f87a7858"
+        },
+        {
+          "path": "ota_data_initial.bin",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        {
+          "path": "partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        },
+        {
+          "path": "sdkconfig",
+          "bytes": 108744,
+          "sha256": "6c5df72dc3c708ecd116766768f02bcc55d03f7929988164b867b1b3341c3272"
+        }
+      ]
+    },
+    {
+      "id": "bluetooth",
+      "original_build": "build-p06b",
+      "build_evidence": "docs/evidence/2026-11-09-p06b.json",
+      "sdkconfig_overlays": [
+        "config/sdkconfig.p06b.defaults"
+      ],
+      "artifacts": [
+        {
+          "path": "bootloader/bootloader.bin",
+          "bytes": 23168,
+          "sha256": "3151a83d2a14f47fea582e688fcefeaf828a9892c6c04a22b5dfd03d455e3425"
+        },
+        {
+          "path": "flash_app_args",
+          "bytes": 80,
+          "sha256": "6c6f53c8b23e67bde4cb0bc90835d5284b8eeaceb40a3b618f7809ce824d11b9"
+        },
+        {
+          "path": "flash_project_args",
+          "bytes": 188,
+          "sha256": "fa320f9c2aaa7835d46e67a4570755f2eae9eb801bc4939ccac2b1b0a90aa8d8"
+        },
+        {
+          "path": "flasher_args.json",
+          "bytes": 1095,
+          "sha256": "4fde36fb8cc16846a0b75b5638556b4e6567627a21d37963a63b74817af04ab9"
+        },
+        {
+          "path": "nektarina_s31.bin",
+          "bytes": 2014016,
+          "sha256": "d7669abb2f1bff7ed4498981e6a80ad8d6bcf37362307634496056eed7141237"
+        },
+        {
+          "path": "nektarina_s31.elf",
+          "bytes": 19295824,
+          "sha256": "2e395739e14c549bb9b03c5b3612eab29af429fe8b82e1ee43527bb2fc6cbdd6"
+        },
+        {
+          "path": "ota_data_initial.bin",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        {
+          "path": "partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        },
+        {
+          "path": "sdkconfig",
+          "bytes": 134138,
+          "sha256": "af985de9796758682a3a215d764508660b199aa8013dfae9fd91a81fda03804f"
+        }
+      ]
+    },
+    {
+      "id": "ota",
+      "original_build": "build-p07",
+      "build_evidence": "docs/evidence/2026-11-09-p07.json",
+      "sdkconfig_overlays": [
+        "config/sdkconfig.p07.defaults"
+      ],
+      "artifacts": [
+        {
+          "path": "bootloader/bootloader.bin",
+          "bytes": 23296,
+          "sha256": "39d57ad2f773ee89dbbbb1a49ff236ad386fd2ce15dfa75a65c815205869cd8b"
+        },
+        {
+          "path": "flash_app_args",
+          "bytes": 80,
+          "sha256": "6c6f53c8b23e67bde4cb0bc90835d5284b8eeaceb40a3b618f7809ce824d11b9"
+        },
+        {
+          "path": "flash_project_args",
+          "bytes": 188,
+          "sha256": "fa320f9c2aaa7835d46e67a4570755f2eae9eb801bc4939ccac2b1b0a90aa8d8"
+        },
+        {
+          "path": "flasher_args.json",
+          "bytes": 1095,
+          "sha256": "4fde36fb8cc16846a0b75b5638556b4e6567627a21d37963a63b74817af04ab9"
+        },
+        {
+          "path": "nektarina_s31.bin",
+          "bytes": 1246608,
+          "sha256": "5ad30bb128c087bf6a854d5d9e96d5d9d1dead9e074b5d003b8240a6e25d81bc"
+        },
+        {
+          "path": "nektarina_s31.elf",
+          "bytes": 14296912,
+          "sha256": "1a24a8cb5fc2cd09ae8c7b2cc74c0715836dd325cd76c0b68eede85f073c2875"
+        },
+        {
+          "path": "ota_data_initial.bin",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        {
+          "path": "partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        },
+        {
+          "path": "sdkconfig",
+          "bytes": 108859,
+          "sha256": "9c4a97782916589bbeee6bf6d37da0c09ac2b4467a47fa0ec2c6f0fa3737a67c"
+        }
+      ]
+    },
+    {
+      "id": "bluetooth-ota",
+      "original_build": "build-p07-combined",
+      "build_evidence": "docs/evidence/2026-11-09-p07-combined-build.log",
+      "sdkconfig_overlays": [
+        "config/sdkconfig.p06b.defaults",
+        "config/sdkconfig.p07.defaults"
+      ],
+      "artifacts": [
+        {
+          "path": "bootloader/bootloader.bin",
+          "bytes": 23296,
+          "sha256": "34c244ae7f22fa3bfa9fee1663136dda0997f3117cfabff5ed80f504214123e5"
+        },
+        {
+          "path": "flash_app_args",
+          "bytes": 80,
+          "sha256": "6c6f53c8b23e67bde4cb0bc90835d5284b8eeaceb40a3b618f7809ce824d11b9"
+        },
+        {
+          "path": "flash_project_args",
+          "bytes": 188,
+          "sha256": "fa320f9c2aaa7835d46e67a4570755f2eae9eb801bc4939ccac2b1b0a90aa8d8"
+        },
+        {
+          "path": "flasher_args.json",
+          "bytes": 1095,
+          "sha256": "4fde36fb8cc16846a0b75b5638556b4e6567627a21d37963a63b74817af04ab9"
+        },
+        {
+          "path": "nektarina_s31.bin",
+          "bytes": 2033600,
+          "sha256": "9c1dac025c0d46e693f829b57fcb049959120fc788f0f0551d501257899fedc1"
+        },
+        {
+          "path": "nektarina_s31.elf",
+          "bytes": 19505484,
+          "sha256": "e42c2dab71d7b36c007ab91e2ac0e8c3b5b767fdf9be09f923b1489ab8fb11c4"
+        },
+        {
+          "path": "ota_data_initial.bin",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        {
+          "path": "partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        },
+        {
+          "path": "sdkconfig",
+          "bytes": 134230,
+          "sha256": "af38f615fb6aac53437cbc666d304da6d9dd344cf22f87051d44170040603939"
+        }
+      ]
+    }
+  ]
+}

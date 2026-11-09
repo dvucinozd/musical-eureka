@@ -1449,7 +1449,7 @@ static bool sampler_commit(void *context,uint8_t part,const sound_ref_t *next)
     return true;
 }
 
-bool synth_sampler_install_host(synth_t *s,const synth_sampler_ops_t *ops)
+bool synth_sampler_install(synth_t *s,const synth_sampler_ops_t *ops)
 {
     if(!s||!ops||s->sampler||s->config.sample_rate!=48000||
        !ops->validate||!ops->bind||!ops->program||!ops->unbind||!ops->note_on||
@@ -1463,7 +1463,12 @@ bool synth_sampler_install_host(synth_t *s,const synth_sampler_ops_t *ops)
     return true;
 }
 
-sound_result_t synth_sound_select_host(synth_t *s,uint32_t epoch,uint64_t id,const sound_ref_t *ref)
+bool synth_sampler_install_host(synth_t *s,const synth_sampler_ops_t *ops)
+{
+    return synth_sampler_install(s,ops);
+}
+
+sound_result_t synth_sound_select(synth_t *s,uint32_t epoch,uint64_t id,const sound_ref_t *ref)
 {
     if(!s||!s->sampler)return SOUND_INVALID;
     sound_result_t result=sound_select_rt(&s->live_sound,epoch,id,ref);
@@ -1477,6 +1482,11 @@ sound_result_t synth_sound_select_host(synth_t *s,uint32_t epoch,uint64_t id,con
     return result;
 }
 
+sound_result_t synth_sound_select_host(synth_t *s,uint32_t epoch,uint64_t id,const sound_ref_t *ref)
+{
+    return synth_sound_select(s,epoch,id,ref);
+}
+
 void synth_panic(synth_t *s)
 {
     if (!s) return;
@@ -1487,8 +1497,8 @@ void synth_panic(synth_t *s)
         if(s->live_sound.input_epoch==UINT32_MAX)s->live_sound.current.sound_missing=true;
         else ++s->live_sound.input_epoch;
         s->live_sound.pending=s->live_sound.current;
-        memset(s->key_claims,0,sizeof(s->key_claims));
     }
+    memset(s->key_claims,0,sizeof(s->key_claims));
     memset(s->voices, 0, sizeof(s->voices));
     memset(s->delay.buffer, 0, sizeof(s->delay.buffer));
     memset(s->chorus.buffer, 0, sizeof(s->chorus.buffer));
@@ -1664,10 +1674,15 @@ bool synth_get_arp_latch(const synth_t *s)
 
 void synth_set_preset(synth_t *s, synth_preset_t preset)
 {
-    if(s->sampler&&!s->sound_committing)return;
+    if (s->sampler && !s->sound_committing &&
+        (s->live_sound.phase != SOUND_STABLE || s->live_sound.current.engine != SOUND_SYNTH)) return;
     if (preset >= SYNTH_PRESET_COUNT) preset = SYNTH_PRESET_ANALOG_BRASS;
     synth_config_t previous=s->config;
     s->current_preset = preset;
+    if (s->sampler && !s->sound_committing) {
+        s->live_sound.current.synth_preset = preset;
+        s->live_sound.pending = s->live_sound.current;
+    }
     uint16_t saved_gain = s->config.master_gain_permille;
     uint8_t saved_midi_ch = s->config.midi_channel;
     synth_vel_curve_t saved_vel_curve = s->config.velocity_curve;
@@ -2152,22 +2167,39 @@ bool synth_sound_event_host(synth_t *s,uint32_t epoch,const midi_event_t *ev)
     return synth_sound_event_from(s,SYNTH_SOURCE_LOCAL,epoch,ev);
 }
 
+uint32_t synth_live_epoch(const synth_t *s)
+{
+    return s->sampler ? s->live_sound.input_epoch : s->input_epoch;
+}
+
+static bool shared_oscillator_key(const synth_t *s, synth_source_t source, uint8_t note, uint32_t claim)
+{
+    if (s->sampler && s->live_sound.current.engine == SOUND_SF2) return false;
+    for (unsigned owner = 0; owner < SYNTH_SOURCE_COUNT; ++owner) {
+        if (owner != (unsigned)source && s->key_claims[owner][note] == claim) return true;
+    }
+    return false;
+}
+
 bool synth_sound_event_from(synth_t *s,synth_source_t src,uint32_t epoch,const midi_event_t *ev)
 {
-    if(!s||!s->sampler||!ev||(unsigned)src>=SYNTH_SOURCE_COUNT)return false;
+    if(!s||!ev||(unsigned)src>=SYNTH_SOURCE_COUNT)return false;
+    const uint32_t current = synth_live_epoch(s);
     bool on=ev->type==MIDI_EVENT_NOTE_ON&&ev->note.velocity;
     bool off=ev->type==MIDI_EVENT_NOTE_OFF||(ev->type==MIDI_EVENT_NOTE_ON&&!ev->note.velocity);
-    uint32_t live=s->live_sound.input_epoch+1u;
+    uint32_t live=current+1u;
     uint32_t *claim=(on||off)&&ev->note.note<128?&s->key_claims[src][ev->note.note]:NULL;
     /* A press from before the sound change: the old sound already stopped it. */
     if(claim&&off&&*claim&&*claim!=live){*claim=0;return true;}
     if(claim&&on&&src==SYNTH_SOURCE_USB&&*claim&&*claim!=live){++s->sampler_rejected;return false;}
-    if(epoch!=s->live_sound.input_epoch||s->live_sound.phase!=SOUND_STABLE||s->live_sound.current.sound_missing){++s->sampler_rejected;return false;}
+    if(epoch!=current||!live||(s->sampler&&(s->live_sound.phase!=SOUND_STABLE||s->live_sound.current.sound_missing))){++s->sampler_rejected;return false;}
     if((ev->type==MIDI_EVENT_NOTE_ON||ev->type==MIDI_EVENT_NOTE_OFF)&&
        (ev->note.note>127||ev->note.velocity>127)){++s->sampler_rejected;return false;}
     if((ev->type==MIDI_EVENT_PITCH_BEND&&(ev->pitch_bend.value < -8192||ev->pitch_bend.value > 8191))||
        (ev->type==MIDI_EVENT_CONTROL_CHANGE&&(ev->cc.controller>127||ev->cc.value>127))){++s->sampler_rejected;return false;}
-    if(ev->type==MIDI_EVENT_PROGRAM_CHANGE){++s->sampler_rejected;return false;} /* explicit select only */
+    if(s->sampler&&s->live_sound.current.engine==SOUND_SF2&&ev->type==MIDI_EVENT_PROGRAM_CHANGE){
+        ++s->sampler_rejected;return false; /* SF2 selection uses explicit bank/program identity */
+    }
     if(claim&&off){
         if(!*claim)return true; /* this source holds nothing on that key */
         /* Each source's press started its own sampler voice, and a sampler
@@ -2175,13 +2207,40 @@ bool synth_sound_event_from(synth_t *s,synth_source_t src,uint32_t epoch,const m
          * Off per press, even while another source still holds the key: that
          * source's own voice keeps sounding, and none is left without an end. */
         *claim=0;
+        if(shared_oscillator_key(s,src,ev->note.note,live))return true;
     }else if(claim&&*claim==live)return true; /* repeated press without release: one voice per source */
+    else if(claim&&on&&shared_oscillator_key(s,src,ev->note.note,live)){
+        *claim=live;
+        return true;
+    }
     unsigned rejected=s->sampler_rejected;
     synth_handle_event_unfiltered(s,ev);
     /* Claim only a voice that started: a press rejected for want of a voice
      * must not later end another source's instance of the key. */
     if(claim&&on&&s->sampler_rejected==rejected)*claim=live;
     return s->sampler_rejected==rejected;
+}
+
+void synth_release_source(synth_t *s, synth_source_t source)
+{
+    if (!s || (unsigned)source >= SYNTH_SOURCE_COUNT) return;
+    const uint32_t live = synth_live_epoch(s) + 1u;
+    if (source == SYNTH_SOURCE_USB) {
+        const midi_event_t reset = {.type = MIDI_EVENT_CONTROL_CHANGE, .cc = {121, 0}};
+        synth_handle_event_unfiltered(s, &reset);
+    }
+    /* Transport loss is a forced release of physically held keys. Keep the
+     * operator's latch setting and any other source's arpeggiator keys. */
+    const bool latch = s->arp.latch;
+    s->arp.latch = false;
+    for (unsigned note = 0; note < 128; ++note) {
+        uint32_t claim = s->key_claims[source][note];
+        s->key_claims[source][note] = 0;
+        if (!claim || claim != live || shared_oscillator_key(s, source, note, live)) continue;
+        const midi_event_t release = {.type = MIDI_EVENT_NOTE_OFF, .note = {note, 0}};
+        synth_handle_event_unfiltered(s, &release);
+    }
+    s->arp.latch = latch;
 }
 
 void synth_handle_local_note(synth_t *s, uint8_t note, uint8_t velocity, bool down)
@@ -2369,6 +2428,11 @@ static void synth_handle_event_unfiltered(synth_t *s, const midi_event_t *ev)
 bool synth_is_sounding(const synth_t *s)
 {
     if (s->config.master_gain_permille == 0 && s->output_gain <= 0) return false;
+    return synth_has_pending_audio(s);
+}
+
+bool synth_has_pending_audio(const synth_t *s)
+{
     if(s->sampler&&!s->live_sound.current.sound_missing&&s->live_sound.current.engine==SOUND_SF2&&s->sampler->voice_count(s->sampler->context,0))return true;
     if (s->arp.mode != SYNTH_ARP_OFF && s->arp.held_count) return true;
     if (s->looper && looper_is_sounding(s->looper)) return true;
@@ -2894,7 +2958,6 @@ void synth_get_config(const synth_t *s, synth_config_t *out_cfg)
 void synth_apply_config(synth_t *s, const synth_config_t *cfg)
 {
     if (!s || !cfg) return;
-    if(s->sampler)return; /* host experiment requires explicit source selection */
     synth_config_t normalized = *cfg;
     synth_normalize_config(&normalized);
     cfg = &normalized;

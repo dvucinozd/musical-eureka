@@ -295,7 +295,7 @@ typedef struct {
     const synth_sampler_ops_t *sampler;
     sound_part_t live_sound;
     uint32_t sampler_rejected;
-    /* Sampler route note ownership per source and key: live input epoch + 1 of
+    /* Live note ownership per source and key: input epoch + 1 of
      * the press, 0 = not held. Cleared by panic. */
     uint32_t key_claims[3][128];
     bool sound_committing;
@@ -342,6 +342,8 @@ void synth_panic(synth_t *s);
  * Epoch alone does NOT solve physical MIDI1 overlapping key/off ambiguity.
  */
 bool synth_sampler_install_host(synth_t *, const synth_sampler_ops_t *);
+bool synth_sampler_install(synth_t *, const synth_sampler_ops_t *);
+sound_result_t synth_sound_select(synth_t *, uint32_t, uint64_t, const sound_ref_t *);
 sound_result_t synth_sound_select_host(synth_t *, uint32_t expected_epoch,
                                       uint64_t request, const sound_ref_t *);
 bool synth_sound_event_host(synth_t *, uint32_t capture_epoch, const midi_event_t *);
@@ -352,6 +354,8 @@ bool synth_sound_event_host(synth_t *, uint32_t capture_epoch, const midi_event_
  * USB Note On of that key is rejected until then (MIDI1 has no press id). */
 typedef enum { SYNTH_SOURCE_LOCAL, SYNTH_SOURCE_USB, SYNTH_SOURCE_WEB, SYNTH_SOURCE_COUNT } synth_source_t;
 bool synth_sound_event_from(synth_t *, synth_source_t, uint32_t capture_epoch, const midi_event_t *);
+uint32_t synth_live_epoch(const synth_t *);
+void synth_release_source(synth_t *, synth_source_t);
 
 /* Handle semantic MIDI event in real time (Note On/Off, Pitch Bend, CC, Program Change) */
 void synth_handle_midi_event(synth_t *s, const midi_event_t *ev);
@@ -429,6 +433,7 @@ void synth_render(synth_t *s, float *out_frames, size_t num_frames);
 
 /* Check if any voice is producing sound */
 bool synth_is_sounding(const synth_t *s);
+bool synth_has_pending_audio(const synth_t *s);
 
 /* Snapshot telemetry for diagnostics and logging */
 void synth_get_telemetry(const synth_t *s, synth_telemetry_t *out);

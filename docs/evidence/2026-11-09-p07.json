@@ -1,0 +1,151 @@
+{
+  "date": "2026-11-09",
+  "phase": "P07",
+  "target": "esp32s31",
+  "idf_version": "6.1.0",
+  "idf_commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "git_base": "0b80cc32dad04f6db5e6daaae78b4e79bd34dc6d",
+  "worktree": "local changes",
+  "builds": {
+    "ota_development": {
+      "status": "PASS",
+      "ota_enabled": true,
+      "bootloader_rollback": true,
+      "default_ap_password_blocks_upload": true,
+      "app_slot_bytes": 3145728,
+      "symbols": [
+        "app_ota_install",
+        "app_ota_check_boot",
+        "esp_ota_begin",
+        "esp_ota_check_image_validity",
+        "esp_ota_end",
+        "esp_ota_set_boot_partition",
+        "esp_ota_mark_app_valid_cancel_rollback"
+      ],
+      "artifacts": [
+        {
+          "path": "build-p07/nektarina_s31.bin",
+          "bytes": 1246608,
+          "sha256": "5ad30bb128c087bf6a854d5d9e96d5d9d1dead9e074b5d003b8240a6e25d81bc"
+        },
+        {
+          "path": "build-p07/nektarina_s31.elf",
+          "bytes": 14296912,
+          "sha256": "1a24a8cb5fc2cd09ae8c7b2cc74c0715836dd325cd76c0b68eede85f073c2875"
+        },
+        {
+          "path": "build-p07/sdkconfig",
+          "bytes": 108859,
+          "sha256": "9c4a97782916589bbeee6bf6d37da0c09ac2b4467a47fa0ec2c6f0fa3737a67c"
+        },
+        {
+          "path": "build-p07/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        },
+        {
+          "path": "build-p07/bootloader/bootloader.bin",
+          "bytes": 23296,
+          "sha256": "39d57ad2f773ee89dbbbb1a49ff236ad386fd2ce15dfa75a65c815205869cd8b"
+        },
+        {
+          "path": "docs/evidence/2026-11-09-p07-build.log",
+          "bytes": 24191,
+          "sha256": "f983b03b6cc0e2947e5e33b20bf68755f5176a4fbba925c90ea66b9aad5480ab"
+        }
+      ]
+    },
+    "local": {
+      "status": "PASS",
+      "ota_enabled": false,
+      "bootloader_rollback": false,
+      "default_ap_password_blocks_upload": false,
+      "app_slot_bytes": 3145728,
+      "symbols": [],
+      "artifacts": [
+        {
+          "path": "build-p07-local/nektarina_s31.bin",
+          "bytes": 1228992,
+          "sha256": "46edced01b95adfa76933f4cbba6c97e742b8e472a7b065fb8d0bdb1df3ce822"
+        },
+        {
+          "path": "build-p07-local/nektarina_s31.elf",
+          "bytes": 14093340,
+          "sha256": "d8d821514c4c0b0f6ae4eda36ea04991f04cc4862cf7cd397a464011fde8d20a"
+        },
+        {
+          "path": "build-p07-local/sdkconfig",
+          "bytes": 108767,
+          "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+        },
+        {
+          "path": "build-p07-local/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        },
+        {
+          "path": "build-p07-local/bootloader/bootloader.bin",
+          "bytes": 23168,
+          "sha256": "1bcbc8faaaf4f3ded0b9a8d3c9e82c1e636baa7c94621f3d9f9b29763928ff46"
+        },
+        {
+          "path": "docs/evidence/2026-11-09-p07-local.log",
+          "bytes": 185696,
+          "sha256": "bf79485e74127304910a2be4e4504c58c03620b86196623e6f8dcc140b45cc03"
+        }
+      ]
+    }
+  },
+  "host": {
+    "status": "PASS",
+    "regression_suites": 14,
+    "injected_install_failures": 6,
+    "previous_image": {
+      "path": "build-p06b-local/nektarina_s31.bin",
+      "bytes": 1227072,
+      "sha256": "08f465adc107d033a3a739c40a5dca286d39e276086b7e83a941d365c9673bd9"
+    },
+    "logs": [
+      {
+        "path": "docs/evidence/2026-11-09-p07-host.log",
+        "bytes": 229,
+        "sha256": "57ac1ab0773a745818959e5c6b9bca84767df6c9726a74ee430194e70814b921"
+      },
+      {
+        "path": "docs/evidence/2026-11-09-p07-regression.log",
+        "bytes": 5495,
+        "sha256": "11d142c78166a0a5c508ce58377036ccf9d335d52b78ba42681bb01c548ac3e9"
+      }
+    ]
+  },
+  "browser": {
+    "status": "PASS",
+    "browser_plugin": "unavailable",
+    "engine": "Chrome via Playwright",
+    "api": "mock",
+    "url": "http://127.0.0.1:49253/",
+    "viewports": [
+      "1280x900",
+      "390x844"
+    ],
+    "coverage": [
+      "invalid inputs",
+      "confirmation cancel",
+      "upload body and digest header",
+      "restart prompt",
+      "panel hidden with OTA disabled"
+    ]
+  },
+  "hardware": {
+    "status": "NOT RUN",
+    "flash": "NOT RUN",
+    "first_boot": "NOT RUN",
+    "rollback": "NOT RUN"
+  },
+  "release_signing": "OPEN",
+  "web": {
+    "path": "main/index.html",
+    "bytes": 21808,
+    "sha256": "9ef065b0e8cc1df7eb2c91122fb689926131586b22a80d938ff4e7090c76dfc2"
+  }
+}

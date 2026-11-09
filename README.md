@@ -9,10 +9,11 @@ Remote za S31: [dvucinozd/musical-eureka](https://github.com/dvucinozd/musical-e
 banke i postavke planiraju se u internom flashu. Zaslon i vanjsko tipkalo još nisu odabrani.
 Početni rad može se nastaviti s Web sučeljem bez zaslona.
 
-Aktivni firmware `0.0.3-usb-midi` spaja USB MIDI na synth i lokalni ES8311 izlaz.
-Pri pokretanju je pojačalo utišano. UART0 naredba `?` ispisuje stanje, a `t`
-pokreće kratku probnu notu prije prve USB MIDI sesije. Planirani P06B dodaje
-Bluetooth zvučnik kao opciju uz zadani lokalni izlaz.
+P04 povezuje USB MIDI, virtualnu tipkovnicu i četiri looper trake s lokalnim
+ES8311 izlazom. Web sučelje radi na `http://192.168.8.1/` preko SoftAP-a
+`NEKTARINA-S31`. P05b dodaje SF2 upload i sviranje, A/B oporavak banke
+pri bootu te jedan startup preset u NVS-u.
+P06B dodaje opcionalni razvojni Bluetooth izlaz uz zadani lokalni zvučnik.
 
 ## Dokumenti za početak
 
@@ -23,6 +24,11 @@ Bluetooth zvučnik kao opciju uz zadani lokalni izlaz.
 | [Hardver i pinovi](docs/HARDWARE.md) | Službene specifikacije, shema i otvorene fizičke provjere |
 | [P02 audio bringup](docs/P02_AUDIO_BRINGUP.md) | Mute, UART dijagnostika i provjera prve note |
 | [P03 USB MIDI](docs/P03_USB_MIDI.md) | USB sesije, panic i postupak provjere GX49 |
+| [P04 Web i looper](docs/P04_WEB.md) | AP pristup, virtualna tipkovnica i četiri MIDI trake |
+| [P06 SoundFont](docs/P06_SOUNDFONT.md) | PCM usporedba, S31 telemetrija i pilot s 16/32 glasa |
+| [P06B Bluetooth](docs/P06B_BLUETOOTH.md) | A2DP razvojni build, Web izbor i fizički pilot |
+| [P07 Web OTA](docs/P07_OTA.md) | Razvojni OTA profil, boot potvrda i rollback pilot |
+| [Referentni buildovi za bring-up](docs/BRINGUP_BASELINE.md) | Lokalna arhiva, SHA-256 i izbor profila za prvi dan |
 | [Arhitektura](docs/ARCHITECTURE.md) | Granice modula, audio task i prijenos postojećeg koda |
 | [Flash i memorija](docs/STORAGE_AND_MEMORY.md) | SoundFont bez SD-a, memorijski limiti i prijedlog particija |
 | [Razvojno okruženje](docs/DEVELOPMENT.md) | Ponovljivi build i lokalna referentna kopija |
@@ -32,17 +38,17 @@ Bluetooth zvučnik kao opciju uz zadani lokalni izlaz.
 | [Stanje](docs/STATE_SUMMARY.md) / [nastavak](docs/NEXT_SESSION.md) | Što je učinjeno i sljedeći posao |
 | [Izvori](docs/REFERENCES.md) | Linkovi, revizije i podrijetlo podataka |
 
-## Build početnog projekta
+## Normalni S31 build
 
 ```powershell
 Set-Location D:\AI\nektarinaS31
 . C:\Espressif\tools\Microsoft.v6.1.PowerShell_profile.ps1
-.\tools\build.ps1 -BuildDirectory build-p03
+.\tools\build.ps1 -BuildDirectory build-p07-local -SdkConfig build-p07-local/sdkconfig
 ```
 
 Potreban je **ESP-IDF 6.1.0**, Git commit `fff9895c82d744c7237be8847347bdd1b07c6643`.
 S31 je u tom izdanju **preview target**; skripta koristi `--preview`. Build ne pristupa ploči.
-Početni image ima IDF single-app tablicu particija; nacrt za završni port nije aktiviran.
+Od P04 koristi se tablica s 3 MiB app slotovima i dvjema SoundFont particijama.
 
 `reference/nektar-p4/` je lokalna, ignorirana kopija 450 datoteka iz točnog commita.
 Njezini P4 buildovi i flash naredbe **nisu** upute za S31. Rekonstrukcija:

@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-09",
+  "phase": "P05a",
+  "version": "0.0.5-storage-dev",
+  "target": "esp32s31",
+  "idf_version": "6.1.0",
+  "source_commit": "9c0cf30b556501a6bb7bd4ffe348f6d7b83bc037",
+  "build": "PASS",
+  "hardware": "NOT RUN",
+  "host": {
+    "status": "PASS",
+    "suites": [
+      "bank-store",
+      "sf-contract",
+      "sf-lifecycle",
+      "sf-alloc-render"
+    ],
+    "simulated_torn_operations": 6,
+    "allocator_failure_points": 29
+  },
+  "scope": "A/B flash model, portable SF2 core, boot verification only",
+  "imported_byte_identical_paths": [
+    "components/soundfont/include/sf2_validate.h",
+    "components/soundfont/include/soundfont_engine.h",
+    "components/soundfont/include/soundfont_lifecycle.h",
+    "components/soundfont/sf2_validate.c",
+    "components/soundfont/soundfont_engine.c",
+    "components/soundfont/soundfont_lifecycle.c",
+    "components/soundfont/third_party/LICENSE",
+    "components/soundfont/third_party/UPSTREAM.md",
+    "components/soundfont/third_party/tsf.h",
+    "components/soundfont/third_party/tsf_nektar.h",
+    "tests/soundfont/make_fixtures.py",
+    "tests/soundfont/test_contract.c",
+    "tests/soundfont/test_lifecycle.c",
+    "tests/soundfont/test_soundfont.c"
+  ],
+  "files": [
+    {
+      "path": "build-p05a/nektarina_s31.bin",
+      "bytes": 1171904,
+      "sha256": "6172696d360289b7e518a976870c192b3d0a6f32d8d1294d6f9f5508294fead2"
+    },
+    {
+      "path": "build-p05a/nektarina_s31.elf",
+      "bytes": 13784256,
+      "sha256": "3b928bd3bfc3f3f01cfb902fbb2af76a3320f95d80f64e5fa12d68d802807f49"
+    },
+    {
+      "path": "build-p05a/sdkconfig",
+      "bytes": 108725,
+      "sha256": "67656d3a8a180f168ee02bc71fcfa59b7f6d619235a64a73de153b2d44bed20d"
+    },
+    {
+      "path": "build-p05a/partition_table/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p05a-build.log",
+      "bytes": 188074,
+      "sha256": "def9d2ce4021fd7f1e432eb368cd351c9a43cf1d4edc08999b07e065a0aaf0f3"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p05a-host.log",
+      "bytes": 708,
+      "sha256": "5b44a37062ae6012b30246cfbb547f9e43ceb61cc9e6b7694fc699a99b933aad"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p05a-regression.log",
+      "bytes": 5482,
+      "sha256": "6bd8fecc7715e9778356e357f4c8f03e7acbc572ec194b513640b990162a8421"
+    }
+  ],
+  "regression": {
+    "status": "PASS",
+    "suites": 14,
+    "additional_case": "USB forced release with arp latch enabled preserves Web note"
+  }
+}

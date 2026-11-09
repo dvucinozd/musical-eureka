@@ -16,6 +16,7 @@ typedef enum {
     AUDIO_PROBE,
     AUDIO_FAULT,
     AUDIO_LIVE,
+    AUDIO_MAINTENANCE,
 } audio_state_t;
 
 typedef struct {

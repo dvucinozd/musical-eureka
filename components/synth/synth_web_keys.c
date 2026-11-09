@@ -38,8 +38,7 @@ void synth_web_key_action(synth_web_keys_t *keys, synth_t *synth, uint8_t note, 
     keys->expires[note] = down ? now + SYNTH_WEB_KEY_LEASE_US : 0;
     midi_event_t event = {.type = down ? MIDI_EVENT_NOTE_ON : MIDI_EVENT_NOTE_OFF,
         .timestamp_us = now, .note = {.note = note, .velocity = down ? 100 : 0}};
-    if (synth->sampler) { (void)synth_sound_event_from(synth, SYNTH_SOURCE_WEB, synth->live_sound.input_epoch, &event); return; }
-    synth_handle_local_note(synth,event.note.note,event.note.velocity,down);
+    (void)synth_sound_event_from(synth, SYNTH_SOURCE_WEB, input_epoch(synth), &event);
 }
 
 void synth_web_key(synth_web_keys_t *keys, synth_t *synth, uint8_t note, bool down, int64_t now)

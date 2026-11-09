@@ -9,11 +9,11 @@ modulima može napredovati dok ploča nije dostupna. Procjene vremena nisu posta
 | P01 | Pinned SDK, minimalni S31 projekt i ponovljivi alati | Host baseline i S31 build; fizički boot zasebno | SOFTWARE GOTOVO, boot NOT RUN |
 | P02 | Board/audio adapter i prijenos synth/MIDI jezgre | Build, host regresije, ES8311 ACK, mute, clockovi i kontrolirana prva nota | SOFTWARE PASS, hardware NOT RUN |
 | P03 | USB MIDI host i live synth | GX49 enumerate, NoteOn/Off/CC, unplug/reconnect, bez zapele note | SOFTWARE PASS, hardware NOT RUN |
-| P04 | Native Wi-Fi, Web kontrole, četiri looper trake | Virtual keys i source ownership, retry, looper i UI bez SD/WAV-a | NIJE POČELO |
-| P05 | Flash bank store, NVS preseti, SF worker | Particije, prekidi upisa/recovery, hash, allocator cap, boot restore | NIJE POČELO |
-| P06 | SF render/S31 optimizacija i integracija | 32 sample glasa prema novom mjernom ugovoru ili dokumentiran neuspjeh | NIJE POČELO |
-| P06B | Opcionalni Bluetooth izlaz za zvučnik | Odabir lokalnog ili BT izlaza, uparivanje, promjena izlaza, prekid veze, kašnjenje i suživot s Wi-Fi/USB | ZAHTJEV POTVRĐEN |
-| P07 | OTA i opcionalne fizičke kontrole | Wrong-target reject, rollback, health; LCD samo ako je odabran | NIJE POČELO |
+| P04 | Native Wi-Fi, Web kontrole, četiri looper trake | Virtual keys i source ownership, retry, looper i UI bez SD/WAV-a | SOFTWARE PASS, hardware NOT RUN |
+| P05 | Flash bank store, NVS preset, SF worker | Particije, prekidi upisa/recovery, hash, allocator cap, boot restore | SOFTWARE PASS, HARDWARE NOT RUN |
+| P06 | SF render/S31 optimizacija i integracija | 32 sample glasa prema novom mjernom ugovoru ili dokumentiran neuspjeh | HOST / BUILD PASS, HARDWARE NOT RUN |
+| P06B | Opcionalni Bluetooth izlaz za zvučnik | Odabir lokalnog ili BT izlaza, uparivanje, promjena izlaza, prekid veze, kašnjenje i suživot s Wi-Fi/USB | HOST / BUILD / BROWSER PASS, HARDWARE NOT RUN |
+| P07 | OTA i opcionalne fizičke kontrole | Wrong-target reject, rollback, health; LCD samo ako je odabran | RAZVOJNI HOST / BUILD / BROWSER PASS, HARDWARE NOT RUN |
 | P08 | Završna kvalifikacija i izdanje | Zamrznuti image, host/build/hardware dokazi, slušanje i release limits | NIJE POČELO |
 
 ## P02 — konkretni prvi port paket

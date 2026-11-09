@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-09",
+  "phase": "P04",
+  "version": "0.0.4-web",
+  "target": "esp32s31",
+  "idf_version": "6.1.0",
+  "host": {
+    "status": "PASS",
+    "suites": [
+      "usb_midi_desc",
+      "usb_midi_lifecycle",
+      "midi_ingress",
+      "midi_parser",
+      "midi_queue",
+      "synth",
+      "finite_clamp",
+      "review_dsp",
+      "web_keys",
+      "note_ownership",
+      "looper",
+      "review_fixes",
+      "electronic_bank",
+      "sound_transition"
+    ]
+  },
+  "build": "PASS",
+  "browser": {
+    "status": "PASS",
+    "backend": "local simulated HTTP API",
+    "viewports": [
+      "1280x900",
+      "390x844"
+    ],
+    "browser_plugin": "unavailable",
+    "flow": "Record / press / HOLD / release / Play / Stop / Clear, preset and octave"
+  },
+  "hardware": "NOT RUN",
+  "files": [
+    {
+      "path": "build-p04/nektarina_s31.bin",
+      "bytes": 1161888,
+      "sha256": "59916d488ca928980f3bd755e6dd7587c4bef0d633b2e056ef82ebb6699b09c9"
+    },
+    {
+      "path": "build-p04/nektarina_s31.elf",
+      "bytes": 13724512,
+      "sha256": "da83a0b860debdb04cc04b840c5070750bdbd5fb811158e8e57916b0f053ea9d"
+    },
+    {
+      "path": "build-p04/sdkconfig",
+      "bytes": 108725,
+      "sha256": "67656d3a8a180f168ee02bc71fcfa59b7f6d619235a64a73de153b2d44bed20d"
+    },
+    {
+      "path": "build-p04/partition_table/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+    },
+    {
+      "path": "main/index.html",
+      "bytes": 10521,
+      "sha256": "f89af5d9790708deba7c84f7913124b8830bf6656d861f835ebfdeccd688e49a"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p04-build.log",
+      "bytes": 175916,
+      "sha256": "84d78736ba71847ab1e1fc1bb24e915d4004b3f614116e61091eb986bcca0a55"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p04-host.log",
+      "bytes": 5482,
+      "sha256": "136a8c32b657b1cb239ab4265d183601b5894c34d250cf76567d16c7cd7c424e"
+    }
+  ]
+}

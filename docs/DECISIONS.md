@@ -16,6 +16,13 @@
 - D07: odvojeni bootstrap; bez kopiranja P4 aplikacije u aktivni build prije adapcije.
 - D08: fizički testovi nisu izvršeni. Identitet i oporavak uređaja pripremaju se prije
   budućeg fizičkog rada; priprema projekta ne pretpostavlja zauzimanje serijskog porta.
+- D15: jedan verzionirani startup preset u NVS-u. Identitet SF2 izbora koristi
+  SHA-256 banke i program. Bez startup preseta boot bira prvi program
+  pripremljene banke, a nedostupan spremljeni zvuk pada na spremljeni synth.
+- D16: P06B je opt-in profil. Lokalni izlaz je zadan, gubitak BT veze
+  utišava odabrani izlaz, a SSP bond ključevi žive u RAM-u do restarta.
+- D17: P07 OTA je opt-in razvojni profil s provjerom SHA-256 i privatnom
+  AP lozinkom. Potpis i ključevi izdanja ostaju otvoreni.
 
 ## Projektni prijedlozi koji se još kvalificiraju
 
@@ -34,8 +41,8 @@
 | Stvarna revizija PCB-a/SoC-a, modul, COM i raspoloživost ploče | Prije fizičkog boota | Bez pristupa uređaju |
 | ST7789 ili bez zaslona, vanjsko tipkalo | Prije P07 / ranije ako korisnik odabere | Headless/Web |
 | Koje SF2 banke/preseti su obavezni | Prije zatvaranja P05 RAM limita | Mali legalno dostupan fixture; bez bundled banke |
-| Preset format/kapacitet i finalne particije | P05 | Neaktivan nacrt i NVS prijedlog |
-| OTA signing policy i ključ za novi projekt | P07 | Bez kopiranja privatnog P4 ključa |
+| Fizička provjera 16 MiB rasporeda i NVS startup preseta | P05 | Aktivni raspored u S31 buildu i format NSP1 |
+| OTA signing policy i ključ za novi projekt | Prije OTA izdanja | Razvojni profil s integritetom SHA-256 |
 
 ## Rizici i odgovor
 

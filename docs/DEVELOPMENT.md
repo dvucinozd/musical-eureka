@@ -14,13 +14,13 @@
 Set-Location D:\AI\nektarinaS31
 . C:\Espressif\tools\Microsoft.v6.1.PowerShell_profile.ps1
 .\tools\check_environment.ps1
-.\tools\build.ps1 -BuildDirectory build-p03
+.\tools\build.ps1 -BuildDirectory build-p05a -SdkConfig build-p05a/sdkconfig
 ```
 
 `build.ps1` provjerava SDK commit/čistoću, potrebne alate i target, zatim pokreće:
 
 ```powershell
-python "$env:IDF_PATH\tools\idf.py" --preview -B build-p03 -D IDF_TARGET=esp32s31 build
+python "$env:IDF_PATH\tools\idf.py" --preview -B build-p05a -D IDF_TARGET=esp32s31 -D "SDKCONFIG=$PWD/build-p05a/sdkconfig" build
 ```
 
 Ne koristiti P4 `idf.py` iz naslijeđenog PATH-a bez aktivacije. Novi target/config
@@ -34,10 +34,12 @@ koristiti generirane argumente, ne ručno usklađivati taj string. To nije fizi�
 
 ## Aktivni build i lokalni izvori
 
-`main/app_main.c` ispisuje boot dijagnostiku i pokreće ES8311 i USB MIDI.
+`main/app_main.c` ispisuje boot dijagnostiku, pokreće Wi-Fi i ES8311,
+obnavlja SoundFont i startup preset te otvara USB MIDI i lokalni Web.
 IDF startup prema defaults inicijalizira/testira PSRAM. `dependencies.lock` bilježi
-S31 razrješenje `esp_codec_dev` 1.6.2 i `usb` 1.5.0. Povijesni P01 i P02 imagei
-su u `build/` i `build-p02/`, a P03 izlazi idu u `build-p03/`.
+S31 razrješenje `esp_codec_dev` 1.6.2 i `usb` 1.5.0. P04 build je u
+`build-p04/`, P05a u `build-p05a/`, a P05b u `build-p05b/`. Zasebni sdkconfig sprječava ponovno
+korištenje stare tvorničke particije od 1 MiB.
 
 ```powershell
 python tools/export_source.py
@@ -59,17 +61,18 @@ izvršne datoteke u privremenu mapu.
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\run_tests.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\run_p05a_tests.ps1
 ```
 
-## Nacrt particija i statičke provjere
+## Particije i statičke provjere
 
 ```powershell
 python tools/verify_project.py
-python "$env:IDF_PATH\components\partition_table\gen_esp32part.py" --flash-size 16MB config/partitions.proposed.csv tmp/partitions.proposed.bin
+python "$env:IDF_PATH\components\partition_table\gen_esp32part.py" --flash-size 16MB config/partitions.csv tmp/partitions.bin
 ```
 
-Nacrt nije aktivan sdkconfig. Nema flash skripte ni automatskog izbora COM porta.
-Prije kasnijeg flasha prvo zapisati identitet uređaja, image/particije i oporavak.
+Tablica je aktivna od P04. Prije fizičkog flasha zapisati identitet uređaja,
+image, postojeće particije i način oporavka.
 
 ## Verzije, Git i dokazi
 

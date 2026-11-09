@@ -1,4 +1,4 @@
-# INACTIVE DESIGN ONLY: see docs/STORAGE_AND_MEMORY.md. Not used by sdkconfig.defaults.
+# S31 16 MiB layout for P04 and later. See docs/STORAGE_AND_MEMORY.md.
 # Name, Type, SubType, Offset, Size, Flags
 nvs,      data, nvs,   0x9000,   0x10000,
 otadata,  data, ota,   0x19000,  0x2000,

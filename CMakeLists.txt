@@ -14,7 +14,7 @@ include($ENV{IDF_PATH}/tools/cmake/version.cmake)
 if(NOT "${IDF_VERSION_MAJOR}.${IDF_VERSION_MINOR}.${IDF_VERSION_PATCH}" VERSION_EQUAL "6.1.0")
     message(FATAL_ERROR "This project is pinned to ESP-IDF 6.1.0. See docs/DEVELOPMENT.md")
 endif()
-set(PROJECT_VER "0.0.3-usb-midi")
+set(PROJECT_VER "0.0.5-soundfont-dev")
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(nektarina_s31)
 
