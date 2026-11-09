@@ -1,0 +1,2256 @@
+{
+  "source_commit": "9c0cf30b556501a6bb7bd4ffe348f6d7b83bc037",
+  "archive_sha256": "5519f12cda0db00dcc6a5c8e27f523d42bb92c479afca163d277484c24d1b672",
+  "files": [
+    {
+      "path": "CMakeLists.txt",
+      "bytes": 5651,
+      "sha256": "26071262d18ded172eb61fefa7de0ea5a2965cd7bb36005f0c13e5f9ba7a2a4e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 14638,
+      "sha256": "3e04206bcaf6e65f58bb5fd562426f37f9d60b932ecfd6728ca63f854a07fdff"
+    },
+    {
+      "path": "components/audio_hal/CMakeLists.txt",
+      "bytes": 583,
+      "sha256": "77903e9e89b31a39a3f50b63fe6f41f150bdb95c562e8d40ba05ab063a8d5a56"
+    },
+    {
+      "path": "components/audio_hal/audio_hal.c",
+      "bytes": 51405,
+      "sha256": "4918d260356600cc767186e07a5dffc73fe8a7186278905cceab18e58309066a"
+    },
+    {
+      "path": "components/audio_hal/include/audio_hal.h",
+      "bytes": 7588,
+      "sha256": "69c9b602f2b4f83cade28695062df467ac8f76bbd34f13ee53634b87d8e23399"
+    },
+    {
+      "path": "components/audio_hal/include/audio_timing_window.h",
+      "bytes": 2124,
+      "sha256": "7d93d0d832beae279b90cf4bc3294276b3aec7b56258c632bc6cdf9adf3fa76c"
+    },
+    {
+      "path": "components/audio_hal/include/nektar_sched_hooks.h",
+      "bytes": 658,
+      "sha256": "76eebc7db2600646ec668e923686a80015a9f4ee7a6f89a6c5a01675b1afda02"
+    },
+    {
+      "path": "components/audio_hal/include/nektar_sched_trace.h",
+      "bytes": 512,
+      "sha256": "b5df74d16ce693db18e0cf004c91708332ab3f7d2c9d54f2c6bd9488ce2e4d0b"
+    },
+    {
+      "path": "components/audio_hal/nektar_sched_trace.c",
+      "bytes": 2975,
+      "sha256": "ce0a9a6119825d8e6534cc7db741e63b7982d30bc3d6cc97d1c4bf490cd6a47b"
+    },
+    {
+      "path": "components/board_jc_esp32p4_m3/CMakeLists.txt",
+      "bytes": 101,
+      "sha256": "41155e2a0720a69c658d1b66ff089473623297d94a19ee21705a6618ac834f76"
+    },
+    {
+      "path": "components/board_jc_esp32p4_m3/board_jc_esp32p4_m3.c",
+      "bytes": 1719,
+      "sha256": "bdfa368f66f8f9c26fe85bfa52fafc248b7c2713f83567beadbd652ef625989f"
+    },
+    {
+      "path": "components/board_jc_esp32p4_m3/include/board_jc_esp32p4_m3.h",
+      "bytes": 1438,
+      "sha256": "8b4147692274e8d229fbed1e1d052803bd8dcb8629a842b9972d3332a335dc6b"
+    },
+    {
+      "path": "components/midi/CMakeLists.txt",
+      "bytes": 115,
+      "sha256": "8c52c0aa6175a96aa0c74ffbe72d3befacf591465f2fb99821940a65daef7fbc"
+    },
+    {
+      "path": "components/midi/include/midi_event.h",
+      "bytes": 2544,
+      "sha256": "c32f6f8d38aa3b4a4ffc7ad6eb366759a1e8f46dae9b3a36a18cc65aeb140645"
+    },
+    {
+      "path": "components/midi/include/midi_parser.h",
+      "bytes": 656,
+      "sha256": "796a801136d12410188f4a311ecfcd08bb1fde3ab9461d559e010fd0af65a8e2"
+    },
+    {
+      "path": "components/midi/include/midi_queue.h",
+      "bytes": 1271,
+      "sha256": "0f699b25d4afefc54b3cddff0931752acf728f0972dee3475cb51773f1ee3ef6"
+    },
+    {
+      "path": "components/midi/midi_parser.c",
+      "bytes": 4481,
+      "sha256": "4e04a59578e16b5e2bd2df26a15061c4b18ce84fda9606afee53a8b08a75cfac"
+    },
+    {
+      "path": "components/midi/midi_queue.c",
+      "bytes": 3044,
+      "sha256": "52a543bd1d37b5ad7f120cab605088fe19d3369aef5b65b3d07ffee757d8dd82"
+    },
+    {
+      "path": "components/saturation_iram/CMakeLists.txt",
+      "bytes": 713,
+      "sha256": "bcc91d57f495f10fa5fae825c5e555d0c08fff2babe5a85c901e6cd713aefd39"
+    },
+    {
+      "path": "components/saturation_iram/README.md",
+      "bytes": 1660,
+      "sha256": "d6d8920266ee536c84c543e83c93649eb66ff7d15fb6ebc2122c92907980ee8b"
+    },
+    {
+      "path": "components/saturation_iram/include/saturation_iram.h",
+      "bytes": 171,
+      "sha256": "36558f25da516853b6ecae90114a04bd7a22b84a8ea957e11e21365423d0de50"
+    },
+    {
+      "path": "components/saturation_iram/linker.lf",
+      "bytes": 83,
+      "sha256": "231694049dc45453a72a8adabea2b0abcc66dbaf43d0ec4df26759590755689e"
+    },
+    {
+      "path": "components/saturation_iram/prepare.py",
+      "bytes": 2622,
+      "sha256": "9fc99f8b7ec3c1ca65ae627a63d178826973043ddcfbb2a482c2004a8ed520f7"
+    },
+    {
+      "path": "components/soundfont/CMakeLists.txt",
+      "bytes": 1853,
+      "sha256": "8857575595b9aca219f14f4965d91269f5820551ef6941ac2776ab33a9c4a012"
+    },
+    {
+      "path": "components/soundfont/include/sf2_validate.h",
+      "bytes": 823,
+      "sha256": "40fea571e7f2e336b97a81c58eeddd253c0c49c9e9761b02b0b2a0ffb4e086c4"
+    },
+    {
+      "path": "components/soundfont/include/soundfont_engine.h",
+      "bytes": 1900,
+      "sha256": "d959c9f6cdbfaf6dca57c75c9868bea55add4bf1a93f807596f1b24250eb1245"
+    },
+    {
+      "path": "components/soundfont/include/soundfont_lifecycle.h",
+      "bytes": 2408,
+      "sha256": "ed9fbb8b2899ca3e7311b3dc166e18823ed7e95e9cd37d88ccbd8f6b594bc5c0"
+    },
+    {
+      "path": "components/soundfont/sf2_validate.c",
+      "bytes": 14112,
+      "sha256": "9566aa8063b30af0803db9f815002be22def7b68d18d9dda93288dd2392ef6c6"
+    },
+    {
+      "path": "components/soundfont/soundfont_engine.c",
+      "bytes": 7614,
+      "sha256": "bc37f77a7788723c1ac3d8a20e3a1fd80b195cd1ce0d10cc25b97c9293d8ef0e"
+    },
+    {
+      "path": "components/soundfont/soundfont_lifecycle.c",
+      "bytes": 4097,
+      "sha256": "52d72d638fba2f7e52b9b836cedec4947046a840dec9e870ddeca917029df9f7"
+    },
+    {
+      "path": "components/soundfont/third_party/LICENSE",
+      "bytes": 1174,
+      "sha256": "7ff94a29f068fc6a68ffe399398a2df28791506c567a24edfbe918e8ee1e6473"
+    },
+    {
+      "path": "components/soundfont/third_party/UPSTREAM.md",
+      "bytes": 3801,
+      "sha256": "6a3e32e0ef5fced409fe5f9ac589505d7a4b2c49cd286dbb88d9f1f7ec1ece19"
+    },
+    {
+      "path": "components/soundfont/third_party/tsf.h",
+      "bytes": 90640,
+      "sha256": "997092e442e930a226080c33ea9f5f7648ac31b8098a8e00d36fc7e7e0568cc3"
+    },
+    {
+      "path": "components/soundfont/third_party/tsf_nektar.h",
+      "bytes": 91724,
+      "sha256": "80ab194200c35c8b9167745baf9d6f94668e39a729de9827a26d1ccaf2dd6539"
+    },
+    {
+      "path": "components/synth/CMakeLists.txt",
+      "bytes": 648,
+      "sha256": "5d01da6bb4971fff9e3e2fca471419a5a3305c52516e29b8cbda4774d712b827"
+    },
+    {
+      "path": "components/synth/include/synth.h",
+      "bytes": 16060,
+      "sha256": "c64e542940fda273c1da265cba1dfd226b8ba44728825ded1de1246f6ba7601e"
+    },
+    {
+      "path": "components/synth/include/synth_block_trace.h",
+      "bytes": 1937,
+      "sha256": "33120169a33d0c7390f3b0bfc1ffe133e78894a457a1fb71ca0ecaffd08a8f46"
+    },
+    {
+      "path": "components/synth/include/synth_finite_clamp.h",
+      "bytes": 293,
+      "sha256": "c4959445b95baed95cdced451883a9ab56e5f48d4fa7e12a1c998df43d7fb144"
+    },
+    {
+      "path": "components/synth/include/synth_looper.h",
+      "bytes": 4025,
+      "sha256": "5668fb310ee8c6246887844ba8df6ec328e67ce2d4527b306e76b466645035e1"
+    },
+    {
+      "path": "components/synth/include/synth_profile.h",
+      "bytes": 2678,
+      "sha256": "1c052e538a2fde2579c24feb2ecb3b4b7b646f1a8533151471b6f032112475c5"
+    },
+    {
+      "path": "components/synth/include/synth_r4_harness.h",
+      "bytes": 2336,
+      "sha256": "7476d32161e743ad0b569e995ce004c703d666d361d910dd89a5b1e263f82bba"
+    },
+    {
+      "path": "components/synth/include/synth_sampler.h",
+      "bytes": 1631,
+      "sha256": "851baa53ff7239c2db08d23bd671abf0392a960ea580ba355f3eb4ac25a14016"
+    },
+    {
+      "path": "components/synth/include/synth_sound.h",
+      "bytes": 3978,
+      "sha256": "ffd4fe862db386628b7c8723642954fac72d252005bdccfc55bf8c00d00551cc"
+    },
+    {
+      "path": "components/synth/include/synth_web_keys.h",
+      "bytes": 1300,
+      "sha256": "1b33b90e62a1a27b0064ca3ef3e66bb6e4e81e8c47aeb284556b22e57197e660"
+    },
+    {
+      "path": "components/synth/synth.c",
+      "bytes": 108922,
+      "sha256": "1accc81c022a91ed65b1025092814bc9d1035a5b771f7bd1d972cea923063a3b"
+    },
+    {
+      "path": "components/synth/synth_looper.c",
+      "bytes": 23880,
+      "sha256": "af2ca7b952fc77bd367cf6f149689c326e01c050bfefc727f9a09276014a0ca0"
+    },
+    {
+      "path": "components/synth/synth_profile.c",
+      "bytes": 5097,
+      "sha256": "8f2675ca2779f638e22b1110527718e27625c424fa98ba3d52346cda23f76e3c"
+    },
+    {
+      "path": "components/synth/synth_r4_harness.c",
+      "bytes": 6845,
+      "sha256": "b88d3f043f3bea9a1f8ddaf2016829602f7910af337b2a4ea98ba5845196597f"
+    },
+    {
+      "path": "components/synth/synth_sound.c",
+      "bytes": 4008,
+      "sha256": "6016b14a7315286692ebbf99ee02d3d358e80bd3b19f96d8cfa27287b66d186a"
+    },
+    {
+      "path": "components/synth/synth_voice_engine.h",
+      "bytes": 447,
+      "sha256": "e785df3a20e4a6f4eb5337584d8dbe4ffeae36c4d4b5fa9fe230ccd3ef59b029"
+    },
+    {
+      "path": "components/synth/synth_web_keys.c",
+      "bytes": 2937,
+      "sha256": "d985ed0d35369f281432135a39c05ee2162769aee42b4dc5b9f6e532b5871231"
+    },
+    {
+      "path": "components/usb_midi_host/CMakeLists.txt",
+      "bytes": 156,
+      "sha256": "356e5d96633c1a8b009eef1ac1983fd18bf6b3772b2a045f10f03a9a41534960"
+    },
+    {
+      "path": "components/usb_midi_host/LICENSE-PAJONIIIR",
+      "bytes": 1104,
+      "sha256": "b125cc2d597ed5268d3f3f1598a7ca89d3f409980f7c90bf92443098f83f45d1"
+    },
+    {
+      "path": "components/usb_midi_host/idf_component.yml",
+      "bytes": 224,
+      "sha256": "50f68bc607cea8a6896a1b9fe271ee794827970904c5e05cb0001043028fda17"
+    },
+    {
+      "path": "components/usb_midi_host/include/usb_midi_desc.h",
+      "bytes": 1946,
+      "sha256": "fe59d7270e40f5396f2b09f74421ee41c19cc9af408f213e812c2f762a545155"
+    },
+    {
+      "path": "components/usb_midi_host/include/usb_midi_host.h",
+      "bytes": 2537,
+      "sha256": "4ccd23c7cdf28f3b8bb9f9d9bf4b3a6822c4108fa940e4015a5f3fd75e15f324"
+    },
+    {
+      "path": "components/usb_midi_host/usb_midi_desc.c",
+      "bytes": 4809,
+      "sha256": "e39fca1dbc65c04a38a19c3c6c1ffed278bafd88ccaa9a57a982f94c6793e21a"
+    },
+    {
+      "path": "components/usb_midi_host/usb_midi_host.c",
+      "bytes": 19291,
+      "sha256": "cbf72608ca67a5c178eec80a948a3234efaa15754add5374a823fc513b1b4159"
+    },
+    {
+      "path": "dependencies.lock",
+      "bytes": 3163,
+      "sha256": "4bb82d02d640c639539d42c12961e5392a03d0fe4a09816cf47fe63512b3e55d"
+    },
+    {
+      "path": "docs/RELEASE_1.0.0.md",
+      "bytes": 5627,
+      "sha256": "2a9dd3cd92366cd25322651227257c5c62e7ee9b29b6ab7985dd0d59f703fcbf"
+    },
+    {
+      "path": "main/CMakeLists.txt",
+      "bytes": 1537,
+      "sha256": "421ba4f9ff8710f542bb2ffb17de2b582006105a40e702dd9bc9168267ba4e21"
+    },
+    {
+      "path": "main/app_button.c",
+      "bytes": 3718,
+      "sha256": "38e7e80774d300afbc6a35c20727391e16af7701d22577fc756b8c971a33506c"
+    },
+    {
+      "path": "main/app_button.h",
+      "bytes": 374,
+      "sha256": "ea45de083400acc4c1868702844a878b90d8f2b1ed61597afb6a25f3cb92a1e5"
+    },
+    {
+      "path": "main/app_button_debounce.c",
+      "bytes": 899,
+      "sha256": "c347ae9080b8b88882eaa64bcc8bb6be94b6f068dcbd9e32d598035d6edd143c"
+    },
+    {
+      "path": "main/app_button_debounce.h",
+      "bytes": 502,
+      "sha256": "35a81b15548296886f238a0bcd2c2c9dc0c2f443881cc10920886ea1a7dff933"
+    },
+    {
+      "path": "main/app_button_gesture.c",
+      "bytes": 1902,
+      "sha256": "77f3ed2b7601a13162e3bcbb618d59a9fb8e93c75a36be538727c5af63d750b5"
+    },
+    {
+      "path": "main/app_button_gesture.h",
+      "bytes": 1177,
+      "sha256": "2bcdddbcf708cc1ad74ec37a922f4f21bdfa4fbf8c0e88e5572360169de0d959"
+    },
+    {
+      "path": "main/app_display.c",
+      "bytes": 48036,
+      "sha256": "69aa0ba2dabd24e0a08587f9b4c166bb12d7fea82099d6430eb2b23b3c68c738"
+    },
+    {
+      "path": "main/app_display.h",
+      "bytes": 1713,
+      "sha256": "702b009dd15fc09f9e2545e511012d9208b148f6eec8e5b763c62573e95de118"
+    },
+    {
+      "path": "main/app_display_canvas.h",
+      "bytes": 904,
+      "sha256": "78730a15f72c5030742aed2b261a3e8879898ebe401aa61f8bfce34179ea4e39"
+    },
+    {
+      "path": "main/app_display_diag.h",
+      "bytes": 1185,
+      "sha256": "c7723c17ca9418e1d2a08c63fea6c9e6cdae678239521e91f9af4e9581a66744"
+    },
+    {
+      "path": "main/app_font_compact.h",
+      "bytes": 23491,
+      "sha256": "1586d56841f6c5e0aa076f0b593ae13a7d257933185cd6bdfbe32b924e089053"
+    },
+    {
+      "path": "main/app_font_data.h",
+      "bytes": 195621,
+      "sha256": "3cb84212f1c8a4e1fc48940a4b074ff64b860f9587f56c7debc660088f4ca4a4"
+    },
+    {
+      "path": "main/app_main.c",
+      "bytes": 23689,
+      "sha256": "3704fe91a3b8dd0b76f63a9f0e0ce32f426bf2a065d4560d2051623b811e967e"
+    },
+    {
+      "path": "main/app_midi_ingress.c",
+      "bytes": 2999,
+      "sha256": "294b5d064eb4ba25c6fcffbf648dfdffda7ae54b70c8fdbfbd9dae41a9756ff5"
+    },
+    {
+      "path": "main/app_midi_ingress.h",
+      "bytes": 314,
+      "sha256": "02a63ebfbfa9957fe44cd25e3ccc48b5a510804883adbdc36c2ee757429649be"
+    },
+    {
+      "path": "main/app_ota_health.c",
+      "bytes": 1046,
+      "sha256": "fd03c86068c1ca3340c0fc6048abec72b54ed4bb7058d9d6d78901e84c47224a"
+    },
+    {
+      "path": "main/app_ota_health.h",
+      "bytes": 536,
+      "sha256": "d04a6cf7b38827123a3c055b8296c0f104c0fb4adf5e3fd221e5fc08ee04d5ab"
+    },
+    {
+      "path": "main/app_preset_file.c",
+      "bytes": 14641,
+      "sha256": "50d50483f127043c4fd873af54fcd052359d5c2985c67524101c83beb483e709"
+    },
+    {
+      "path": "main/app_preset_file.h",
+      "bytes": 1649,
+      "sha256": "abb6885fe98c4c4e61b1af4f848b487c45c052073c4533362ce598e5cbbea2f1"
+    },
+    {
+      "path": "main/app_psram_probe.c",
+      "bytes": 7967,
+      "sha256": "41861eaf3d9b86d90c179403e395f699dc879bd494080db23612adcb942e028a"
+    },
+    {
+      "path": "main/app_recorder.c",
+      "bytes": 12148,
+      "sha256": "342c031dc2facd50dc50bf05e246cd335c514a88a950023479fd61388fcb13ef"
+    },
+    {
+      "path": "main/app_recorder.h",
+      "bytes": 1511,
+      "sha256": "45b10b5ecd53a4e77da0827175cb13de5aa10432509621b56b8bc889f4ae7674"
+    },
+    {
+      "path": "main/app_scope_render.c",
+      "bytes": 1825,
+      "sha256": "764e5bc0f423ade7417e5f2971d50c474a8327548110a517b8c5fb65cb73aca5"
+    },
+    {
+      "path": "main/app_scope_render.h",
+      "bytes": 787,
+      "sha256": "7a9f7bea6e25785fb9983a32b0f63c15085cf34c9b2f2f6723d597cb8142a3b4"
+    },
+    {
+      "path": "main/app_sdcard.c",
+      "bytes": 7653,
+      "sha256": "03f7ba35e34a905590497f9ccf6808481c53afc64984f07e0579847fdfb0f4dd"
+    },
+    {
+      "path": "main/app_sdcard.h",
+      "bytes": 1922,
+      "sha256": "d26e326d31f724ae2f5a7e40d8c7d9c6aa9cf52e8fc43857fcbf12c59bf32a60"
+    },
+    {
+      "path": "main/app_security.c",
+      "bytes": 1656,
+      "sha256": "8ba626ad723c3a243ab79cd6a181a27a72d9346a67e931b29818b32c2cd12990"
+    },
+    {
+      "path": "main/app_security.h",
+      "bytes": 212,
+      "sha256": "0f54d0a7a9523734dce842981234cce2aa96eac778510045efa6c56acf2b6c59"
+    },
+    {
+      "path": "main/app_settings.c",
+      "bytes": 4066,
+      "sha256": "b75732989f29172b5660b08ac2d4dde62a35cabe118bc1344083c6ff74285a6a"
+    },
+    {
+      "path": "main/app_settings.h",
+      "bytes": 783,
+      "sha256": "5882452f28f7dd09de4b85df0bab23b3314a134f3e8ca1f00f1591f0bd2ddb43"
+    },
+    {
+      "path": "main/app_sf_last.c",
+      "bytes": 2674,
+      "sha256": "d56df00e52b2c09bdfacfc3c845d41dae503d508aa066e02f376031873d3973d"
+    },
+    {
+      "path": "main/app_sf_last.h",
+      "bytes": 1440,
+      "sha256": "6b8ad320d67d248fbf9ca91657e1be88860ae23f6993318d8f658e65b7eaaca4"
+    },
+    {
+      "path": "main/app_sf_live.c",
+      "bytes": 36868,
+      "sha256": "311edc0b6c058072f0cc4461618cc632b9282e1afc488f6d7fc1c4f1ceb0ede1"
+    },
+    {
+      "path": "main/app_sf_live.h",
+      "bytes": 506,
+      "sha256": "eb33a62f5e267896ed151b7192e18e9a254ff069fea4bf1ff150852609950937"
+    },
+    {
+      "path": "main/app_sf_route.c",
+      "bytes": 5135,
+      "sha256": "28cdd1735cfd4c8bc489c7872cf4d2d2af6655083335725766c12bb0fdec5078"
+    },
+    {
+      "path": "main/app_sf_route.h",
+      "bytes": 391,
+      "sha256": "d32787a4d5e9b1bc846abb4cb10291ca5534f292e1ea4ab363160fcfcda9baff"
+    },
+    {
+      "path": "main/app_soundfont.c",
+      "bytes": 20422,
+      "sha256": "5b252087f4c13fbf3d4552a1c5ce9ba03b04f6f820dc9bca994e63f1cc330e78"
+    },
+    {
+      "path": "main/app_soundfont.h",
+      "bytes": 3355,
+      "sha256": "ba380ba521cc8680bbe6d65558a6b1d0147b4d6fb319652cdb53c843f248715d"
+    },
+    {
+      "path": "main/app_storage.c",
+      "bytes": 1367,
+      "sha256": "e9a0a7f1a799bcdb9e1f5f7b1911aa9c4a910926e61447cf171d61bc35bb4bf6"
+    },
+    {
+      "path": "main/app_storage.h",
+      "bytes": 697,
+      "sha256": "cd398cc44858385f58072b81b7b23c33999c09ca81c24906f33087866dc18d3d"
+    },
+    {
+      "path": "main/app_visualizer.h",
+      "bytes": 758,
+      "sha256": "b89bda2bf0dea4b71e94c2682140b1cfe719f32d828094ff5e1c4f53f94666b4"
+    },
+    {
+      "path": "main/app_web_gui.c",
+      "bytes": 45339,
+      "sha256": "e1c8f614fc03db51fae225e367bd85f5472969f383be7b72c7d8f3c9a1686551"
+    },
+    {
+      "path": "main/app_web_gui.h",
+      "bytes": 492,
+      "sha256": "1878fc10ed1c2e408021b2eb4047557a5f4f3189e9e1386e7d62ebebb62b8de7"
+    },
+    {
+      "path": "main/app_web_utils.c",
+      "bytes": 2843,
+      "sha256": "c00361f68f66fae26fe1b6e994701edc23dd8bdf252283d01b618f93a7801eb0"
+    },
+    {
+      "path": "main/app_web_utils.h",
+      "bytes": 475,
+      "sha256": "7d9f779b1ff213b8b2795a8ea9e8c9a7323c9427e0868545bea5594e02bc4672"
+    },
+    {
+      "path": "main/app_wifi.c",
+      "bytes": 5567,
+      "sha256": "ceba37245467e28606058aae11060921a8911de6d07df154d1770f3ad845359d"
+    },
+    {
+      "path": "main/app_wifi.h",
+      "bytes": 946,
+      "sha256": "32a6fe762ed4560180ca3dc1baf1d52a8d732525d64a172ed89af20921f0b89a"
+    },
+    {
+      "path": "main/gui.css",
+      "bytes": 30999,
+      "sha256": "1ae7b43c270b2c9c3b5fc0f07a76cad6e4fa83e7db233f274c39ba66f8bb3331"
+    },
+    {
+      "path": "main/idf_component.yml",
+      "bytes": 89,
+      "sha256": "b5c7ffba25083e0e9314a42072b13661bcd1ffa7bf1868e8435fb1c8e5817677"
+    },
+    {
+      "path": "main/index.html",
+      "bytes": 126538,
+      "sha256": "6a1f46b6442bbed07ed262909fa02f97befb0e26970dd0b00f4cebc59a1f015f"
+    },
+    {
+      "path": "main/web_gui_css.inc",
+      "bytes": 31307,
+      "sha256": "b031dbdd4df3b50fcd3a719c0f3a4fb5be42a18651a0c152a74ba1374abc4523"
+    },
+    {
+      "path": "main/web_gui_html.inc",
+      "bytes": 136106,
+      "sha256": "6861dbb167168589a12463902207616425301204ea1e04825e7c21f03c000e42"
+    },
+    {
+      "path": "partitions.csv",
+      "bytes": 307,
+      "sha256": "1d192c18d2fd53c79225a31e7b46c33332a0c62732941f7a32e61dd83d7b4309"
+    },
+    {
+      "path": "sdkconfig.defaults",
+      "bytes": 2554,
+      "sha256": "f4d36c246a86d0c1eb8691dbdb9144b7994557233c5c9d2248bde9a8d9b07955"
+    },
+    {
+      "path": "tests/midi/test_midi_ingress.c",
+      "bytes": 1360,
+      "sha256": "139a7f667aac7f4adbb12c484eb70f73df79aea6797abeebfae3992fe9581ff1"
+    },
+    {
+      "path": "tests/midi/test_midi_parser.c",
+      "bytes": 4908,
+      "sha256": "324eacbd5d34a3c7294d4dd9102bd79f2e03de429ce9b1b8785ccdb603f337b2"
+    },
+    {
+      "path": "tests/midi/test_midi_queue.c",
+      "bytes": 2017,
+      "sha256": "d17a6623353a549b084696e83ab9be8875c7067ba072321f7915b5d998018afa"
+    },
+    {
+      "path": "tests/run_tests.ps1",
+      "bytes": 6383,
+      "sha256": "43beb82270d7b61928002906cb5d6b0bc582e7e2ed05f389bd88a3ffd1ac8cc4"
+    },
+    {
+      "path": "tests/sched_trace/stubs/esp_attr.h",
+      "bytes": 49,
+      "sha256": "cf951cc87f3425b4cea0f470b5555c77fea3a3c29d615186d99d1df5a744f96e"
+    },
+    {
+      "path": "tests/sched_trace/stubs/esp_cpu.h",
+      "bytes": 253,
+      "sha256": "6e0deecd7c91d423592ec8f37fda6d21c6df03b891e0581e00acd471c00915ac"
+    },
+    {
+      "path": "tests/sched_trace/stubs/freertos/FreeRTOS.h",
+      "bytes": 318,
+      "sha256": "0dd1efee9bfe8fe96c05476ed122cebfe64362a6ac91d8962938164d4d2bd348"
+    },
+    {
+      "path": "tests/sched_trace/test_capture.c",
+      "bytes": 1286,
+      "sha256": "1bff921519f0b2925fa8d227682fda067f70bafd119a14952598e8325bbd061e"
+    },
+    {
+      "path": "tests/sched_trace/test_dispatch.c",
+      "bytes": 1043,
+      "sha256": "28f81c04673555c65931506d1d3b699f8b3150f8d3ce5216fb717449f590e377"
+    },
+    {
+      "path": "tests/settings/stubs/esp_log.h",
+      "bytes": 133,
+      "sha256": "44266000d4e012177b026b25a3b9048d48c3abfca8b16607e563ba12f8f10fb9"
+    },
+    {
+      "path": "tests/settings/stubs/nvs.h",
+      "bytes": 389,
+      "sha256": "0fa48a4540c4a8507857d2464f7f696a760a821facaa4a761696161cf8bb3a56"
+    },
+    {
+      "path": "tests/settings/stubs/nvs_flash.h",
+      "bytes": 185,
+      "sha256": "15906c16936cfd884cb64915deb7576c91ebd4ef62eaef78da4d3ccebd99fe5d"
+    },
+    {
+      "path": "tests/settings/test_nvs_preserve.c",
+      "bytes": 1442,
+      "sha256": "ac6f0bdc3e79ccc0d8727ff79bd777b58f34a5890c662a2079e1e049ec0526a5"
+    },
+    {
+      "path": "tests/soundfont/README.md",
+      "bytes": 6101,
+      "sha256": "d6d261bd6b43a0228b7ac7142a262c30c75d24cef629f470d2fba963510e5436"
+    },
+    {
+      "path": "tests/soundfont/check_corpus.c",
+      "bytes": 467,
+      "sha256": "2a937270d47da4de1e39613547588bb61b8a905732d7dbe9bbc3a42434e72880"
+    },
+    {
+      "path": "tests/soundfont/compare_voice_pcm.py",
+      "bytes": 1765,
+      "sha256": "971735738c4671ad56e614a28dc4bce2af12e9ee80eb68282fa241976a5fc5a4"
+    },
+    {
+      "path": "tests/soundfont/control_trace.c",
+      "bytes": 3036,
+      "sha256": "2cee5dc3ffec4f0b01706234be7a2b5d99611bfb8ccfefec702d172584f81461"
+    },
+    {
+      "path": "tests/soundfont/engine_replay.c",
+      "bytes": 4888,
+      "sha256": "1974add712d7ed40a57a4ea399407ad8eb709cd9bff7b9d4253050b807b50b5f"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_ibag.sf2",
+      "bytes": 1524,
+      "sha256": "da2bb0136565aa87c42b70a326f7367b7a26d3dd1f8b25a0422f5f0b298d62bd"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_igen.sf2",
+      "bytes": 1524,
+      "sha256": "76234abba26d3a6a7d0301caf61ce545f17863d46d5dd39085b61b73ba109f08"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_imod.sf2",
+      "bytes": 1524,
+      "sha256": "aed84c449b5a9b857c8510003b1c8026c7bb9b49201bff782435eee241b619d3"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_inst.sf2",
+      "bytes": 1524,
+      "sha256": "0ef9314b82d613f2ff059c1f18980b38030ba8c7e060eac61c70ee18bca41715"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_pbag.sf2",
+      "bytes": 1524,
+      "sha256": "7153bc75eb8e020aac5c31306a84c909d8dfaca9cbb4a3299b7d944d896656f7"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_pgen.sf2",
+      "bytes": 1524,
+      "sha256": "fbfbf45eb4ecced642326a63b8963cf4cfed087a2b2d21a46154f5ec42a63214"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_phdr.sf2",
+      "bytes": 1524,
+      "sha256": "767517821a60345fdb9fe9a98d4a135921f5830928dd3bc0194272522954bea7"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_pmod.sf2",
+      "bytes": 1524,
+      "sha256": "ba19a7d445cc09aa6037e24753ed1899ac998ab06a7e89773c94c406b974f755"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_shdr.sf2",
+      "bytes": 1524,
+      "sha256": "4bde0a55dba1b1c12ce7f4f73403b10e4090ff7e7dd5d03d70772e331a7f5626"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_count_smpl.sf2",
+      "bytes": 1524,
+      "sha256": "5582a731f6551f74f820c527534f5f8b048ba712d6745258805c2893c60ccdc0"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_keyscale.sf2",
+      "bytes": 1540,
+      "sha256": "d0a860b5f940a5f45a33492064f46e0bf561866dddefc2a7d14edccca17598b7"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_odd_padding.sf2",
+      "bytes": 1535,
+      "sha256": "1c2ecb6489b3a9f43034925f5604475fdec9b72a3b757fef9b389e78f17513d1"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_sample_id.sf2",
+      "bytes": 1524,
+      "sha256": "4f903d9d75bda0ecb3e861e17586fbbc4752946e20c9646c422c718117f63ce8"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_sample_start.sf2",
+      "bytes": 1524,
+      "sha256": "eca27e89d5996dcebb03a01d50d7a8ecc9eb7b37b7de241b9f0abb0fcc574baf"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bad_signed_offset.sf2",
+      "bytes": 1528,
+      "sha256": "6653ae28646be4f5991964a61788c341298e33559da8852dc0f8ab7c63259011"
+    },
+    {
+      "path": "tests/soundfont/fixtures/bank128.sf2",
+      "bytes": 1524,
+      "sha256": "a3034b08314fea0af4c697a4bdab83922fe38ecdb87e9de7328ccce0135e741e"
+    },
+    {
+      "path": "tests/soundfont/fixtures/compat_sentinels.sf2",
+      "bytes": 1584,
+      "sha256": "b14adf8bb97a0b0bab07843b251d105fd96c75e68c39d54e3ae046b9d0b71d13"
+    },
+    {
+      "path": "tests/soundfont/fixtures/duplicate_info.sf2",
+      "bytes": 1548,
+      "sha256": "5c9a8d58b597c67f185b709e7fdda8a5f48032625e60d60bc88961f91014c9bc"
+    },
+    {
+      "path": "tests/soundfont/fixtures/dynamic.sf2",
+      "bytes": 1588,
+      "sha256": "97c7de518f1bdcb1309c214aeeb9d317d7d81420326d0399caedc00a2c2c77d7"
+    },
+    {
+      "path": "tests/soundfont/fixtures/dynamic_moderate.sf2",
+      "bytes": 1588,
+      "sha256": "6a21b6c5a444e07adfeec1eca02818d085dbdea7f68aff599e4fd6426d48567e"
+    },
+    {
+      "path": "tests/soundfont/fixtures/exclusive.sf2",
+      "bytes": 1544,
+      "sha256": "59316550681f30c75dc4346691a314cdd01ed81f13aca34bc8daf16ab31dbd8b"
+    },
+    {
+      "path": "tests/soundfont/fixtures/five_layers.sf2",
+      "bytes": 1572,
+      "sha256": "e20ba5c2a541a7ec095dae540f1049afea4c423ae9eca73df79a9e0cb884fe63"
+    },
+    {
+      "path": "tests/soundfont/fixtures/four_layers.sf2",
+      "bytes": 1560,
+      "sha256": "41b690792f125df6333a8d4bcbab9b211238343e0b1818a9ec98850c448070b4"
+    },
+    {
+      "path": "tests/soundfont/fixtures/hostile_empty_intersections.sf2",
+      "bytes": 21984,
+      "sha256": "b134100de00bd3ce3d52e7a57fc9789922639787de8e5790448de3e65d5cfc15"
+    },
+    {
+      "path": "tests/soundfont/fixtures/keyscale.sf2",
+      "bytes": 1540,
+      "sha256": "635e2b1ce571ca6cbf73c57ce4cba8a949c952fafc154ed5faa71de59b3f7a84"
+    },
+    {
+      "path": "tests/soundfont/fixtures/manifest.json",
+      "bytes": 16676,
+      "sha256": "1dc02df41662b3bce6510dbd07e8663fe06d82b045ebb6871ad1a22babff22b9"
+    },
+    {
+      "path": "tests/soundfont/fixtures/max_regions.sf2",
+      "bytes": 5608,
+      "sha256": "d4869ca3ec053f62c397af9c94f110a3bd41266dd1b8fa91630eb42b5432fc23"
+    },
+    {
+      "path": "tests/soundfont/fixtures/mono.sf2",
+      "bytes": 1524,
+      "sha256": "73424ff18f324082d6d0ebe05608fd256d27e9214d5bd034ad633d4ad3aeb24b"
+    },
+    {
+      "path": "tests/soundfont/fixtures/odd_info.sf2",
+      "bytes": 1536,
+      "sha256": "f5c80eee5714a8b7b93bc077554d9d54f1242855cd391d826d852a55edbcc3b9"
+    },
+    {
+      "path": "tests/soundfont/fixtures/offset_add.sf2",
+      "bytes": 1536,
+      "sha256": "c5cf570f287ab98173b680160a8b27a36a1557effdc8a620a8e956259642afcc"
+    },
+    {
+      "path": "tests/soundfont/fixtures/offset_override.sf2",
+      "bytes": 1536,
+      "sha256": "c5cf570f287ab98173b680160a8b27a36a1557effdc8a620a8e956259642afcc"
+    },
+    {
+      "path": "tests/soundfont/fixtures/one_shot.sf2",
+      "bytes": 1524,
+      "sha256": "d38e0b8e2455cc830d5d710864ce83a7d9fdf2f76c16187927005d867992c707"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_keyscale_outside.sf2",
+      "bytes": 1528,
+      "sha256": "35a56ba370afbda85c6d7c9cb8cc10b9d82cc13014a7cb84dfc73928cdb79b75"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_negative_attenuation.sf2",
+      "bytes": 1528,
+      "sha256": "f39cfc4722e101123ff683d9561dc43521020cf85dad6bc9870d56eac516e245"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_negative_filter.sf2",
+      "bytes": 1528,
+      "sha256": "e69800cf8f9a258898489608436db21addacc2bb43767f00b2f87da6db7a7011"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_10_max.sf2",
+      "bytes": 1528,
+      "sha256": "b8e2b82873270f4f31e28ed7c9723563eebb008974c06326c9b9c1bd88d73b92"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_10_min.sf2",
+      "bytes": 1528,
+      "sha256": "ae29e3f4d664bc6fd6e2363f73e36bbacfb703f43ebf3f7e60fa87ee8df4f100"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_11_max.sf2",
+      "bytes": 1528,
+      "sha256": "3c637a452af345ffc6c8a87fd3a04bcc76d08051eb2a97fb124d01cd32cb4093"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_11_min.sf2",
+      "bytes": 1528,
+      "sha256": "8045257195edfe59ead32db004fe50e8cd705a04778bba1d8860fb6b5b9adc29"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_13_max.sf2",
+      "bytes": 1528,
+      "sha256": "ee71c72df5887347a5f474f1976e22e4047e45a648db019588649ff38b4190ad"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_13_min.sf2",
+      "bytes": 1528,
+      "sha256": "912f849a0fe713797f7c5a84f0ce39ab0bf6cdd5b8673d3ad58eb61cd3f1f2c5"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_17_max.sf2",
+      "bytes": 1528,
+      "sha256": "0955d77d780e90b2f3f8a9d0541f2e48ba61bd5ca1c064817325e44ae9a22e42"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_17_min.sf2",
+      "bytes": 1528,
+      "sha256": "39e7659388d4c02887215ec206518c10c155d41782c74007ef103e9848543c3a"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_21_max.sf2",
+      "bytes": 1528,
+      "sha256": "3a615b1a34c15613181420f698cbc72bab1f162454f3a7817211ac90ee365521"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_21_min.sf2",
+      "bytes": 1528,
+      "sha256": "8818d72a2b0a008ef7741381742524f1088ae0a2b6bcac6e5d0e2b3eae3e1668"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_22_max.sf2",
+      "bytes": 1528,
+      "sha256": "94870a2a5bd3b7cb5cc0798cfe93036f38601684543c78199df6707691552b6b"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_22_min.sf2",
+      "bytes": 1528,
+      "sha256": "192e20fd7b68a2ca3d50d0c4f354b972e55ca2e474532a16216ed8cfdd473f94"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_23_max.sf2",
+      "bytes": 1528,
+      "sha256": "748ea57c6c0d5d73d173cbfda8c297b367f76ec8d86edeccf9b68f77f12d4890"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_23_min.sf2",
+      "bytes": 1528,
+      "sha256": "5ddea940e966f7cf352141b288bb53b6e9c8b0c81b48fce59e017a10dc81a37e"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_24_max.sf2",
+      "bytes": 1528,
+      "sha256": "2d676c68da48fee0b24515d55ba94f711004e5d770f1b1719a47e920882bb621"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_24_min.sf2",
+      "bytes": 1528,
+      "sha256": "d0ac49923303f86a4664cd6d682bff4518177f31288c5968277cdb796302f157"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_25_max.sf2",
+      "bytes": 1528,
+      "sha256": "c574f584437f179eee6cb0294609f01c1b71a102888e68c2faded28832720ff3"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_25_min.sf2",
+      "bytes": 1528,
+      "sha256": "8506092aa029da40340bd247fe384caba8ab87cfcfb89ccef54eb428856974d6"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_26_max.sf2",
+      "bytes": 1528,
+      "sha256": "08d985f146362d1b8c2fb5cc318828be2fb30a7aafe64d1872297fdb0bf7ab68"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_26_min.sf2",
+      "bytes": 1528,
+      "sha256": "0e44b76565719729cf37bf1f0d1be50aa2406ec5d880146eba080da5c7570ff1"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_27_max.sf2",
+      "bytes": 1528,
+      "sha256": "9e0a6f91b0bda408fea270beaebf4a2722c137aa313e010b333f665a0cc70a4e"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_27_min.sf2",
+      "bytes": 1528,
+      "sha256": "b934ea5134ac7ebaba3335e2984ddea36f848b7709dc34bd78d3147e9a0f34b0"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_28_max.sf2",
+      "bytes": 1528,
+      "sha256": "290307777866e1bd46bc96651d9a6fe9b7c26bb851eea461b863fb4de8ba68d0"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_28_min.sf2",
+      "bytes": 1528,
+      "sha256": "8eeda92095856586fb49fa0fd103846ca0c2c0a85b77f7d4b1d5ca9dedb85408"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_29_max.sf2",
+      "bytes": 1528,
+      "sha256": "2f5a516da508f594024d936722b1d743e306aed6afcd1b46b73b8aa41e3d9854"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_29_min.sf2",
+      "bytes": 1528,
+      "sha256": "5e8d5a8b13445e930871b4aebaf89565856d744204aec6b652518b1c068c41cd"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_30_max.sf2",
+      "bytes": 1528,
+      "sha256": "d00177546daa30e0bf5fca741671a8b215c98d7b9d99c863e3e3fd68f586bcaa"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_30_min.sf2",
+      "bytes": 1528,
+      "sha256": "ec97c967bf53add21b8e5f8bc00cff89abf0e42a15585c9c174cbf1211dbc3eb"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_33_max.sf2",
+      "bytes": 1528,
+      "sha256": "f501fc0b48c85fcbf88986a374925844bd8fe88caf723a734a81500013f34922"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_33_min.sf2",
+      "bytes": 1528,
+      "sha256": "c50f7d93e8c9128d0962e2cd5500fe44ae61ebf5e59718ace17d373300fe277b"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_34_max.sf2",
+      "bytes": 1528,
+      "sha256": "eb86280e3088b120351dbeb0aecbfdad05cdd490bb315189c6dc4b3c894ee2f5"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_34_min.sf2",
+      "bytes": 1528,
+      "sha256": "873a4f354e83365d5c97a96ebd8387d5a7ca6530ad2187e1d7ac7f7edf30c7ec"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_35_max.sf2",
+      "bytes": 1528,
+      "sha256": "0a1421e7dc247febdf75da96a90042f3565aad717da25e598b51fe22c7078a6b"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_35_min.sf2",
+      "bytes": 1528,
+      "sha256": "abe0fa6122931d183d259df51a493557d4df0f873043799660f00706b1f48bd1"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_36_max.sf2",
+      "bytes": 1528,
+      "sha256": "8eb0ab751c5afb3d9f0f957396c0b0ddb5c76ab03fb074e2506bcd86aadeecc5"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_36_min.sf2",
+      "bytes": 1528,
+      "sha256": "2c885f765741b916b7959daa12c0147f685041136396720b59e7c48f0330514a"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_37_max.sf2",
+      "bytes": 1528,
+      "sha256": "bbdb2884078978c4d661f28f65107e99a7261b4bb75bef21d942c3e4afa52603"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_37_min.sf2",
+      "bytes": 1528,
+      "sha256": "3b37ca8cb1916e4e9f2351e19a5fd16f721f965f23f32c41fffc60812b06f808"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_38_max.sf2",
+      "bytes": 1528,
+      "sha256": "9678851154fe30c836da586cabccd4224768514448337e196625abafe9077a09"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_38_min.sf2",
+      "bytes": 1528,
+      "sha256": "b7cd0b7e8d78e022a95d28cadef937f0e54e859f4357299acdac80863216c71f"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_48_max.sf2",
+      "bytes": 1528,
+      "sha256": "ecbee89ef942797323a61533c8b765eab156167b2b208850cbaa383c53331835"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_48_min.sf2",
+      "bytes": 1528,
+      "sha256": "80659c7f83d95cc7a60a5f823b1171b514eb6b81106d2f2a49abb32420b24628"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_5_max.sf2",
+      "bytes": 1528,
+      "sha256": "b75adec041480f04e27ad156bff0cbcf09cb5e254ad2be9253868c94b5eebf01"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_5_min.sf2",
+      "bytes": 1528,
+      "sha256": "48cd3d1ee90a8e58a07d02bcc15289e937cfa38d4c0d5ceb32e5855ee59411d6"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_6_max.sf2",
+      "bytes": 1528,
+      "sha256": "043690d29c3e3a4d60a968458f0be894ec451a494419a14caff134e2d63e30b5"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_6_min.sf2",
+      "bytes": 1528,
+      "sha256": "0e540d2935d3068d83cfa036f66b15763793cea0ce20366903f28dc2c20fa8be"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_7_max.sf2",
+      "bytes": 1528,
+      "sha256": "fc03f696f2c261c9953433b44d97fd0c4bee26332f307f489734a4ac7460bf0e"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_7_min.sf2",
+      "bytes": 1528,
+      "sha256": "c89c8f8f0387afb615c77be177397bf2c975d2491e3f40b0eeef28027c364756"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_8_max.sf2",
+      "bytes": 1528,
+      "sha256": "7fd019a9b2752811e7c66e5887032f5621fa0728453e7c14c7b2f7d6257085fa"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_8_min.sf2",
+      "bytes": 1528,
+      "sha256": "92b4cde32756ebc1dcf0d1f7293ed4d86ab357b616a466d3173be32dbf945ffe"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_9_max.sf2",
+      "bytes": 1528,
+      "sha256": "6e746c80ad9bb39b0146e00075652f8c0752e1a41caedd5da0b26f353c7dd407"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_offset_9_min.sf2",
+      "bytes": 1528,
+      "sha256": "123e39072b59aed986ff99f656d63f45270a75fb14996a2b4e71306bec272ea7"
+    },
+    {
+      "path": "tests/soundfont/fixtures/preset_tuning_outside.sf2",
+      "bytes": 1528,
+      "sha256": "b5e828bba93dc72f15e10867e0fa1a08a04de5a714c8214f6d88c39954a2180c"
+    },
+    {
+      "path": "tests/soundfont/fixtures/rate22050.sf2",
+      "bytes": 1524,
+      "sha256": "c08edc80327b15c73d7c2f329505ca0daabdb1589adb42b1a2c63abb9ca6bc6f"
+    },
+    {
+      "path": "tests/soundfont/fixtures/rate44100.sf2",
+      "bytes": 1524,
+      "sha256": "04fca008c25d1c8d3dbe0aea4fd9c9b87c487792c886efb323395efe5001aa2b"
+    },
+    {
+      "path": "tests/soundfont/fixtures/release_loop.sf2",
+      "bytes": 1524,
+      "sha256": "35afa958dd13ffaed87978bc4b434b5e219ae9fd319de1ee2732670714baf8c1"
+    },
+    {
+      "path": "tests/soundfont/fixtures/rom_sample.sf2",
+      "bytes": 1524,
+      "sha256": "4a0a90bd871526418586c0d7146eead3005b0bbb91d780d77138f3915dbe4ec8"
+    },
+    {
+      "path": "tests/soundfont/fixtures/sf3_ogg.sf2",
+      "bytes": 1524,
+      "sha256": "78288ca1ada1b5e8e42a4ed01efe894dd570b2a19c8fe3dfd8731f5b5d225eb5"
+    },
+    {
+      "path": "tests/soundfont/fixtures/sf3_version.sf2",
+      "bytes": 1524,
+      "sha256": "db0c4ee987a2540cc6343e3e537ba01199e394ea5990902235a39ceecea77732"
+    },
+    {
+      "path": "tests/soundfont/fixtures/short_loop.sf2",
+      "bytes": 1524,
+      "sha256": "2a5daabd6cbb6bb8ffcfec5e2400977112b2364d6e7a904ac026dad3cd7bbab6"
+    },
+    {
+      "path": "tests/soundfont/fixtures/stereo_pair.sf2",
+      "bytes": 2698,
+      "sha256": "fa28665ff0e9953174d87e368618b0658ce0d7bbfc2082ea164685d1f81fca38"
+    },
+    {
+      "path": "tests/soundfont/fixtures/terminal_modulator_nonzero.sf2",
+      "bytes": 1524,
+      "sha256": "a31222285046e840046082ee91cd69de5a46bfa20cda2e77263ab2efd966131a"
+    },
+    {
+      "path": "tests/soundfont/fixtures/two_layers.sf2",
+      "bytes": 1536,
+      "sha256": "029b01bddc1628e3d70c63be045cd48189117933844677b7eb843ddb38ba0beb"
+    },
+    {
+      "path": "tests/soundfont/fixtures/unsupported_keyscale.sf2",
+      "bytes": 1540,
+      "sha256": "a19fa144a3d99cb37127d517aa150299fcc8e94ea73af611fc8b8dd2d28dccbb"
+    },
+    {
+      "path": "tests/soundfont/fixtures/velocity_split.sf2",
+      "bytes": 1544,
+      "sha256": "92702cd16b87885cefe6317f242183bab27394e23560f17350a94e07e39ee93a"
+    },
+    {
+      "path": "tests/soundfont/fuzz_soundfont.c",
+      "bytes": 805,
+      "sha256": "aa086c4a594d7064df59355c1291969a87928089611b68244d2291c78117d585"
+    },
+    {
+      "path": "tests/soundfont/make_fixtures.py",
+      "bytes": 6464,
+      "sha256": "2dd24efc0cd02b6ed1c14dfada15b60317bd21597b03d122bbc05ad107d3ad0b"
+    },
+    {
+      "path": "tests/soundfont/phase_pcm.c",
+      "bytes": 1904,
+      "sha256": "fcb2702b2c95c1824786b37d5201271bee625cd8e4ff88a805c77d694f6d4db0"
+    },
+    {
+      "path": "tests/soundfont/profile_stubs/esp_cpu.h",
+      "bytes": 152,
+      "sha256": "a304cbd4a6f0bf186753eb09b3a4fae59b944f1b73efe9111e6cb0e2440385de"
+    },
+    {
+      "path": "tests/soundfont/run_allocation_diag.sh",
+      "bytes": 600,
+      "sha256": "f2a69cc4509a7116a3535b454649b2bbdabf8ab1d66c44e7a5a73efa224425d4"
+    },
+    {
+      "path": "tests/soundfont/run_control_block.sh",
+      "bytes": 2510,
+      "sha256": "c30d85b7d76cafac6637336c006625815381a03a97bf59bc75f8950c5242ff76"
+    },
+    {
+      "path": "tests/soundfont/run_engine_compare.sh",
+      "bytes": 1076,
+      "sha256": "10f242ff3fc5ad17115b65acd50bb873609ee6e5fa5995c30a88ce95b0911218"
+    },
+    {
+      "path": "tests/soundfont/run_final.sh",
+      "bytes": 877,
+      "sha256": "293b6c27cfea3cfeacb27d9bf30c73ab586b6ba8bb19a7ce2dca27e4afc6bb90"
+    },
+    {
+      "path": "tests/soundfont/run_inner_replay.sh",
+      "bytes": 1594,
+      "sha256": "90f4898d4c6f6b16cb889e45d630d1cb32cbccada4fc54962002dad202340c79"
+    },
+    {
+      "path": "tests/soundfont/run_lifecycle.sh",
+      "bytes": 594,
+      "sha256": "e18998b08033efcd039eecfd1ed37a1992e0f1cb21669a1dc250f472456f2924"
+    },
+    {
+      "path": "tests/soundfont/run_live.sh",
+      "bytes": 2258,
+      "sha256": "d7eb5e88c7965dfa4d72e3cce0b84f71af2975ae3fd84887f48b3a16c88360fe"
+    },
+    {
+      "path": "tests/soundfont/run_profile.sh",
+      "bytes": 1323,
+      "sha256": "a252432354c815a7e935675d8ea15371337b8a2f38cf513bae6e35d06e06e948"
+    },
+    {
+      "path": "tests/soundfont/run_region_q_cache.sh",
+      "bytes": 626,
+      "sha256": "c9b26c9b12c3c801e1adf9c602133638f2f3043f4955bb6baa494f127b94eb46"
+    },
+    {
+      "path": "tests/soundfont/run_route.sh",
+      "bytes": 1372,
+      "sha256": "47baefd2b5987913a75dc7070ac5483fc788f5b0ee395ab2b45e4c835c2583c5"
+    },
+    {
+      "path": "tests/soundfont/run_sanitizers.sh",
+      "bytes": 1936,
+      "sha256": "e0eaa371677eefddf4ad86a856f7f23def924e2eceeb73fc55e29f1323d5e8fa"
+    },
+    {
+      "path": "tests/soundfont/run_voice_pcm.sh",
+      "bytes": 782,
+      "sha256": "fa0babee218a5994e0fa12a1b56c4d485d95f6d8f91ae8fab97cfafae831dd9a"
+    },
+    {
+      "path": "tests/soundfont/run_voice_worker.sh",
+      "bytes": 622,
+      "sha256": "29995b47ac78289fffd5f31da997bdc0dc74f37f48d34076ad8f4f82d86b08a2"
+    },
+    {
+      "path": "tests/soundfont/run_worker.sh",
+      "bytes": 604,
+      "sha256": "13d57e25e1895049e751d006c6742fcc0721d21be6abc27d1cb0807190865fce"
+    },
+    {
+      "path": "tests/soundfont/test_adaptive_controls.c",
+      "bytes": 2839,
+      "sha256": "c302b2ff8f9c029d4d0f9c1a14659c4a1c8bd08763c9c9e1cde0ef83ba3134b4"
+    },
+    {
+      "path": "tests/soundfont/test_allocation_budget.py",
+      "bytes": 5089,
+      "sha256": "86ca135bd379c3310aac33aa9547699c38a628fee76d6b6ffd33ac92a084db8a"
+    },
+    {
+      "path": "tests/soundfont/test_app_route.c",
+      "bytes": 16465,
+      "sha256": "ede7ecbfaeee0938a6db965074d6e0f19a5a3dbf3e62b52229529b84a8da7370"
+    },
+    {
+      "path": "tests/soundfont/test_audio_timing_window.c",
+      "bytes": 2550,
+      "sha256": "7d584d18b9027175c34054190b981b1be288ef0de808fc591f6cce2179695685"
+    },
+    {
+      "path": "tests/soundfont/test_bench_capture.py",
+      "bytes": 2351,
+      "sha256": "24e332d5283358bb20064612a89a2443f9a785ebb78a94030398e29529bd8348"
+    },
+    {
+      "path": "tests/soundfont/test_cache_counter_probe.py",
+      "bytes": 3335,
+      "sha256": "2f0466167052b43336efeb9303d2c1682ea35b2b7c1953558c2f347d416f9dea"
+    },
+    {
+      "path": "tests/soundfont/test_cb_svf.c",
+      "bytes": 2976,
+      "sha256": "6e78657f93f4197b931f11ab03679d48f425904b5c956408d9a165a42d928d02"
+    },
+    {
+      "path": "tests/soundfont/test_contract.c",
+      "bytes": 6558,
+      "sha256": "101a9dc0fe80536d9809f415f08f03c5bc8a00ff9d490247e23c6ca9ff8cd930"
+    },
+    {
+      "path": "tests/soundfont/test_control_block.c",
+      "bytes": 2529,
+      "sha256": "d5809e1d04066d70a5878bb12b2e635e91e813dbe04b2dcbbb627edeac80b4b9"
+    },
+    {
+      "path": "tests/soundfont/test_control_filter.c",
+      "bytes": 1556,
+      "sha256": "7b415ca4fe2eb033fe0f072c280d3950bb6b3073abd7733bb240c8f3af75cba8"
+    },
+    {
+      "path": "tests/soundfont/test_control_math.c",
+      "bytes": 2177,
+      "sha256": "ea54a04b45896a854dc4cc5c139f7a501abeb2ab774367f6c6a5c62f663e4b97"
+    },
+    {
+      "path": "tests/soundfont/test_control_phase.c",
+      "bytes": 1613,
+      "sha256": "657e235ac9727e087a9f1e2e69ea6798d8d29f80802289da4668d23c6a89f744"
+    },
+    {
+      "path": "tests/soundfont/test_display_contention.py",
+      "bytes": 5470,
+      "sha256": "fe179fd02dbc96c4b40f22d13bd97ad93457ad28b799b7e1b203bfcf1d20409e"
+    },
+    {
+      "path": "tests/soundfont/test_envelope_one.c",
+      "bytes": 1170,
+      "sha256": "dce88d599f40eee731dc42d4653a2c489f94dad4f10aa616e4db09090f1239b9"
+    },
+    {
+      "path": "tests/soundfont/test_event_budget.py",
+      "bytes": 849,
+      "sha256": "f5fb5079d381886f3213a5377f7cfb3d1a8a5ab129e77cc2628748821774affc"
+    },
+    {
+      "path": "tests/soundfont/test_event_profile.py",
+      "bytes": 1364,
+      "sha256": "1871873f1f14e0812802bb8a496ac75e08f3bcb00e6395edb57f870cb7deb82e"
+    },
+    {
+      "path": "tests/soundfont/test_filter_numeric.c",
+      "bytes": 3399,
+      "sha256": "bd1ef256c55a279b75080c2d6be27b484b96c115363e783dc94f67b225095817"
+    },
+    {
+      "path": "tests/soundfont/test_filter_pair.c",
+      "bytes": 1983,
+      "sha256": "5db49f1d94ca6a96da6a99d935ad7e652c9bf327b62cd794724b41f0d4993c2b"
+    },
+    {
+      "path": "tests/soundfont/test_filter_reference.c",
+      "bytes": 1900,
+      "sha256": "e0a222da3c8a20afacfbec7e6a0b6729d0ea3548264a361ea47b7eb93aee845a"
+    },
+    {
+      "path": "tests/soundfont/test_fluidlite_spike.c",
+      "bytes": 2432,
+      "sha256": "95f26c0a33d9a1770e64b05744beae62489aac410d6a5c0f1be94b58b3bc3160"
+    },
+    {
+      "path": "tests/soundfont/test_inner_profile.py",
+      "bytes": 1036,
+      "sha256": "d1fdeab673e18b4df44d2b6d5943d7203c32c73d54d9de7a74211b5f4320ba80"
+    },
+    {
+      "path": "tests/soundfont/test_lazy_biquad.py",
+      "bytes": 4216,
+      "sha256": "695a2a486277c802947c969841e2e3b12c20a32823137790219d97f4b07eb6d9"
+    },
+    {
+      "path": "tests/soundfont/test_lifecycle.c",
+      "bytes": 4298,
+      "sha256": "c9cf57547d84f16e31c50e37567246a54a96cf7766fcb85865a13735906b49c7"
+    },
+    {
+      "path": "tests/soundfont/test_memory_contention.py",
+      "bytes": 2924,
+      "sha256": "9727c688acec57577f583b39ec68c8fe58d26dfbb85e3f8a0954740674ca448d"
+    },
+    {
+      "path": "tests/soundfont/test_normal_capture.py",
+      "bytes": 2059,
+      "sha256": "48546d278e815ce1f56a16c355578dd8209f7fead3c7ad56606062ff6aac2551"
+    },
+    {
+      "path": "tests/soundfont/test_outer_profile.py",
+      "bytes": 1925,
+      "sha256": "bed2d385ebd291b9df648eb1c605fbfcccc1d7fae3ffe4fc9888596bb714401f"
+    },
+    {
+      "path": "tests/soundfont/test_pair_analysis.py",
+      "bytes": 2431,
+      "sha256": "4db511117b777bcc7bd9f7285ce640dffb9020c274d296cf3d48050f18dff1d1"
+    },
+    {
+      "path": "tests/soundfont/test_q_cache_pair.py",
+      "bytes": 1475,
+      "sha256": "05fe2efd9b07499b5cd622e205a3143bd2d7bf4951784d094f26084bde440cc8"
+    },
+    {
+      "path": "tests/soundfont/test_r4_capture.py",
+      "bytes": 6550,
+      "sha256": "82bb5b1ff62cf9689f8885b0f9872e3175800be5c5ecb30e7ce0a1403c18b1ed"
+    },
+    {
+      "path": "tests/soundfont/test_r4_harness_controller.py",
+      "bytes": 9361,
+      "sha256": "02489af27f711e9f99f74c350009ae82f59f5ef973a722e1ce218b4be7a9c301"
+    },
+    {
+      "path": "tests/soundfont/test_r4_runner.py",
+      "bytes": 10783,
+      "sha256": "95cb44ef2b5ca298c132ba6c960c26ce1409700b3afed56f5c09311ff8929b57"
+    },
+    {
+      "path": "tests/soundfont/test_r4_stress.py",
+      "bytes": 13769,
+      "sha256": "f613efcf0f894fa828d15e7188931c0a16da9f17a1a7b177a6eef8134efc2c39"
+    },
+    {
+      "path": "tests/soundfont/test_region_q_cache.c",
+      "bytes": 3010,
+      "sha256": "dd5f6fec4cb4e63925134d163aa46795097a24cfab7a0c25edbde1cab69fbcc4"
+    },
+    {
+      "path": "tests/soundfont/test_replay_provenance.py",
+      "bytes": 2936,
+      "sha256": "56bb27329231a32b3113bfaf27c023e0a1ac0ac45145526a44f52d04b39bc93b"
+    },
+    {
+      "path": "tests/soundfont/test_sample_phase.c",
+      "bytes": 3467,
+      "sha256": "89bc8038eca96af4795b6c5a32554976f4506406c642f78be80b138c47529672"
+    },
+    {
+      "path": "tests/soundfont/test_sched_trace.py",
+      "bytes": 2789,
+      "sha256": "5683784477f511ce6eca7d7e03acab6a2fc153dd6f7231ce8eb1dbb6fed4a7e0"
+    },
+    {
+      "path": "tests/soundfont/test_sf2_compat.c",
+      "bytes": 3885,
+      "sha256": "3f43b53b02544ea13ff11b4d39b81ff4c72e58df7e8b5d5d9b988bd63963cae0"
+    },
+    {
+      "path": "tests/soundfont/test_soundfont.c",
+      "bytes": 2581,
+      "sha256": "53f1acb46d3579b09e5ad1f8dcf4c6f26eca11be435f924ae03c3b2cf4a3eab1"
+    },
+    {
+      "path": "tests/soundfont/test_synth_profile.c",
+      "bytes": 3096,
+      "sha256": "d20e79c3105a006afc7c26dd04e0109080d97fa521f87f1b3e1c814697ddf531"
+    },
+    {
+      "path": "tests/soundfont/test_timing_windows.py",
+      "bytes": 3727,
+      "sha256": "55e6de5f79ac92020ff6056149f58c36f166b68a33517045780ee1ac65df31c6"
+    },
+    {
+      "path": "tests/soundfont/test_tpt_capture.py",
+      "bytes": 2422,
+      "sha256": "3a33dac993642b595564f02a107f8c3e171d1d6a340a2767d59ad819aa5e1c93"
+    },
+    {
+      "path": "tests/soundfont/test_tpt_native_setup.c",
+      "bytes": 2863,
+      "sha256": "cb97f4a6aa1cd743e216693f92148596deb04c039ffb54fb85edba4390cf6a77"
+    },
+    {
+      "path": "tests/soundfont/test_tpt_pair_sweep.c",
+      "bytes": 1364,
+      "sha256": "5b10c514d641661a82780bff634cf0bb3d291c088b13a37f55fbc275ff7c45a7"
+    },
+    {
+      "path": "tests/soundfont/test_tpt_spike.c",
+      "bytes": 2296,
+      "sha256": "4e238a18514f66479f332c7132e90a409a4373989928641dda3b0f606b683b9c"
+    },
+    {
+      "path": "tests/soundfont/test_upload_campaign.py",
+      "bytes": 2938,
+      "sha256": "724f988857b47edf5a263687534532bccd2dd4f5ea2594b3ad07617484b344bb"
+    },
+    {
+      "path": "tests/soundfont/test_voice_pair_analysis.py",
+      "bytes": 2695,
+      "sha256": "a338e1fd74fedb3748952553f0d10be34faf0c85c3e5e4415a255536e182cbfe"
+    },
+    {
+      "path": "tests/soundfont/test_wav_campaign.py",
+      "bytes": 2555,
+      "sha256": "499680df25b2862d7a172cce94e7c9684ed71f5596fd4b50034667e50fac8fa6"
+    },
+    {
+      "path": "tests/soundfont/test_worker.c",
+      "bytes": 18318,
+      "sha256": "b64bc96990819d88d734cad875ee8bff3590eafb7026c35417baff4fc7427b66"
+    },
+    {
+      "path": "tests/soundfont/test_worker_placement_pcm.c",
+      "bytes": 2319,
+      "sha256": "202ad3ba79a79adeb1e74b61b8494823567600640dee63a261ab02469cd0c279"
+    },
+    {
+      "path": "tests/soundfont/worker_stubs/esp_err.h",
+      "bytes": 22,
+      "sha256": "f7223107a5221902365ce989ae1b9483cef3925e75c0f739e439a4ed432875cc"
+    },
+    {
+      "path": "tests/soundfont/worker_stubs/esp_heap_caps.h",
+      "bytes": 22,
+      "sha256": "f7223107a5221902365ce989ae1b9483cef3925e75c0f739e439a4ed432875cc"
+    },
+    {
+      "path": "tests/soundfont/worker_stubs/esp_memory_utils.h",
+      "bytes": 22,
+      "sha256": "f7223107a5221902365ce989ae1b9483cef3925e75c0f739e439a4ed432875cc"
+    },
+    {
+      "path": "tests/soundfont/worker_stubs/freertos/FreeRTOS.h",
+      "bytes": 22,
+      "sha256": "f7223107a5221902365ce989ae1b9483cef3925e75c0f739e439a4ed432875cc"
+    },
+    {
+      "path": "tests/soundfont/worker_stubs/freertos/queue.h",
+      "bytes": 22,
+      "sha256": "f7223107a5221902365ce989ae1b9483cef3925e75c0f739e439a4ed432875cc"
+    },
+    {
+      "path": "tests/soundfont/worker_stubs/freertos/semphr.h",
+      "bytes": 22,
+      "sha256": "f7223107a5221902365ce989ae1b9483cef3925e75c0f739e439a4ed432875cc"
+    },
+    {
+      "path": "tests/soundfont/worker_stubs/freertos/task.h",
+      "bytes": 22,
+      "sha256": "f7223107a5221902365ce989ae1b9483cef3925e75c0f739e439a4ed432875cc"
+    },
+    {
+      "path": "tests/soundfont/worker_stubs/platform.h",
+      "bytes": 1810,
+      "sha256": "04f46b5014bc7584705adc0471a592818dfbd6311e740c379446dd705ed67f3d"
+    },
+    {
+      "path": "tests/soundfont/worker_stubs/psa/crypto.h",
+      "bytes": 22,
+      "sha256": "f7223107a5221902365ce989ae1b9483cef3925e75c0f739e439a4ed432875cc"
+    },
+    {
+      "path": "tests/storage/stubs/sys/unistd.h",
+      "bytes": 33,
+      "sha256": "090610911135f4d7704acbab0ec8dcab1d60fd9385a760df5175e3193f29c672"
+    },
+    {
+      "path": "tests/storage/test_display_canvas.c",
+      "bytes": 1720,
+      "sha256": "77eae3580ea160c316d9c029d916f3216709cb7a95b4c7e1f9a4702249c471ca"
+    },
+    {
+      "path": "tests/storage/test_display_diag.c",
+      "bytes": 1247,
+      "sha256": "f73e95ca0247170d938ee3dea36495c38dd319f4cd015a808616d3a25835ff81"
+    },
+    {
+      "path": "tests/storage/test_gui.cjs",
+      "bytes": 10098,
+      "sha256": "0e60a8d507f6e24dbc531121220dbf15b321765174dadf43981c44761a1a9c3b"
+    },
+    {
+      "path": "tests/storage/test_ota_health.c",
+      "bytes": 1886,
+      "sha256": "758bebc7ef8dcf95802298a34d07cf2a2b82274238567e961c4f4c2ec47769db"
+    },
+    {
+      "path": "tests/storage/test_preset_failure.c",
+      "bytes": 1454,
+      "sha256": "599fe2caff06a26a45d8d16e2d26e4493c987e257a9f1290ff97dedc44a14e0a"
+    },
+    {
+      "path": "tests/storage/test_preset_file.c",
+      "bytes": 4957,
+      "sha256": "12396104e1b2d2078cd674b0e9a126a2f220c8403f2cb61c57a8c935c8df3eb0"
+    },
+    {
+      "path": "tests/storage/test_recorder.c",
+      "bytes": 3214,
+      "sha256": "f3f62a38ed91e5592dd4dd5cabf553f62cd53f13afcc4e268a2a69e73eef2fb2"
+    },
+    {
+      "path": "tests/storage/test_recorder_concurrent.c",
+      "bytes": 2520,
+      "sha256": "ca12fb4d1a86d35dd9946d01ee286daad65da37c67ef2b3dfad1c251aa34d581"
+    },
+    {
+      "path": "tests/storage/test_scope_render.c",
+      "bytes": 3379,
+      "sha256": "c6c27a72d68876700332c8cc39846996be86775e5bf0d9a4cd45791443cfa900"
+    },
+    {
+      "path": "tests/storage/test_sf_last.c",
+      "bytes": 2432,
+      "sha256": "ed3ea082537ced4d5ad0f6dd2f410bacc8d7c8794996bac2391ce24e662fdbaa"
+    },
+    {
+      "path": "tests/storage/test_visualizer.c",
+      "bytes": 937,
+      "sha256": "26913103f00d291ba9c99829782efbec925eb0ecb811fae24539e0f253730486"
+    },
+    {
+      "path": "tests/storage/test_web_utils.c",
+      "bytes": 2023,
+      "sha256": "2b3eeb6afdcf2c36fb39917e663e8c845204fdf6d75f90610f57558568554792"
+    },
+    {
+      "path": "tests/storage/threaded_stubs/freertos/semphr.h",
+      "bytes": 853,
+      "sha256": "58a4d0ff40974595b2953b1e9e425aa8149e3500c2e56bbbabc28c015c4944cd"
+    },
+    {
+      "path": "tests/synth/golden_pcm.c",
+      "bytes": 1233,
+      "sha256": "8997b569e7bf98dff197d0196cc80db5bde34235ba13c65ea99d95753dde2484"
+    },
+    {
+      "path": "tests/synth/run_golden.sh",
+      "bytes": 909,
+      "sha256": "b1e9e38bca7d7c73c950e77d1e08a7c7834806611e898eee3b578e69addabd5e"
+    },
+    {
+      "path": "tests/synth/test_button_gesture.c",
+      "bytes": 6537,
+      "sha256": "e1e4130904f35d8e01e0011b3ad71fb9ff6dedf5ac90f536af1b065fc752e43d"
+    },
+    {
+      "path": "tests/synth/test_electronic_bank.c",
+      "bytes": 2198,
+      "sha256": "22eb5554f7feb330543691d535ee11eaf2fa06b9e43516f5999e4abe7783d9ce"
+    },
+    {
+      "path": "tests/synth/test_finite_clamp.c",
+      "bytes": 1120,
+      "sha256": "3ab30e5170b257b0e81acb2931c022ee758ad99f2052eb56be4592fd30c6722b"
+    },
+    {
+      "path": "tests/synth/test_finite_pair_analysis.py",
+      "bytes": 864,
+      "sha256": "8a4d3738e1dee54fcf9b5e6478c5ffcac365fb573d63bce0c6f141fd5dad6091"
+    },
+    {
+      "path": "tests/synth/test_looper.c",
+      "bytes": 3838,
+      "sha256": "84f78dbf2e6d43df345d33a501efe8ce55955665a4a014bb4362568099edde85"
+    },
+    {
+      "path": "tests/synth/test_note_ownership.c",
+      "bytes": 10476,
+      "sha256": "8d1b098c3296ab314712eed608c8867aef49c4e09deed7f0886540e769ffb97f"
+    },
+    {
+      "path": "tests/synth/test_preset_button.c",
+      "bytes": 3359,
+      "sha256": "53f9ccdbf74b1178807fecc5dc45e5c5c5a03a16f9d8647fb409273ea59dfd52"
+    },
+    {
+      "path": "tests/synth/test_review_20261019.c",
+      "bytes": 10658,
+      "sha256": "0494a5b7811266a76e7768129614c2cca09c4ddf4eecbaf5689babd1f6ce1839"
+    },
+    {
+      "path": "tests/synth/test_review_fixes.c",
+      "bytes": 10967,
+      "sha256": "f5dca0b70e878ab84e8482c2b607fae76b8392a97a1467664ec58bed269b96cd"
+    },
+    {
+      "path": "tests/synth/test_sampler_final.c",
+      "bytes": 7202,
+      "sha256": "8956a578f6913d468d9cbf9226170b8e406a92f8319c8b36d6711fc405b72152"
+    },
+    {
+      "path": "tests/synth/test_sampler_live.c",
+      "bytes": 6631,
+      "sha256": "2897e8506d00566e11162a38e1ba55245f123c88ae79382208b911a3cf7003af"
+    },
+    {
+      "path": "tests/synth/test_sampler_looper.c",
+      "bytes": 9335,
+      "sha256": "ecdf1f4a89103368a6542d205251befe956f378323ebc0349ff1c94f4432b8cc"
+    },
+    {
+      "path": "tests/synth/test_saturator_pair_analysis.py",
+      "bytes": 906,
+      "sha256": "e1c4c8427fd13cd76b5e5260d997a253944488ffc9e3b04c252cf7471922d448"
+    },
+    {
+      "path": "tests/synth/test_sound_transition.c",
+      "bytes": 7108,
+      "sha256": "56bf0e8191cbc6c6d52b55aebc458d6866a6593bc90dfc4ab8e92011c67c71db"
+    },
+    {
+      "path": "tests/synth/test_synth.c",
+      "bytes": 29757,
+      "sha256": "c66be688ddb3eccd0f5901d8d08862056e7d21fef0597fc038577807fc666ba7"
+    },
+    {
+      "path": "tests/synth/test_web_keys.c",
+      "bytes": 1866,
+      "sha256": "8e158afc872c4271a626136a77b6ec08a819ccdb99a593bb9ec2d8467093e2b0"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_check.h",
+      "bytes": 1350,
+      "sha256": "fc41f66d82d3e322a1d99c629c1a907927cebfc0de294853eded9a0408068755"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_err.h",
+      "bytes": 815,
+      "sha256": "ee676216323097229a215c35afa642336da9e5794af7bee8380a340a99e71600"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_heap_caps.h",
+      "bytes": 1374,
+      "sha256": "73c33e272c7d10db5d21a3bea26a6142b124be7b5a605d5fe7b3513cbc7a88bf"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_intr_alloc.h",
+      "bytes": 44,
+      "sha256": "9eed583ecb9c8c6cf422bf7969b0e1cda709d84bfd484138cd5d9fcdb45e150f"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_log.h",
+      "bytes": 601,
+      "sha256": "3e7271f24575c4beb7fde2207f01105866cf01c41311fb54cec6e57b68fe6380"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_timer.h",
+      "bytes": 672,
+      "sha256": "17e0c12af80328c40ee6f21d678c52651df4b3ffc035bd4f660fccf7776f92c3"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/freertos/FreeRTOS.h",
+      "bytes": 741,
+      "sha256": "b3ed5130a9442028db9122d68080f22b4af7470ae6a3576659e85d21919d1ebc"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/freertos/queue.h",
+      "bytes": 1865,
+      "sha256": "a4c5b89190da0ea3a312a93f1afd1b11f97e21bd6626f3052137af16d65e29b0"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/freertos/semphr.h",
+      "bytes": 1314,
+      "sha256": "c2cc4f1a051e7ac8a06449902cc86d9625ccd5b93dce6f69d99b0eb052862684"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/freertos/task.h",
+      "bytes": 1984,
+      "sha256": "d331743bc65738ac0ac769a27b83765e436d22ac073d77d2099ddc02bdf49c6d"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/usb/usb_host.h",
+      "bytes": 4820,
+      "sha256": "0631d826991339599c4abf8dba44bce77e7e9a94d2e302243666e671214ee5ab"
+    },
+    {
+      "path": "tests/usb_midi_host/test_usb_midi_desc.c",
+      "bytes": 3502,
+      "sha256": "a9b0a7e894cbb52b23a7d46b0adc5ec6e5dcacd3c7cdc05e0024216082668472"
+    },
+    {
+      "path": "tests/usb_midi_host/test_usb_midi_lifecycle.c",
+      "bytes": 10519,
+      "sha256": "a3eaf1f2e470f6c5b11f81b46004978768ab6b9b7f13b856084e7bee034ff12f"
+    },
+    {
+      "path": "tests/wifi/stubs/esp_event.h",
+      "bytes": 545,
+      "sha256": "602be727d6bf46ed74fe637b01158d3cce776221775cd6c8f4623a251065224e"
+    },
+    {
+      "path": "tests/wifi/stubs/esp_hosted.h",
+      "bytes": 67,
+      "sha256": "7bb176640a43753a66566a40ba31d045fadab8f0292b36b25fa9161de65b47f7"
+    },
+    {
+      "path": "tests/wifi/stubs/esp_http_server.h",
+      "bytes": 51,
+      "sha256": "85cfb00085216f1f251c1f98564d7a67f99410a74a982119093086435c10b293"
+    },
+    {
+      "path": "tests/wifi/stubs/esp_netif.h",
+      "bytes": 662,
+      "sha256": "3e93d65999ce456a606194246c81a55eb77916687aede43198170367205bc113"
+    },
+    {
+      "path": "tests/wifi/stubs/esp_wifi.h",
+      "bytes": 643,
+      "sha256": "5dd0e4879ef5cd2c2ee34cb139d08dbbd56915b741e07cbc95f592ecccad665f"
+    },
+    {
+      "path": "tests/wifi/test_wifi_retry.c",
+      "bytes": 2736,
+      "sha256": "469f0c2c40b5bd6518ce3b9da5f6521ecd51916e9815c130ca5912160c5fb8b6"
+    },
+    {
+      "path": "tools/analyze_m1_capture.py",
+      "bytes": 2910,
+      "sha256": "f87be5e9989ba1823d8068621a34f2271b40966620202b6382f583c9b3467358"
+    },
+    {
+      "path": "tools/analyze_microphone.py",
+      "bytes": 3179,
+      "sha256": "55acc430ddbaf7f825fd00f1593971fbd94e3b3a032aaab256d1e0ad24d7549c"
+    },
+    {
+      "path": "tools/build_psram_probe.ps1",
+      "bytes": 2260,
+      "sha256": "d84bc258d32d20966bac857b76e9e926722a00c7605113626e82dc25f867fc7b"
+    },
+    {
+      "path": "tools/build_signed.ps1",
+      "bytes": 1027,
+      "sha256": "cb3347e461fdea9951c7042fcb7a6469afd2fead3680b6495c0761f07d23ad4d"
+    },
+    {
+      "path": "tools/build_web_gui.ps1",
+      "bytes": 550,
+      "sha256": "ac197726468c2b90ed29e4d13ead4aa2a5da21b1c6070259ac52ec560293567e"
+    },
+    {
+      "path": "tools/cache_counter_probe/.gitignore",
+      "bytes": 79,
+      "sha256": "b18f2d83174c7d2945a9848ed847687645da860d2abbdc450d0c0e9a6b9e0eb8"
+    },
+    {
+      "path": "tools/cache_counter_probe/CMakeLists.txt",
+      "bytes": 525,
+      "sha256": "6bedc39651c24c6c36c8e4f31ebd35c33ae73e1a0233d434076196ca9bdfb4cd"
+    },
+    {
+      "path": "tools/cache_counter_probe/README.md",
+      "bytes": 1576,
+      "sha256": "55be8fcb734bf0041ca19924b97fa58dcacdaa569920c81e159d4c1e55629f66"
+    },
+    {
+      "path": "tools/cache_counter_probe/analyze.py",
+      "bytes": 5059,
+      "sha256": "88c894578473a4bdfea88f5343b31a2a4fcd0824b5a7828d627e7e0b595f9d95"
+    },
+    {
+      "path": "tools/cache_counter_probe/main/CMakeLists.txt",
+      "bytes": 158,
+      "sha256": "e1db6ec0ec2b1d190bebb30b555ed5237e56c784d4cae6984354b15d313cbae5"
+    },
+    {
+      "path": "tools/cache_counter_probe/main/counter_delta.h",
+      "bytes": 284,
+      "sha256": "6be2a378f25eae2a94b3862e60e7c590dca99df2e494090f5469c07f248408f7"
+    },
+    {
+      "path": "tools/cache_counter_probe/main/probe.c",
+      "bytes": 8067,
+      "sha256": "0a1d895ff8f785a18e78e34c0cd8804e733e92fe71b15f7ad13ea9738a30167a"
+    },
+    {
+      "path": "tools/gen_web_gui_inc.py",
+      "bytes": 1205,
+      "sha256": "b2dd240272740a8d1e2afc9bc4dc30017bf7835140773f25fbf792cd4ae2387d"
+    },
+    {
+      "path": "tools/psram_probe/CMakeLists.txt",
+      "bytes": 315,
+      "sha256": "fbaacc0366f28f18f72754fdef4428409e23ebbc4b25900b4b8fb48fd14acb68"
+    },
+    {
+      "path": "tools/psram_probe/README.md",
+      "bytes": 3737,
+      "sha256": "4f76494436e42d5efaa78fe01594671cecc0d297813d7d776d481400a4af1ab5"
+    },
+    {
+      "path": "tools/psram_probe/capture.py",
+      "bytes": 2093,
+      "sha256": "304690f4b0ca2c7ffda139b25a1a6c9d3829529366caaf666a72d615e7b1d35c"
+    },
+    {
+      "path": "tools/psram_probe/main/CMakeLists.txt",
+      "bytes": 170,
+      "sha256": "43b2b63d81ba54acfa96682532421957299f07700ed1760249bf71ae4c22dc7c"
+    },
+    {
+      "path": "tools/psram_probe/reset_boots.py",
+      "bytes": 1992,
+      "sha256": "6218cbf94adbe0c8e96e45fffafff2c0926bf6443dead376021593a3f6680c0e"
+    },
+    {
+      "path": "tools/sdcard_fill_test.py",
+      "bytes": 4096,
+      "sha256": "dd7cd51c987a4c51f488d55ad3e355346183d614d8cf41642801669a5faac892"
+    },
+    {
+      "path": "tools/serial_audio_check.py",
+      "bytes": 1917,
+      "sha256": "3055058fec17918d529019dbc2c9d79732096517669b57c7f1f38b56e2a6b598"
+    },
+    {
+      "path": "tools/soundfont/analyze_allocation_budget.py",
+      "bytes": 7443,
+      "sha256": "836f75297ea3bd07ece4c1eaeafa5e0ee336abf90dac713945d644aa1aa22a6c"
+    },
+    {
+      "path": "tools/soundfont/analyze_audio_profile.py",
+      "bytes": 2446,
+      "sha256": "958005fcb85a9320392500f639c5a75e632ee0fd4505ed8dbc407c9a5bb9ab36"
+    },
+    {
+      "path": "tools/soundfont/analyze_display_contention.py",
+      "bytes": 6066,
+      "sha256": "0a833ad8a10a17ff1e74a124cee73da98647642734b0b00b4be018c217044c29"
+    },
+    {
+      "path": "tools/soundfont/analyze_event_budget.py",
+      "bytes": 1862,
+      "sha256": "ce9429036177f84f2d28637eb05b272491d868458635dc9b58876c9dd2aee82e"
+    },
+    {
+      "path": "tools/soundfont/analyze_event_profile.py",
+      "bytes": 2168,
+      "sha256": "19f82f7a4d0c1fffd3a9e04bdbfbb671c846e203d2ef2701f496050b1bb55983"
+    },
+    {
+      "path": "tools/soundfont/analyze_inner_profile.py",
+      "bytes": 2238,
+      "sha256": "b692a1c6b227d1120b79503704492fa5bbdc336d2bb4413e9b7dd5bca99d3a11"
+    },
+    {
+      "path": "tools/soundfont/analyze_sched_trace.py",
+      "bytes": 5565,
+      "sha256": "03640b615abb333f3d745935da9c8b52cbcfffa919b349109056400589037fdc"
+    },
+    {
+      "path": "tools/soundfont/display_contention.py",
+      "bytes": 6136,
+      "sha256": "ef329cae0224cd2ba76e49db7f1be5edd96332b5b463befd1508860dc22cb33a"
+    },
+    {
+      "path": "tools/soundfont/lifecycle.py",
+      "bytes": 22753,
+      "sha256": "a41cc6cfa76e67c95d7219a1b121fd91952c2c4ab0147714168dfad876ab64b5"
+    },
+    {
+      "path": "tools/soundfont/patch_tsf.py",
+      "bytes": 4898,
+      "sha256": "7ffd2e0f5b8e5827c51f35608462a2ef1ad2882ab904658b959b7c2ac7b6b0ff"
+    },
+    {
+      "path": "tools/soundfont/r4_harness.py",
+      "bytes": 10476,
+      "sha256": "f8652c3485131ffc2005f59545149de54296c9491e87fc12bfb835bbaca8f6ed"
+    },
+    {
+      "path": "tools/soundfont/r4_stress.py",
+      "bytes": 43184,
+      "sha256": "185c6bce402e5a7bb39640a72333c73f3e599612d13fb9fc3fe73adc1feec0bf"
+    },
+    {
+      "path": "tools/soundfont/summarize_outer_profile.py",
+      "bytes": 4875,
+      "sha256": "ef2b2897d6fe799ecf7f5024461d3023b0d69ea60cc8ad173975e74b93627284"
+    },
+    {
+      "path": "tools/soundfont/upload_campaign.py",
+      "bytes": 10925,
+      "sha256": "268d56323fe60f4ce61253b934ec495864ba00af48d78463d8a158231d9a77f9"
+    },
+    {
+      "path": "tools/soundfont/usb_segment.py",
+      "bytes": 4394,
+      "sha256": "22b6b62464838e36429f09bb06eb5205823dc80b2bbfc462c4159f6274a5ea00"
+    },
+    {
+      "path": "tools/soundfont/validate_r4_capture.py",
+      "bytes": 4378,
+      "sha256": "76a219fc919da687c1476d4dc4231721faee70d8643f176ba4a2dcc9e00b01f5"
+    },
+    {
+      "path": "tools/soundfont/wav_campaign.py",
+      "bytes": 10509,
+      "sha256": "7e80538b6758b9843ba22371876e1980b5939211976f2d9ad713418d84dca6b9"
+    },
+    {
+      "path": "tools/soundfont_bench/CMakeLists.txt",
+      "bytes": 316,
+      "sha256": "6b5f86ad84c1c97e6a2a97c97b9fbcbbe8f3a5b0937cf94fdfa49f89c903b119"
+    },
+    {
+      "path": "tools/soundfont_bench/README.md",
+      "bytes": 12848,
+      "sha256": "70ff4a271b3d1443a3c2a3297eb2756d6ddbf59fac067b7236e30854d23761f1"
+    },
+    {
+      "path": "tools/soundfont_bench/ab_render.c",
+      "bytes": 7566,
+      "sha256": "c7fd6670cb6694f16f07785342a9cee5f159b822b0e54bc94b6497654cb2cfbc"
+    },
+    {
+      "path": "tools/soundfont_bench/adaptive_check.h",
+      "bytes": 3955,
+      "sha256": "c8cb23904d2613d88679715188a324fb8d11f6040158bbe49f425bc614588152"
+    },
+    {
+      "path": "tools/soundfont_bench/adaptive_control_types.h",
+      "bytes": 254,
+      "sha256": "38902863d5fde7d37cd87a2825ab99ddcb6d401f3eda9bf70763ac2da1c42eee"
+    },
+    {
+      "path": "tools/soundfont_bench/adaptive_controls.h",
+      "bytes": 1438,
+      "sha256": "5964b5a46e7a3b8800e9cae573cd7dcc98396c2db615372c962ff93ed27204ee"
+    },
+    {
+      "path": "tools/soundfont_bench/adaptive_target_probe.c",
+      "bytes": 674,
+      "sha256": "de72683678eaba74ab80ae0d489e40ca0093bc7404c2fc85c3a08588eb13a8ba"
+    },
+    {
+      "path": "tools/soundfont_bench/capture.py",
+      "bytes": 2305,
+      "sha256": "e7b1e4220f6387bc24c66a2279c987497f92205e1dbf2e865c7eba888edc07d2"
+    },
+    {
+      "path": "tools/soundfont_bench/capture_normal.py",
+      "bytes": 2065,
+      "sha256": "1bf7ce81976feebcfe568062fdbe274aad4e406943a4e9f470a24df81ac4181a"
+    },
+    {
+      "path": "tools/soundfont_bench/control_block.h",
+      "bytes": 12148,
+      "sha256": "36c13ae0cb70d60307f43b94ae0696f94e9c32f045d40c24ac8c330a5a97eba0"
+    },
+    {
+      "path": "tools/soundfont_bench/control_block_check.h",
+      "bytes": 7293,
+      "sha256": "b9441ef31c99a5245fe9ab5262f98e990f9f37f507094e6ea7ab708b34d6bb15"
+    },
+    {
+      "path": "tools/soundfont_bench/control_block_types.h",
+      "bytes": 894,
+      "sha256": "ca938a66241cd21a4d43f9e27f3f4e6db3fc629a86285a2817afa8d0c8c83f3f"
+    },
+    {
+      "path": "tools/soundfont_bench/control_math.h",
+      "bytes": 985,
+      "sha256": "4fc95924aeda2432f8b337d2aecb42153c38e808c0fc14f7164ccc20f8b6ee44"
+    },
+    {
+      "path": "tools/soundfont_bench/control_quality.py",
+      "bytes": 10353,
+      "sha256": "661b243aa5587bcadba741c0bed0a051f3bd9371707608aca5528c029cdb865c"
+    },
+    {
+      "path": "tools/soundfont_bench/filter_pair.h",
+      "bytes": 1934,
+      "sha256": "2bf9f14d15396c063055926759d4ecbda0adf1cc7d4328c16cebfb073a2c17a8"
+    },
+    {
+      "path": "tools/soundfont_bench/main/CMakeLists.txt",
+      "bytes": 7275,
+      "sha256": "33cef244da6b1e0944eb320d8a1a88484fbf029a441e564de1c248226f63938d"
+    },
+    {
+      "path": "tools/soundfont_bench/main/bench.c",
+      "bytes": 7021,
+      "sha256": "692cca12a5b867de83c21bcd907982cae5cfb9f79610190f3e349e1b444f0fbf"
+    },
+    {
+      "path": "tools/soundfont_bench/math_bench.h",
+      "bytes": 3088,
+      "sha256": "6d7b94a17967d5f3ee0f372d37043f169f130193e80517fd6c50cb38b9dd93b7"
+    },
+    {
+      "path": "tools/soundfont_bench/mono_block.h",
+      "bytes": 3902,
+      "sha256": "48362e97f6350662045c75420ec9f5f702674630efc0a71b7707491894ba8238"
+    },
+    {
+      "path": "tools/soundfont_bench/mono_check.h",
+      "bytes": 2310,
+      "sha256": "c19dbdf21e1de6b5055197122a64ab98b1e28847bea93dce0b3fe6ec5641f936"
+    },
+    {
+      "path": "tools/soundfont_bench/profile.py",
+      "bytes": 26338,
+      "sha256": "4bbafcfa6347250db673f8d4d842c1ef5d5768584daaf19c53d2f2d06b839726"
+    },
+    {
+      "path": "tools/soundfont_bench/sample_phase.h",
+      "bytes": 2237,
+      "sha256": "6a47e31d1d0a4697f048b9716bae37906c1e539d7d92ed873130d1e2883955f5"
+    },
+    {
+      "path": "tools/soundfont_bench/test_adaptive_native.py",
+      "bytes": 1641,
+      "sha256": "9f455b73f28f5fbfa54963226d4eeb0478aa46fbc10f196bc87de489d778dbbb"
+    },
+    {
+      "path": "tools/soundfont_bench/test_filter_reference.py",
+      "bytes": 2820,
+      "sha256": "d0e3e817663b51b1022b434b8303a53661d599c9897fa4b85a59bd9019831a1a"
+    },
+    {
+      "path": "tools/soundfont_bench/test_pitch_per_sample.py",
+      "bytes": 4372,
+      "sha256": "4404c5afc124e70a498bbe0967c8ba6156d196b40b6f3a04d4fef567cebaa8b7"
+    },
+    {
+      "path": "tools/soundfont_bench/test_profile.py",
+      "bytes": 8983,
+      "sha256": "0088e14b61ddba516fbf8366bf31f7c14592bf9712a8898124be48c1b289dda9"
+    },
+    {
+      "path": "tools/soundfont_bench/test_tpt_native_setup.py",
+      "bytes": 2460,
+      "sha256": "74ebd89fd72308c998098cb7456aa4c9756e2f79e410a233c2247b1918fe7ed3"
+    },
+    {
+      "path": "tools/soundfont_bench/tpt_native_setup.h",
+      "bytes": 2334,
+      "sha256": "2f858616c21b6b6c93ddfd145de6ceba8623c07c8a6f4b07e8d3062fad73ed1f"
+    },
+    {
+      "path": "tools/soundfont_bench/tpt_native_target_probe.c",
+      "bytes": 411,
+      "sha256": "db32079d64cb4acd576e56d4dd8e88b313fe06bf4eebe83d6ce61db9ce328694"
+    },
+    {
+      "path": "tools/soundfont_bench/tpt_pair_spike.h",
+      "bytes": 947,
+      "sha256": "d909d5273aec902906f1c5906fb311241ecd8594ecbbc74f4b0cfe48f8054263"
+    },
+    {
+      "path": "tools/soundfont_bench/tpt_spike.h",
+      "bytes": 676,
+      "sha256": "ad0fe3691437250b7b2da0a63aa6f44558de5b3fc95998887a58e7d34d7c92af"
+    },
+    {
+      "path": "tools/soundfont_bench/tpt_target_probe.c",
+      "bytes": 511,
+      "sha256": "9badb82d822da2adbdc19f84522a01257d983f9a79a5db2880c346c65a342966"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/.gitignore",
+      "bytes": 79,
+      "sha256": "b18f2d83174c7d2945a9848ed847687645da860d2abbdc450d0c0e9a6b9e0eb8"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/CMakeLists.txt",
+      "bytes": 1539,
+      "sha256": "200fd745b7e3563ffa5532e4410774404e93a2a2df920def92552e6de5053c2c"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/README.md",
+      "bytes": 2046,
+      "sha256": "92d38444bd802f9e9d704c63f4e147894d95749bb1fcf9b06f5c814379390481"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/analyze.py",
+      "bytes": 3194,
+      "sha256": "2d176106056481f57e6f1585e6dd8444b56342787b3461a021c77e746b7cb3fd"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/analyze_contention.py",
+      "bytes": 3937,
+      "sha256": "573cdcebe6161afc433edca7cb2c6d267375628fded2e4e8567d23d1498fa3c1"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/analyze_finite.py",
+      "bytes": 1548,
+      "sha256": "2ddc6108a2c1a97a476ddb9035f0ed576e2b2175d14b7b9593bff87d3f952a4d"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/analyze_placement.py",
+      "bytes": 4270,
+      "sha256": "bb9de3ed1cba321a21bb0930e53705715317c5f19adebdd45fa1a21d6a286d5c"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/analyze_q_cache.py",
+      "bytes": 2549,
+      "sha256": "9e1c25dd2681ca7bd006a583394c02ae470c5ef9dcc05c6995c47bee7fb0958c"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/analyze_saturator.py",
+      "bytes": 1588,
+      "sha256": "22bf6e9200760e2c5a5d41b0081b098007aad94b0d70e432c706744c4b0bec89"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/main/CMakeLists.txt",
+      "bytes": 2820,
+      "sha256": "c8ac37bfcdbef274b7713c061b72807dcc9bba4f6d3e120f928f7de845eb2145"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/main/bench.c",
+      "bytes": 8063,
+      "sha256": "eeb87fcb869ebbdd1af63ba70971277bdcb8c7158708372a5b988be23205dcfd"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/main/contention.c",
+      "bytes": 8901,
+      "sha256": "c36815d13114fbb836031089089e4b72ade40ba5ab419ef55b3259caf990f682"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/main/finite.c",
+      "bytes": 2686,
+      "sha256": "adacc94cbef16e0fc0cdd66b67ff0ab3f5fbc3cb606ace0510d18b8453186a1e"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/main/placement.c",
+      "bytes": 7248,
+      "sha256": "3b15556b9f859f0ab78dd800126a315c947a2dc90b56ab71817a60c506e47a41"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/main/saturator.c",
+      "bytes": 2963,
+      "sha256": "df8a15dad6dc57a5bb93eb9102c513ad686678c4b44cad400fb5afc629be4100"
+    },
+    {
+      "path": "tools/soundfont_pair_bench/prepare.py",
+      "bytes": 1832,
+      "sha256": "a235c1417fb3161c67c53825214fc9c25733eb53413753e3ce14bd770b5c7c7b"
+    },
+    {
+      "path": "tools/tpt_bench/CMakeLists.txt",
+      "bytes": 315,
+      "sha256": "08f95297368ed14c3a7a54de0eeb565659d4b2cb683123b4772e80bb40b34dbe"
+    },
+    {
+      "path": "tools/tpt_bench/README.md",
+      "bytes": 2081,
+      "sha256": "04f5aa5c870197f9d90f2106037a4cf914cfb0c9361e0c32a58386c320a52e78"
+    },
+    {
+      "path": "tools/tpt_bench/capture.py",
+      "bytes": 2174,
+      "sha256": "aef795155385c741a40be3f172edddc228553c863ca57e385e61d45fce50c0cd"
+    },
+    {
+      "path": "tools/tpt_bench/main/CMakeLists.txt",
+      "bytes": 684,
+      "sha256": "b36bd932b094fabb9c8936da3803e2fc584c1bcbfcb367a21c8c0630d0a5c20f"
+    },
+    {
+      "path": "tools/tpt_bench/main/bench.c",
+      "bytes": 3647,
+      "sha256": "6bcd0cde3051c0aabeb5ef63a18ed02fc88cf95ea2648f5d1903b996efab15e7"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-09",
+  "phase": "P02",
+  "version": "0.0.2-audio",
+  "source_commit": "9c0cf30b556501a6bb7bd4ffe348f6d7b83bc037",
+  "imported_byte_identical_paths": [
+    "components/midi/CMakeLists.txt",
+    "components/midi/include/midi_event.h",
+    "components/midi/include/midi_parser.h",
+    "components/midi/include/midi_queue.h",
+    "components/midi/midi_parser.c",
+    "components/midi/midi_queue.c",
+    "components/synth/include/synth.h",
+    "components/synth/include/synth_block_trace.h",
+    "components/synth/include/synth_finite_clamp.h",
+    "components/synth/include/synth_looper.h",
+    "components/synth/include/synth_profile.h",
+    "components/synth/include/synth_sampler.h",
+    "components/synth/include/synth_sound.h",
+    "components/synth/include/synth_web_keys.h",
+    "components/synth/synth.c",
+    "components/synth/synth_looper.c",
+    "components/synth/synth_sound.c",
+    "components/synth/synth_voice_engine.h",
+    "components/synth/synth_web_keys.c",
+    "tests/midi/test_midi_parser.c",
+    "tests/midi/test_midi_queue.c",
+    "tests/synth/test_electronic_bank.c",
+    "tests/synth/test_finite_clamp.c",
+    "tests/synth/test_looper.c",
+    "tests/synth/test_note_ownership.c",
+    "tests/synth/test_review_20261019.c",
+    "tests/synth/test_review_fixes.c",
+    "tests/synth/test_sound_transition.c",
+    "tests/synth/test_synth.c",
+    "tests/synth/test_web_keys.c",
+    "tests/usb_midi_host/stubs/esp_err.h",
+    "tests/usb_midi_host/stubs/freertos/FreeRTOS.h",
+    "tests/usb_midi_host/stubs/freertos/queue.h"
+  ],
+  "idf_version": "6.1.0",
+  "idf_commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "target": "esp32s31",
+  "codec_dependency": "espressif/esp_codec_dev 1.6.2",
+  "host": {
+    "status": "PASS",
+    "suites": [
+      "midi_parser",
+      "midi_queue",
+      "synth",
+      "finite_clamp",
+      "review_dsp",
+      "web_keys",
+      "note_ownership",
+      "looper",
+      "review_fixes",
+      "electronic_bank",
+      "sound_transition"
+    ]
+  },
+  "build": {
+    "status": "PASS",
+    "app_bytes": 336032,
+    "diram_static_bytes": 184006,
+    "diram_static_remaining_bytes": 319738,
+    "upstream_cmake_include_warnings": 5
+  },
+  "elf_required_symbols_present": [
+    "audio_start",
+    "es8311_codec_new",
+    "looper_render_mix",
+    "midi_parser_parse_usb_packet",
+    "synth_render"
+  ],
+  "hardware": "NOT RUN",
+  "files": [
+    {
+      "path": "build-p02/nektarina_s31.bin",
+      "bytes": 336032,
+      "sha256": "04106cdec6c78df22d0eadd8773b837c2fc7917070b72baa2cb073740b093c8e"
+    },
+    {
+      "path": "build-p02/nektarina_s31.elf",
+      "bytes": 6531620,
+      "sha256": "ebbe825b1a19e34e04d3f68bd8784d761f9481a758b4d13557d13cc967bfc6e9"
+    },
+    {
+      "path": "build-p02/bootloader/bootloader.bin",
+      "bytes": 23168,
+      "sha256": "7317431a2a0a12160d5c9a9fca229214169cc6b96b3618ba2d29184d652804fe"
+    },
+    {
+      "path": "build-p02/partition_table/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+    },
+    {
+      "path": "sdkconfig",
+      "bytes": 107635,
+      "sha256": "adb12ab6d27c194bf833494d5eb2c2e2163d391c02e394cce1694610ad04e73f"
+    },
+    {
+      "path": "dependencies.lock",
+      "bytes": 544,
+      "sha256": "1c6f6a7a200119fd968cdaf0ccdda1308553b2fae6e776f60a14d25c5649187d"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p02-build.log",
+      "bytes": 177085,
+      "sha256": "2e829e185ff847fef2fb1800d55937da7ed9ca3f7be0c1b864fac177cf658b8b"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p02-host.log",
+      "bytes": 3338,
+      "sha256": "19760416a8fb2052906abc995cd934d9515cade479e027451671d52cde666635"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p02-size.log",
+      "bytes": 2656,
+      "sha256": "7fafbe6db340b94e72e2a2f1f27ede065dd73110cba16238050f3c8d43c6aa64"
+    }
+  ]
+}

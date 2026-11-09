@@ -1,0 +1,196 @@
+{
+  "date": "2026-11-09",
+  "phase": "P03",
+  "version": "0.0.3-usb-midi",
+  "source_commit": "9c0cf30b556501a6bb7bd4ffe348f6d7b83bc037",
+  "idf_version": "6.1.0",
+  "idf_commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "target": "esp32s31",
+  "usb_component": "espressif/usb 1.5.0",
+  "usb_controller": 0,
+  "board_connector": "J4 Type-A",
+  "host": {
+    "status": "PASS",
+    "suites": [
+      "usb_midi_desc",
+      "usb_midi_lifecycle",
+      "midi_ingress",
+      "midi_parser",
+      "midi_queue",
+      "synth",
+      "finite_clamp",
+      "review_dsp",
+      "web_keys",
+      "note_ownership",
+      "looper",
+      "review_fixes",
+      "electronic_bank",
+      "sound_transition"
+    ],
+    "stub_unused_warnings": 6
+  },
+  "build": {
+    "status": "PASS",
+    "app_bytes": 406208,
+    "diram_static_bytes": 196188,
+    "diram_static_remaining_bytes": 307556,
+    "upstream_cmake_include_warnings": 5
+  },
+  "elf_required_symbols_present": [
+    "usb_midi_host_start",
+    "usb_host_install",
+    "midi_ingress_start",
+    "midi_ingress_drain",
+    "synth_render"
+  ],
+  "hardware": "NOT RUN",
+  "usb_reference_port": [
+    {
+      "path": "components/usb_midi_host/CMakeLists.txt",
+      "reference_sha256": "356e5d96633c1a8b009eef1ac1983fd18bf6b3772b2a045f10f03a9a41534960",
+      "sha256": "356e5d96633c1a8b009eef1ac1983fd18bf6b3772b2a045f10f03a9a41534960"
+    },
+    {
+      "path": "components/usb_midi_host/LICENSE-PAJONIIIR",
+      "reference_sha256": "b125cc2d597ed5268d3f3f1598a7ca89d3f409980f7c90bf92443098f83f45d1",
+      "sha256": "b125cc2d597ed5268d3f3f1598a7ca89d3f409980f7c90bf92443098f83f45d1"
+    },
+    {
+      "path": "components/usb_midi_host/idf_component.yml",
+      "reference_sha256": "50f68bc607cea8a6896a1b9fe271ee794827970904c5e05cb0001043028fda17",
+      "sha256": "a913d7267a4a0bfb2d9b848ab801b144f3fc06f2c1f27ffd5c9978470ef019d5"
+    },
+    {
+      "path": "components/usb_midi_host/include/usb_midi_desc.h",
+      "reference_sha256": "fe59d7270e40f5396f2b09f74421ee41c19cc9af408f213e812c2f762a545155",
+      "sha256": "fe59d7270e40f5396f2b09f74421ee41c19cc9af408f213e812c2f762a545155"
+    },
+    {
+      "path": "components/usb_midi_host/include/usb_midi_host.h",
+      "reference_sha256": "4ccd23c7cdf28f3b8bb9f9d9bf4b3a6822c4108fa940e4015a5f3fd75e15f324",
+      "sha256": "0d36156a5078a3a5b35e5f0c27138d7ee406ed24a1e4f3d2e80b73761984c189"
+    },
+    {
+      "path": "components/usb_midi_host/usb_midi_desc.c",
+      "reference_sha256": "e39fca1dbc65c04a38a19c3c6c1ffed278bafd88ccaa9a57a982f94c6793e21a",
+      "sha256": "e39fca1dbc65c04a38a19c3c6c1ffed278bafd88ccaa9a57a982f94c6793e21a"
+    },
+    {
+      "path": "components/usb_midi_host/usb_midi_host.c",
+      "reference_sha256": "cbf72608ca67a5c178eec80a948a3234efaa15754add5374a823fc513b1b4159",
+      "sha256": "3c073751e28e2d275644bb68e1bc89027b91e9eec75044f0ae1db515f251e766"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_check.h",
+      "reference_sha256": "fc41f66d82d3e322a1d99c629c1a907927cebfc0de294853eded9a0408068755",
+      "sha256": "fc41f66d82d3e322a1d99c629c1a907927cebfc0de294853eded9a0408068755"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_err.h",
+      "reference_sha256": "ee676216323097229a215c35afa642336da9e5794af7bee8380a340a99e71600",
+      "sha256": "ee676216323097229a215c35afa642336da9e5794af7bee8380a340a99e71600"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_heap_caps.h",
+      "reference_sha256": "73c33e272c7d10db5d21a3bea26a6142b124be7b5a605d5fe7b3513cbc7a88bf",
+      "sha256": "73c33e272c7d10db5d21a3bea26a6142b124be7b5a605d5fe7b3513cbc7a88bf"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_intr_alloc.h",
+      "reference_sha256": "9eed583ecb9c8c6cf422bf7969b0e1cda709d84bfd484138cd5d9fcdb45e150f",
+      "sha256": "9eed583ecb9c8c6cf422bf7969b0e1cda709d84bfd484138cd5d9fcdb45e150f"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_log.h",
+      "reference_sha256": "3e7271f24575c4beb7fde2207f01105866cf01c41311fb54cec6e57b68fe6380",
+      "sha256": "3e7271f24575c4beb7fde2207f01105866cf01c41311fb54cec6e57b68fe6380"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/esp_timer.h",
+      "reference_sha256": "17e0c12af80328c40ee6f21d678c52651df4b3ffc035bd4f660fccf7776f92c3",
+      "sha256": "17e0c12af80328c40ee6f21d678c52651df4b3ffc035bd4f660fccf7776f92c3"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/freertos/FreeRTOS.h",
+      "reference_sha256": "b3ed5130a9442028db9122d68080f22b4af7470ae6a3576659e85d21919d1ebc",
+      "sha256": "b3ed5130a9442028db9122d68080f22b4af7470ae6a3576659e85d21919d1ebc"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/freertos/queue.h",
+      "reference_sha256": "a4c5b89190da0ea3a312a93f1afd1b11f97e21bd6626f3052137af16d65e29b0",
+      "sha256": "a4c5b89190da0ea3a312a93f1afd1b11f97e21bd6626f3052137af16d65e29b0"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/freertos/semphr.h",
+      "reference_sha256": "c2cc4f1a051e7ac8a06449902cc86d9625ccd5b93dce6f69d99b0eb052862684",
+      "sha256": "c2cc4f1a051e7ac8a06449902cc86d9625ccd5b93dce6f69d99b0eb052862684"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/freertos/task.h",
+      "reference_sha256": "d331743bc65738ac0ac769a27b83765e436d22ac073d77d2099ddc02bdf49c6d",
+      "sha256": "d331743bc65738ac0ac769a27b83765e436d22ac073d77d2099ddc02bdf49c6d"
+    },
+    {
+      "path": "tests/usb_midi_host/stubs/usb/usb_host.h",
+      "reference_sha256": "0631d826991339599c4abf8dba44bce77e7e9a94d2e302243666e671214ee5ab",
+      "sha256": "4b44a0cade631130ffca5833724f1aedb18b0c09ddf181abbac89c08e51e1adf"
+    },
+    {
+      "path": "tests/usb_midi_host/test_usb_midi_desc.c",
+      "reference_sha256": "a9b0a7e894cbb52b23a7d46b0adc5ec6e5dcacd3c7cdc05e0024216082668472",
+      "sha256": "a9b0a7e894cbb52b23a7d46b0adc5ec6e5dcacd3c7cdc05e0024216082668472"
+    },
+    {
+      "path": "tests/usb_midi_host/test_usb_midi_lifecycle.c",
+      "reference_sha256": "a3eaf1f2e470f6c5b11f81b46004978768ab6b9b7f13b856084e7bee034ff12f",
+      "sha256": "578254696be1637e74f27b68c9386361f2e8c02b1f45b111649d32022a24c7d4"
+    }
+  ],
+  "files": [
+    {
+      "path": "build-p03/nektarina_s31.bin",
+      "bytes": 406208,
+      "sha256": "9298608daff0e3d9e804187960f100167f7ebc9f410bfe52abee004ff2366e7c"
+    },
+    {
+      "path": "build-p03/nektarina_s31.elf",
+      "bytes": 7276272,
+      "sha256": "f3fa0006f27293bcb12b08462151a4fd57f3a54059ae74226f288c221c43e20b"
+    },
+    {
+      "path": "build-p03/bootloader/bootloader.bin",
+      "bytes": 23168,
+      "sha256": "70bf205efb51ecb67b427843b48c6bf45cbedfb27c145aa00bc3dff8d2dc1709"
+    },
+    {
+      "path": "build-p03/partition_table/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+    },
+    {
+      "path": "sdkconfig",
+      "bytes": 108629,
+      "sha256": "f9862bcc23c9215ef4fab4d9ccaaaa41439a1292c48e4729c8203d339b0320c3"
+    },
+    {
+      "path": "dependencies.lock",
+      "bytes": 970,
+      "sha256": "b005fbd20d8d442cb86ef78904e9945c98bd17a2c0c403dde9ec5249228fda11"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p03-build.log",
+      "bytes": 181646,
+      "sha256": "048dcac067929ee4d4991a5dbabe00df3728f469e925b3838d1c41b0957a1fea"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p03-host.log",
+      "bytes": 5486,
+      "sha256": "56746cf2247b7df932cee45a0519c5b5975bfa4c13e59297e3eece2163874f19"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-p03-size.log",
+      "bytes": 2656,
+      "sha256": "a7e6e2752240bd4677d1a69e451680903214b2ba38d5af19d2b7714ff5ec19b9"
+    }
+  ]
+}

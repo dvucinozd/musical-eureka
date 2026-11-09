@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "date": "2026-11-09",
+  "timezone": "Europe/Zagreb",
+  "project": "nektarina_s31",
+  "version": "0.0.1-bootstrap",
+  "target": "esp32s31",
+  "idf_version": "6.1.0",
+  "idf_commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "gcc_version": "15.2.0",
+  "esptool_version": "5.6.0",
+  "source_commit": "9c0cf30b556501a6bb7bd4ffe348f6d7b83bc037",
+  "scope": {
+    "microsd": false,
+    "wav_recorder": false,
+    "midi_looper_tracks_planned": 4
+  },
+  "build": {
+    "status": "PASS",
+    "command": "tools/build.ps1 (activated ESP-IDF 6.1.0)",
+    "sdk_cmake_include_warnings": 5,
+    "boot": "NOT RUN",
+    "peripherals": "NOT RUN"
+  },
+  "host_baseline": {
+    "status": "PASS",
+    "suites": 30,
+    "command": "reference/nektar-p4/tests/run_tests.ps1",
+    "usb_stub_unused_warnings": 6,
+    "soundfont_sanitizers": "NOT RUN"
+  },
+  "partition_draft": {
+    "status": "PASS",
+    "active": false,
+    "command": "python C:/esp/v6.1/esp-idf/components/partition_table/gen_esp32part.py --flash-size 16MB config/partitions.proposed.csv tmp/partitions.proposed.bin"
+  },
+  "physical_device_access": false,
+  "source_worktree_modified": false,
+  "files": [
+    {
+      "path": "CMakeLists.txt",
+      "bytes": 869,
+      "sha256": "619cc4d36f387f0a54aec4498754954dc5eb770eff64ff2fca3a76bfc02de861"
+    },
+    {
+      "path": "main/CMakeLists.txt",
+      "bytes": 128,
+      "sha256": "5835a13dce68860b4af904fc5f9fd3081c8b389da0ed523482c8285d02c4a5e4"
+    },
+    {
+      "path": "main/app_main.c",
+      "bytes": 1676,
+      "sha256": "059b20b38e3374865f52c0e5b3cb28c54d7c6fcf766af39c4f167c7ec0f89bc4"
+    },
+    {
+      "path": "sdkconfig.defaults",
+      "bytes": 696,
+      "sha256": "e827d5840be8f413c9ee2837e530fdc4a0de43c6e6ed86a50bc233417fe111c6"
+    },
+    {
+      "path": "sdkconfig",
+      "bytes": 106832,
+      "sha256": "ba8cbf2b8a392f83f0962fe2e684099e09318fb3b06bfe2973b9b00bcfcd1d4d"
+    },
+    {
+      "path": "build/nektarina_s31.bin",
+      "bytes": 202160,
+      "sha256": "41fb5c60d4f967802e638b4dc4d326c20253f2e4ddc1a47507616550f5d5dfe1"
+    },
+    {
+      "path": "build/nektarina_s31.elf",
+      "bytes": 5098020,
+      "sha256": "309e9f06ef2ac35b0eb257ba49759593744437ce8dcb92db7d7ee4bd7aca921c"
+    },
+    {
+      "path": "build/bootloader/bootloader.bin",
+      "bytes": 23168,
+      "sha256": "015909148e69b003c550238001b4ec34b598282a1aab3d7aa0f8d72ed2e75efe"
+    },
+    {
+      "path": "build/partition_table/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+    },
+    {
+      "path": "config/partitions.proposed.csv",
+      "bytes": 428,
+      "sha256": "a33c7ce2c21d882b0ab6e34b28777be4fdc537a1d7cbdc1de4fba82eb2c00519"
+    },
+    {
+      "path": "tmp/partitions.proposed.bin",
+      "bytes": 3072,
+      "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-bootstrap-build.log",
+      "bytes": 172408,
+      "sha256": "b2d67224fa3bb303216afca2417d13aa5736001932ea048c412a921d5fb31a6b"
+    },
+    {
+      "path": "docs/evidence/2026-11-09-source-host-tests.log",
+      "bytes": 7064,
+      "sha256": "3597f7d85e1874d7c4ae0beababac85120e768b7d10157b1f020bddd49fc9bcc"
+    }
+  ]
+}

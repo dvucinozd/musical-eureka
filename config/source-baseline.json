@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "audited_on": "2026-11-09",
+  "repository": "https://github.com/dvucinozd/NektarIna.git",
+  "local_source": "D:/AI/NEKTAR-P4",
+  "commit": "9c0cf30b556501a6bb7bd4ffe348f6d7b83bc037",
+  "release_tag": "v1.0.0",
+  "release_build_commit": "430d27a2bd4edd64b843627ada6e363b302561db",
+  "source_target": "esp32p4",
+  "source_idf": "6.0.2",
+  "target": "esp32s31",
+  "target_idf": "6.1.0",
+  "target_idf_commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "archive_paths": ["main", "components", "tests", "tools", "CMakeLists.txt", "sdkconfig.defaults", "partitions.csv", "dependencies.lock", "README.md", "docs/RELEASE_1.0.0.md"],
+  "notes": "Reference export only; P4 configuration and binaries must not be flashed on S31. No source firmware differences between release_build_commit and commit in audited paths."
+}
+

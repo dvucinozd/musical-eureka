@@ -1,0 +1,19 @@
+                            Memory Type Usage Summary                             
+┌─────────────────────┬──────────────┬──────────┬────────────────┬───────────────┐
+│ Memory Type/Section │ Used [bytes] │ Used [%] │ Remain [bytes] │ Total [bytes] │
+├─────────────────────┼──────────────┼──────────┼────────────────┼───────────────┤
+│ Flash               │       328918 │          │                │               │
+│    .text            │       245958 │          │                │               │
+│    .rodata          │        82400 │          │                │               │
+│    .init_array      │          280 │          │                │               │
+│    .appdesc         │          256 │          │                │               │
+│    .tdata           │           24 │          │                │               │
+│ DIRAM               │       196188 │    38.95 │         307556 │        503744 │
+│    .bss             │       119008 │    23.62 │                │               │
+│    .text            │        63406 │    12.59 │                │               │
+│    .data            │        13774 │     2.73 │                │               │
+│ LP SRAM             │           24 │     0.07 │          32744 │         32768 │
+│    .rtc_reserved    │           24 │     0.07 │                │               │
+└─────────────────────┴──────────────┴──────────┴────────────────┴───────────────┘
+Total image size: 405818 bytes (.bin may be padded larger)
+Note: The reported total sizes may be smaller than those in the technical reference manual due to reserved memory and application configuration. The total flash size available for the application is not included by default, as it cannot be reliably determined due to the presence of other data like the bootloader, partition table, and application partition size. The total external RAM size is not included either, because the amount of RAM connected to the chip is detected at boot and is not known during the build.

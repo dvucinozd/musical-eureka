@@ -1,0 +1,16 @@
+/build*/
+/sdkconfig
+/sdkconfig.old
+/managed_components/
+/tmp/
+/reference/vendor/
+/reference/nektar-p4/
+__pycache__/
+*.pyc
+*.pem
+*.key
+*.sf2
+*.wav
+.env
+.env.*
+

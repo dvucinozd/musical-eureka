@@ -1,0 +1,18 @@
+# P01 compile-only bootstrap; physical board/revision not yet identified.
+# Espressif coreboard defaults at board-manager commit 391f8bc5bd15beab3f2045e677b6675def25833f.
+CONFIG_IDF_TARGET="esp32s31"
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_320=y
+CONFIG_ESPTOOLPY_FLASHMODE_QIO=y
+CONFIG_ESPTOOLPY_FLASHFREQ_80M=y
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y
+CONFIG_SPIRAM_SPEED_200M=y
+CONFIG_SPIRAM_BOOT_INIT=y
+CONFIG_SPIRAM_MEMTEST=y
+CONFIG_SPIRAM_USE_CAPS_ALLOC=y
+# Deliberately keep IDF's single-app partition table during bootstrap.
+# Production dual-OTA/data layout will be specified after storage selection.
+CONFIG_PARTITION_TABLE_SINGLE_APP=y
+CONFIG_FREERTOS_HZ=1000
+
