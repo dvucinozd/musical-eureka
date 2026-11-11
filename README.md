@@ -17,6 +17,12 @@ P06B dodaje opcionalni razvojni Bluetooth izlaz uz zadani lokalni zvučnik.
 
 ## Dokumenti za početak
 
+**2026-11-11: P01 fizički boot i PSRAM PASS**, PCB V1.0 na UART COM7.
+Potvrđen je i osnovni izlaz zvuka, uz čistu synth notu C6 prema korisniku.
+Na ploči je `build-p02-diagnostic`. Preostaju clock mjerenja i provjera C4
+odziva priključenog zvučnika. [P02 rezultati](docs/P02_AUDIO_BRINGUP.md).
+[Backup, identitet i rezultati](docs/BOARD_BRINGUP_2026-11-11.md).
+
 | Dokument | Sadržaj |
 | --- | --- |
 | [Projekt i opseg](docs/PROJECT.md) | Funkcije, ograničenja i definicija završetka |

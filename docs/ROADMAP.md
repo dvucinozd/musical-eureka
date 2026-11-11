@@ -3,11 +3,11 @@
 Ne preskakati dokaz u prethodnoj fazi koji je preduvjet sljedeće. Host rad na neovisnim
 modulima može napredovati dok ploča nije dostupna. Procjene vremena nisu postavljene.
 
-| Faza | Isporuka | Izlazni kriterij | Status 2026-11-09 |
+| Faza | Isporuka | Izlazni kriterij | Status 2026-11-11 |
 | --- | --- | --- | --- |
 | P00 | Source audit, shema, opseg, odluke i baseline manifest | Izvori i rizici navedeni; no-SD/no-WAV odluka ugrađena | GOTOVO |
-| P01 | Pinned SDK, minimalni S31 projekt i ponovljivi alati | Host baseline i S31 build; fizički boot zasebno | SOFTWARE GOTOVO, boot NOT RUN |
-| P02 | Board/audio adapter i prijenos synth/MIDI jezgre | Build, host regresije, ES8311 ACK, mute, clockovi i kontrolirana prva nota | SOFTWARE PASS, hardware NOT RUN |
+| P01 | Pinned SDK, minimalni S31 projekt i ponovljivi alati | Host baseline i S31 build; fizički boot zasebno | BOOT / PSRAM PASS |
+| P02 | Board/audio adapter i prijenos synth/MIDI jezgre | Build, host regresije, ES8311 ACK, mute, clockovi i kontrolirana prva nota | Osnovni C6 audio potvrđen; clock mjerenja i C4 odziv otvoreni |
 | P03 | USB MIDI host i live synth | GX49 enumerate, NoteOn/Off/CC, unplug/reconnect, bez zapele note | SOFTWARE PASS, hardware NOT RUN |
 | P04 | Native Wi-Fi, Web kontrole, četiri looper trake | Virtual keys i source ownership, retry, looper i UI bez SD/WAV-a | SOFTWARE PASS, hardware NOT RUN |
 | P05 | Flash bank store, NVS preset, SF worker | Particije, prekidi upisa/recovery, hash, allocator cap, boot restore | SOFTWARE PASS, HARDWARE NOT RUN |

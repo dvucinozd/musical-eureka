@@ -1,0 +1,9 @@
+I (17292) S31_P03: state=2 blocks=5926 prep_max_us=412 deadlines=0 dma_overflows=0 probes=0 fault=ESP_OK
+I (17292) S31_AUDIO: probe_pcm_peak=0 note_accepted=0 pa_enable_command_ok=0
+I (17297) S31_P03: usb_ready=0 session=0 vid=0000 pid=0000 speed=0 raw_drops=0 stale_raw=0 in_errors=0
+I (17306) S31_P03: midi_applied=0 rejected=0 semantic_drops=0 panics=0 rx_to_dispatch_max_us=0
+I (26122) S31_P03: Probe accepted
+I (27248) S31_P03: state=2 blocks=9659 prep_max_us=516 deadlines=0 dma_overflows=0 probes=1 fault=ESP_OK
+I (27248) S31_AUDIO: probe_pcm_peak=457 note_accepted=1 pa_enable_command_ok=1
+I (27253) S31_P03: usb_ready=0 session=0 vid=0000 pid=0000 speed=0 raw_drops=0 stale_raw=0 in_errors=0
+I (27262) S31_P03: midi_applied=0 rejected=0 semantic_drops=0 panics=0 rx_to_dispatch_max_us=0

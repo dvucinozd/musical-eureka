@@ -19,6 +19,9 @@ typedef struct {
 } midi_ingress_state_t;
 
 esp_err_t midi_ingress_start(void);
+/* Open once after startup checks. Discard packets received before this call. */
+void midi_ingress_open_input(void);
+uint32_t midi_ingress_active_session(void);
 void midi_ingress_pause(bool pause);
 
 /* Audio-task only. Both accepted and discarded events consume the budget. */

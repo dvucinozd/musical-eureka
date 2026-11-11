@@ -1,15 +1,41 @@
-# Stanje — 2026-11-09
+# Stanje — 2026-11-11
+
+Oba nalaza iz pregleda prije P02 implementirana su u firmwareu. HAL
+provjerava clock i DAC registre ES8311 prije audio starta. OTA kandidat
+traži uspješnu inicijalizaciju Web i USB MIDI servisa prije potvrde.
+Lokalni i zajednički Bluetooth + OTA build prošli su, kao i ciljane
+host provjere i regresije. [Buildovi, testovi i hashovi](evidence/2026-11-11-review-fixes.json).
+[Nalazi i opseg pregleda](CODE_REVIEW_2026-11-11.md).
 
 **P07 HOST / BUILD / BROWSER PASS za razvojni OTA.** P05b referentni image je `0.0.5-soundfont-dev`
 u `build-p05b/`. P06 normalni i dijagnostički build su u
-`build-p06-normal/` i `build-p06-telemetry/`. Fizički P01–P07 testovi
-čekaju ploču.
+`build-p06-normal/` i `build-p06-telemetry/`.
+**P01 HARDWARE PASS:** PCB V1.0 na UART COM7, SoC v0.0, 16 MiB flasha i
+16 MiB PSRAM-a. Prošla su dva boota arhiviranog `0.0.1-bootstrap` i startup
+PSRAM test pri 200 MHz, CPU 320 MHz. Puna tvornička kopija od 16 MiB
+lokalno je spremljena i potvrđena MD5-om uređaja prije upisa.
+[Zapis prvog bring-upa](BOARD_BRINGUP_2026-11-11.md).
+**P02 osnovno sviranje potvrđeno.** Korisnik čuje čisto višu synth notu C6.
+Potvrđen je i izravni ton od 1 kHz u lijevom slotu. Codec ACK i readback
+prolaze, a proba se vraća u `state=2` uz `fault=ESP_OK`, nula deadlinea
+i DMA overflowa. C4 sinusna proba na priključenom zvučniku nije bila čujna.
+Uzrok te razlike ostaje otvoren. Zvučnik je na J9, oznake su nepoznate.
+[P02 zapis](evidence/2026-11-11-p02-hardware.json). P03–P07 fizički piloti čekaju.
+
+Na ploči je zatim instaliran `build-p02-diagnostic`, app SHA-256
+`d7ed40a79bc9588322082472e6e64de99db57fef3c5d9047f5bb0e26f39da274`.
+Proba C6 potvrđuje prihvaćenu notu, PCM16 peak 6083, 1099 pozitivnih
+prolaza kroz nulu i logički HIGH očitan na PA pinu. Traje jednu sekundu pri
+25/50 synth gaina, nakon čega vraća spremljeni gain i muted stanje.
+Deadline i DMA overflow brojači ostaju nula. I2S clockovi nisu izmjereni.
+UART `d` daje puni codec/GPIO zapis dok je audio utišan.
 
 ## Potvrđeni opseg
 
 ESP32-S31-Function-CoreBoard-1; port iz P4 1.0.0. **Bez microSD i WAV recordera.**
 Četiri MIDI looper trake ostaju. SoundFont je planiran iz internog flasha, s novim RAM
-ograničenjima. Zaslon/tipkalo i točan fizički primjerak još nisu određeni.
+ograničenjima. Zaslon/tipkalo još nisu određeni. Ploča je V1.0 prema korisniku,
+UART COM7; fotografija i doslovna oznaka modula još nisu zabilježene.
 Lokalni zvučnik ostaje zadani izlaz. P06B dodaje opcionalni razvojni Bluetooth profil.
 
 ## P07
@@ -29,7 +55,7 @@ Lokalni zvučnik ostaje zadani izlaz. P06B dodaje opcionalni razvojni Bluetooth 
   (`build-p06b/`) i lokalni profil (`build-p06b-local/`) prošli su build.
   Host je provjerio PCM i izbor izlaza, a Chrome Web
   kontrolu nad simuliranim API-jem. Fizičko uparivanje, kašnjenje i
-  Bluetooth/Wi-Fi/USB suživot čekaju ploču.
+  Bluetooth/Wi-Fi/USB suživot čekaju fizičku provjeru.
   [Dokaz P06B](evidence/2026-11-09-p06b.json) · [Pilot](P06B_BLUETOOTH.md).
 
 ## P06
@@ -91,8 +117,9 @@ Lokalni zvučnik ostaje zadani izlaz. P06B dodaje opcionalni razvojni Bluetooth 
 - **Statička memorija.** Linker procjena DIRAM-a je 184006 B zauzeto od 503744 B.
   Preostalih 319738 B je linker procjena i uključuje prostor potreban za runtime
   alokacije, taskove i DMA. Stvarni heap čeka očitanje s ploče.
-- **HARDWARE NOT RUN.** Otvoreni su identitet ploče, boot, PSRAM, ACK, clockovi,
-  mute i slušanje.
+- **P02 djelomično fizički potvrđen.** Codec ACK/readback i čista C6 nota
+  potvrđeni su na aktualnom dijagnostičkom imageu. Clock mjerenja i C4 odziv
+  ostaju otvoreni. [P02 rezultat](P02_AUDIO_BRINGUP.md).
 
 [P02 build log](evidence/2026-11-09-p02-build.log),
 [host log](evidence/2026-11-09-p02-host.log),
@@ -120,7 +147,8 @@ Lokalni zvučnik ostaje zadani izlaz. P06B dodaje opcionalni razvojni Bluetooth 
 | S31 BUILD | **PASS**, compile/link i image | ESP-IDF 6.1.0, GCC15.2, target esp32s31; bootstrap aplikacija 202160 B |
 | PARTITION DRAFT | **PASS**, IDF parser/validation | Nacrt stane u 16 MiB; nije aktiviran ni flashan |
 | Documentation/reference | Alat `tools/verify_project.py` | Lokalne poveznice, source hashovi i geometrija particija |
-| BOOT / AUDIO / USB / WIFI / SF32 | **NOT RUN** | Nije pristupljeno fizičkom uređaju |
+| P01 BOOT / PSRAM | **PASS**, 2026-11-11 | Dva kratka bootstrap boota i IDF startup memory test; bez soak prihvaćanja |
+| AUDIO / USB / WIFI / SF32 | **NOT RUN** | P01 bootstrap ne kvalificira periferije |
 | OTA / LISTENING / SOAK | **NOT RUN** | Nisu dio dovršene pripreme |
 
 Build ima pet upstream IDF CMake upozorenja o privatnim include direktorijima
@@ -136,7 +164,7 @@ Logovi i identitet:
 
 ## Sljedeće
 
-Na identificiranoj ploči redom provjeriti P01 boot, P02 audio, P03 USB MIDI,
+Na identificiranoj ploči sljedeći je P02 audio nakon spajanja zvučnika, zatim P03 USB MIDI,
 P04 Web i P05 flash/audio. Zatim izvesti P06 pilot i izmjeriti cijeli blok.
 [Nastavak rada](NEXT_SESSION.md).
 

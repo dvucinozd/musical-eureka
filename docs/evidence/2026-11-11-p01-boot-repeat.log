@@ -1,0 +1,81 @@
+ESP-ROM:esp32s31-20251218
+Build:Dec 18 2025
+rst:0x1 (POWERON),boot:0x7f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x2f0740c0,len:0x17e4
+load:0x2f06a2b0,len:0xde0
+load:0x2f06cfb0,len:0x3460
+entry 0x2f06a2ba
+I (26) boot: ESP-IDF v6.1 2nd stage bootloader
+I (26) boot: compile time Nov  9 2026 14:08:06
+I (27) boot: Multicore bootloader
+I (29) boot: chip revision: v0.0
+I (29) boot: efuse block revision: v0.2
+I (33) qio_mode: Enabling default flash chip QIO
+I (37) boot.esp32s31: SPI Speed      : 80MHz
+I (41) boot.esp32s31: SPI Mode       : QIO
+I (45) boot.esp32s31: SPI Flash Size : 16MB
+I (49) boot: Enabling RNG early entropy source...
+I (53) boot: Partition Table:
+I (56) boot: ## Label            Usage          Type ST Offset   Length
+I (62) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (69) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (75) boot:  2 factory          factory app      00 00 00010000 00100000
+I (83) boot: End of partition table
+I (85) esp_image: segment 0: paddr=00010020 vaddr=40020020 size=0a320h ( 41760) map
+I (101) esp_image: segment 1: paddr=0001a348 vaddr=2f000000 size=05cd0h ( 23760) load
+I (107) esp_image: segment 2: paddr=00020020 vaddr=40000020 size=167b0h ( 92080) map
+I (123) esp_image: segment 3: paddr=000367d8 vaddr=2f005cd0 size=07970h ( 31088) load
+I (131) esp_image: segment 4: paddr=0003e150 vaddr=2f00d680 size=03438h ( 13368) load
+I (138) boot: Loaded app from partition at offset 0x10000
+I (139) boot: Disabling RNG early entropy source...
+I (149) oct_psram: vendor id    : 0x0d (AP)
+I (150) oct_psram: Latency      : 0x01 (Fixed)
+I (150) oct_psram: DriveStr.    : 0x00 (25 Ohm)
+I (151) oct_psram: dev id       : 0x03 (generation 4)
+I (155) oct_psram: density      : 0x05 (128 Mbit)
+I (160) oct_psram: good-die     : 0x06 (Pass)
+I (164) oct_psram: SRF          : 0x02 (Slow Refresh)
+I (169) oct_psram: BurstType    : 0x00 ( Wrap)
+I (173) oct_psram: BurstLen     : 0x03 (2048 Byte)
+I (177) oct_psram: BitMode      : 0x00 (X8 Mode)
+I (182) oct_psram: Readlatency  : 0x04 (14 cycles@Fixed)
+I (187) oct_psram: DriveStrength: 0x00 (1/1)
+I (191) MSPI Timing: Enter psram timing tuning
+I (344) esp_psram: Found 16MB PSRAM device
+I (344) esp_psram: Speed: 200MHz
+I (345) oct_psram: psram CS IO is dedicated
+I (345) cpu_start: Multicore app
+I (709) esp_psram: SPI SRAM memory test OK
+I (717) cpu_start: GPIO 59 and 58 are used as console UART I/O pins
+I (718) cpu_start: Pro cpu start user code
+I (718) cpu_start: cpu freq: 320000000 Hz
+I (720) app_init: Application information:
+I (723) app_init: Project name:     nektarina_s31
+I (728) app_init: App version:      0.0.1-bootstrap
+I (732) app_init: Compile time:     Nov  9 2026 14:07:27
+I (737) app_init: ELF file SHA256:  309e9f06e...
+I (742) app_init: ESP-IDF:          v6.1
+I (745) efuse_init: Min chip rev:     v0.0
+I (749) efuse_init: Max chip rev:     v0.99 
+I (753) efuse_init: Chip rev:         v0.0
+I (757) heap_init: Initializing. RAM available for dynamic allocation:
+I (763) heap_init: At 2F012490 len 00068B20 (418 KiB): RAM
+I (768) heap_init: At 2F07AFB0 len 000041C0 (16 KiB): RAM
+I (774) heap_init: At 2E000000 len 00007FE8 (31 KiB): RTCRAM
+I (779) esp_psram: Adding pool of 16384K of PSRAM memory to heap allocator
+I (786) spi_flash: detected chip: generic
+I (789) spi_flash: flash io: qio
+I (793) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (799) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (805) oct_psram: psram CS IO is dedicated
+I (809) coexist: coex firmware version: a830d28
+I (813) coexist: coexist rom version cdcf52b
+I (818) main_task: Started on CPU0
+I (830) main_task: Calling app_main()
+I (830) S31_BOOTSTRAP: project=nektarina_s31 stage=P01 idf=v6.1
+I (830) S31_BOOTSTRAP: target=esp32s31 cores=2 revision=0 cpu_mhz=320 reset_reason=1
+I (837) S31_BOOTSTRAP: flash_query=ESP_OK flash_bytes=16777216 psram_bytes=16777216
+I (845) S31_BOOTSTRAP: internal_free=457756 internal_largest=409600 dma_free=425748 psram_free=16774632
+I (854) S31_BOOTSTRAP: diagnostic_complete=1 synthesizer_port=0 peripheral_qualification=0
+I (862) main_task: Returned from app_main()

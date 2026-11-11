@@ -1,0 +1,7 @@
+I (20172) S31_P03: state=2 blocks=7008 prep_max_us=426 deadlines=0 dma_overflows=0 probes=0 fault=ESP_OK
+I (20172) S31_P03: usb_ready=0 session=0 vid=0000 pid=0000 speed=0 raw_drops=0 stale_raw=0 in_errors=0
+I (20179) S31_P03: midi_applied=0 rejected=0 semantic_drops=0 panics=0 rx_to_dispatch_max_us=0
+I (28953) S31_P03: Probe accepted
+I (30066) S31_P03: state=2 blocks=10719 prep_max_us=498 deadlines=0 dma_overflows=0 probes=1 fault=ESP_OK
+I (30067) S31_P03: usb_ready=0 session=0 vid=0000 pid=0000 speed=0 raw_drops=0 stale_raw=0 in_errors=0
+I (30074) S31_P03: midi_applied=0 rejected=0 semantic_drops=0 panics=0 rx_to_dispatch_max_us=0

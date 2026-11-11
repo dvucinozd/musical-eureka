@@ -8,6 +8,7 @@
 #include "sdkconfig.h"
 #include <errno.h>
 #include <inttypes.h>
+#include <stdatomic.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -59,6 +60,24 @@ static esp_err_t respond(httpd_req_t *req, const char *status, const char *body)
     return httpd_resp_sendstr(req, body);
 }
 
+static atomic_bool s_commands_open;
+
+void app_web_open_commands(void)
+{
+    atomic_store(&s_commands_open, true);
+}
+
+static esp_err_t close_with(httpd_req_t *req, const char *status, const char *body)
+{
+    (void)respond(req, status, body);
+    return ESP_FAIL; /* Unread body bytes cannot be used for the next request. */
+}
+
+static esp_err_t startup_busy(httpd_req_t *req)
+{
+    return close_with(req, "503 Service Unavailable", "Startup checks in progress");
+}
+
 /* Require the AP host for every request and a same-origin browser mutation. */
 static bool authorized(httpd_req_t *req)
 {
@@ -100,6 +119,7 @@ static bool hold_mask(const char *query, uint32_t mask[4])
 
 static esp_err_t control_handler(httpd_req_t *req)
 {
+    if (!atomic_load(&s_commands_open)) return startup_busy(req);
     if (!authorized(req)) return respond(req, "403 Forbidden", "Invalid host or origin");
     char query[96], op[20];
     if (req->content_len || httpd_req_get_url_query_str(req, query, sizeof(query)) != ESP_OK ||
@@ -224,12 +244,6 @@ static esp_err_t storage_result(httpd_req_t *req, esp_err_t err)
     }
 }
 
-static esp_err_t close_with(httpd_req_t *req, const char *status, const char *body)
-{
-    (void)respond(req, status, body);
-    return ESP_FAIL; /* Unread body bytes cannot be used for the next request. */
-}
-
 static esp_err_t upload_handler(httpd_req_t *req)
 {
     const size_t size = req->content_len;
@@ -257,6 +271,7 @@ static esp_err_t upload_handler(httpd_req_t *req)
 
 static esp_err_t storage_handler(httpd_req_t *req)
 {
+    if (!atomic_load(&s_commands_open)) return startup_busy(req);
     if (!authorized(req)) return close_with(req, "403 Forbidden", "Invalid host or origin");
     char query[96], op[20];
     if (httpd_req_get_url_query_str(req, query, sizeof(query)) != ESP_OK ||
@@ -287,6 +302,7 @@ static esp_err_t storage_handler(httpd_req_t *req)
 #ifdef CONFIG_NEKTAR_P07_OTA
 static esp_err_t ota_handler(httpd_req_t *req)
 {
+    if (!atomic_load(&s_commands_open)) return startup_busy(req);
     if (!authorized(req)) return close_with(req, "403 Forbidden", "Invalid host or origin");
     if (!app_ota_enabled()) return close_with(req, "403 Forbidden", "Configure a private Wi-Fi password");
     const size_t size = req->content_len;
@@ -382,6 +398,7 @@ static bool output_address(const char *query, uint8_t address[BT_ADDRESS_BYTES])
 
 static esp_err_t output_command_handler(httpd_req_t *req)
 {
+    if (!atomic_load(&s_commands_open)) return startup_busy(req);
     if (!authorized(req)) return close_with(req, "403 Forbidden", "Invalid host or origin");
     char query[64], op[16];
     if (req->content_len || httpd_req_get_url_query_str(req, query, sizeof(query)) != ESP_OK ||

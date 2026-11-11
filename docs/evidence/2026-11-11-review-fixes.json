@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-11",
+  "source_base": "dec4a0b8b5c709459a7a7c9ddc360e79fc7f7a74",
+  "source": "local working tree including R1 and R2 fixes",
+  "sdk_commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "hardware": "NOT RUN",
+  "profiles": [
+    {
+      "directory": "build-review-local",
+      "status": "PASS",
+      "enabled_flags": [],
+      "app_slot_bytes_free": 1916016,
+      "flash_files": {
+        "0x2000": "bootloader/bootloader.bin",
+        "0x8000": "partition_table/partition-table.bin",
+        "0x19000": "ota_data_initial.bin",
+        "0x20000": "nektarina_s31.bin"
+      },
+      "files": [
+        {
+          "path": "build-review-local/bootloader/bootloader.bin",
+          "bytes": 23168,
+          "sha256": "2bd0b38f2f0a70961147ad8836681f142984e04729faf863eb779ea0bae7ca71"
+        },
+        {
+          "path": "build-review-local/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        },
+        {
+          "path": "build-review-local/ota_data_initial.bin",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        {
+          "path": "build-review-local/nektarina_s31.bin",
+          "bytes": 1229712,
+          "sha256": "812949217028dbbf83447be6ed12571f5514aeb53249bb427ae31748652ddfdc"
+        },
+        {
+          "path": "build-review-local/nektarina_s31.elf",
+          "bytes": 14096968,
+          "sha256": "7f31c2dbb0b98b05aefe6a81a0727c8d2e849b7e7d8a409164ee7f4365e0b0f3"
+        },
+        {
+          "path": "build-review-local/sdkconfig",
+          "bytes": 108767,
+          "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+        },
+        {
+          "path": "build-review-local/flasher_args.json",
+          "bytes": 1095,
+          "sha256": "4fde36fb8cc16846a0b75b5638556b4e6567627a21d37963a63b74817af04ab9"
+        },
+        {
+          "path": "build-review-local/flash_project_args",
+          "bytes": 188,
+          "sha256": "fa320f9c2aaa7835d46e67a4570755f2eae9eb801bc4939ccac2b1b0a90aa8d8"
+        },
+        {
+          "path": "build-review-local/build.log",
+          "bytes": 185771,
+          "sha256": "649c498c24ebea749cab29f4483f79a0435b7a4b556206828295c01c6e383ec8"
+        }
+      ]
+    },
+    {
+      "directory": "build-review-combined",
+      "status": "PASS",
+      "enabled_flags": [
+        "NEKTAR_P06B_BLUETOOTH",
+        "NEKTAR_P07_OTA",
+        "BOOTLOADER_APP_ROLLBACK_ENABLE"
+      ],
+      "app_slot_bytes_free": 1111296,
+      "flash_files": {
+        "0x2000": "bootloader/bootloader.bin",
+        "0x8000": "partition_table/partition-table.bin",
+        "0x19000": "ota_data_initial.bin",
+        "0x20000": "nektarina_s31.bin"
+      },
+      "files": [
+        {
+          "path": "build-review-combined/bootloader/bootloader.bin",
+          "bytes": 23296,
+          "sha256": "14eb58bf7c8a485cab703add69d5da8e84934edbdf5b86a57a40b62198707660"
+        },
+        {
+          "path": "build-review-combined/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+        },
+        {
+          "path": "build-review-combined/ota_data_initial.bin",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        {
+          "path": "build-review-combined/nektarina_s31.bin",
+          "bytes": 2034432,
+          "sha256": "0ddea5a493da0370b28a5f0a2e4b4785e969e519570976588a909ffafee2e836"
+        },
+        {
+          "path": "build-review-combined/nektarina_s31.elf",
+          "bytes": 19513796,
+          "sha256": "7458a249d24d69ba492874ce89a1390033e2167e250a99d7954605a5601c0999"
+        },
+        {
+          "path": "build-review-combined/sdkconfig",
+          "bytes": 134230,
+          "sha256": "af38f615fb6aac53437cbc666d304da6d9dd344cf22f87051d44170040603939"
+        },
+        {
+          "path": "build-review-combined/flasher_args.json",
+          "bytes": 1095,
+          "sha256": "4fde36fb8cc16846a0b75b5638556b4e6567627a21d37963a63b74817af04ab9"
+        },
+        {
+          "path": "build-review-combined/flash_project_args",
+          "bytes": 188,
+          "sha256": "fa320f9c2aaa7835d46e67a4570755f2eae9eb801bc4939ccac2b1b0a90aa8d8"
+        },
+        {
+          "path": "build-review-combined/build.log",
+          "bytes": 223515,
+          "sha256": "5006967f34592c42f5e837acef0a715d8f6392a86a0b0659b252987e8667b6cd"
+        }
+      ]
+    }
+  ],
+  "host": {
+    "run_review_tests.ps1": "PASS",
+    "run_tests.ps1": "PASS",
+    "run_p05a_tests.ps1": "PASS",
+    "run_p06_tests.ps1": "PASS",
+    "run_p06b_tests.ps1": "PASS",
+    "run_p07_tests.ps1 -Image build-review-combined/nektarina_s31.bin": "PASS"
+  }
+}

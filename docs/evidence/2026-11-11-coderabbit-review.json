@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-11",
+  "tool": "CodeRabbit CLI",
+  "version": "0.9.2",
+  "command": "coderabbit review --agent --base-commit 0b80cc32dad04f6db5e6daaae78b4e79bd34dc6d -c AGENTS.md",
+  "head": "dec4a0b8b5c709459a7a7c9ddc360e79fc7f7a74",
+  "reviewType": "all",
+  "status": "review_completed",
+  "findings": 0,
+  "outcome": "completed",
+  "exit_code": 0,
+  "provenance": "Summary transcribed from the CLI complete NDJSON event returned by exec session 25076. Original WSL /tmp log was readable at completion but unavailable during archival. This file preserves the reported result, not the original raw log."
+}

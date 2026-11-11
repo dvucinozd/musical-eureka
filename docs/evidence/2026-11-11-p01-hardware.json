@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "date": "2026-11-11",
+  "timezone": "Europe/Zagreb",
+  "source_commit": "dec4a0b8b5c709459a7a7c9ddc360e79fc7f7a74",
+  "phase": "P01 physical bootstrap",
+  "status": "PASS",
+  "board": {
+    "model": "ESP32-S31-Function-CoreBoard-1",
+    "pcb_revision": "V1.0 (user reported)",
+    "module_marking": "NOT RECORDED",
+    "photo": "NOT RECORDED",
+    "connector": "UART USB-C (user confirmed)",
+    "port": "COM7",
+    "bridge": "CP210x VID_10C4 PID_EA60",
+    "chip": "ESP32-S31",
+    "chip_revision": "v0.0",
+    "efuse_block_revision": "v0.2 (boot log, no writes)",
+    "rom": "esp32s31-20251218",
+    "flash_manufacturer_hex": "46",
+    "flash_device_hex": "4018",
+    "flash_bytes": 16777216,
+    "psram_bytes": 16777216,
+    "psram_vendor": "AP",
+    "psram_speed_mhz": 200,
+    "cpu_mhz": 320,
+    "secure_boot": false,
+    "flash_encryption": false,
+    "speaker_connected": false
+  },
+  "backup": {
+    "bytes": 16777216,
+    "sha256": "fd8b53fde3ba788ed8c4e6178f91a64a346a0072072400897dc2b4a704da47ee",
+    "md5": "04ac990fdce97e117cd4c721eb8ef02c",
+    "device_md5": "04ac990fdce97e117cd4c721eb8ef02c",
+    "verification": "PASS",
+    "read_bytes": 1310720,
+    "verified_ff_bytes": 15466496,
+    "method": "MD5-checked reads plus device-MD5-verified FF ranges; full-device MD5 checked after assembly",
+    "transport": "esptool 5.6.0 stub, 230400 baud, 16KiB per read",
+    "local_path": "build-device-20261111/factory-flash-16MiB.bin"
+  },
+  "factory": {
+    "project": "esp32_s31_function_coreboard_fa",
+    "version": "818c539-dirty",
+    "idf": "v6.2-dev-1135-ge36835fe0ca-dirt",
+    "factory_app_offset": "0x10000",
+    "factory_app_bytes": 1048576,
+    "configured_flash_bytes": 2097152,
+    "boot": "factory audio loopback initialization observed; not S31 application qualification",
+    "raw_boot_log": "build-device-20261111/factory-boot.log"
+  },
+  "sdk": {
+    "version": "6.1.0",
+    "commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+    "tracked_worktree_clean": true,
+    "esptool": "5.6.0"
+  },
+  "flash": {
+    "profile": "bootstrap",
+    "version": "0.0.1-bootstrap",
+    "directory": "build-bringup-kit/bootstrap",
+    "command": "python -m esptool --chip esp32s31 --port COM7 --baud 115200 --no-stub --after no-reset write-flash @flash_project_args",
+    "verified_segments": 3,
+    "offsets": [
+      "0x2000",
+      "0x8000",
+      "0x10000"
+    ],
+    "artifacts": [
+      {
+        "path": "bootloader/bootloader.bin",
+        "bytes": 23168,
+        "sha256": "015909148e69b003c550238001b4ec34b598282a1aab3d7aa0f8d72ed2e75efe"
+      },
+      {
+        "path": "flash_app_args",
+        "bytes": 80,
+        "sha256": "124e340fd07d7d244a56e9655645126c21ed6f94c596d5d558f73a0dcc5d5e4d"
+      },
+      {
+        "path": "flash_project_args",
+        "bytes": 158,
+        "sha256": "5b886606ab4838355e49583f28eb055ee44c06fe1533cb180cd715859d12165b"
+      },
+      {
+        "path": "flasher_args.json",
+        "bytes": 951,
+        "sha256": "935d9fdf96b22f3afd057b8ad07e59f03d064dbb51efc69fb96cba5f369cb610"
+      },
+      {
+        "path": "nektarina_s31.bin",
+        "bytes": 202160,
+        "sha256": "41fb5c60d4f967802e638b4dc4d326c20253f2e4ddc1a47507616550f5d5dfe1"
+      },
+      {
+        "path": "nektarina_s31.elf",
+        "bytes": 5098020,
+        "sha256": "309e9f06ef2ac35b0eb257ba49759593744437ce8dcb92db7d7ee4bd7aca921c"
+      },
+      {
+        "path": "partition_table/partition-table.bin",
+        "bytes": 3072,
+        "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+      }
+    ],
+    "partition_layout": "Historical P01 factory 1MiB; not P04+ dual OTA layout"
+  },
+  "boot": {
+    "successful_captures": 2,
+    "capture_seconds": [
+      12,
+      8
+    ],
+    "reset": "UART bridge RTS/EN reset, DTR released",
+    "memory_test": "PASS both captures",
+    "reset_reason": 1,
+    "free_bytes": {
+      "internal": 457756,
+      "internal_largest": 409600,
+      "dma": 425748,
+      "psram": 16774632
+    },
+    "qualification": "short bootstrap startup only; no soak or peripheral qualification"
+  },
+  "transport": {
+    "continuous_stub_read": "FAIL at 460800 and 230400",
+    "stub_read_64KiB_460800": "FAIL digest mismatch",
+    "rom_and_stub_first64KiB": "identical at ROM 115200, stub 115200 and 230400",
+    "working_backup": "16KiB MD5-checked stub reads at 230400 plus device-MD5-verified blank ranges",
+    "working_flash": "ROM no-stub at 115200",
+    "sdk_modified": false
+  },
+  "not_run": [
+    "P02 audio",
+    "I2C/I2S/PA physical measurements",
+    "USB MIDI",
+    "Wi-Fi/Web",
+    "SoundFont flash/NVS",
+    "Bluetooth",
+    "OTA/rollback",
+    "listening",
+    "performance/soak",
+    "manual BOOT+RESET recovery drill"
+  ],
+  "logs": [
+    {
+      "path": "docs/evidence/2026-11-11-p01-flash.log",
+      "bytes": 20470,
+      "sha256": "9f6710fd0f78e9fa37f61deaebad514cb3bbcf903771f5a209773fa97bfa8acf"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p01-boot.log",
+      "bytes": 4264,
+      "sha256": "fd19921799ccfb219449c30e0e1817be1d332c8fa245b8b0d3881cef7a0b7715"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p01-boot-repeat.log",
+      "bytes": 4264,
+      "sha256": "e9bde8d87bb39d4f2fe7d38e01d01887b2e132a685f708fd8bbeabd29e4f88f3"
+    }
+  ]
+}

@@ -14,8 +14,9 @@
 - D05: C/ESP-IDF port, zamrznuti P4 1.0.0 commit; bez Rust rewritea.
 - D06: SDK 6.1.0 / `fff9895…`, S31 preview flag; početno službeni board clock/memory defaults.
 - D07: odvojeni bootstrap; bez kopiranja P4 aplikacije u aktivni build prije adapcije.
-- D08: fizički testovi nisu izvršeni. Identitet i oporavak uređaja pripremaju se prije
-  budućeg fizičkog rada; priprema projekta ne pretpostavlja zauzimanje serijskog porta.
+- D08: fizički rad počeo je 2026-11-11 na korisnički prijavljenom UART COM7,
+  PCB V1.0. P01 boot/PSRAM prošli su nakon provjerene tvorničke kopije.
+  Identitet porta ponovno se provjerava pri svakoj sesiji. P02–P07 ostaju NOT RUN.
 - D15: jedan verzionirani startup preset u NVS-u. Identitet SF2 izbora koristi
   SHA-256 banke i program. Bez startup preseta boot bira prvi program
   pripremljene banke, a nedostupan spremljeni zvuk pada na spremljeni synth.
@@ -38,7 +39,7 @@
 
 | Pitanje | Kada je potrebno | Trenutno ponašanje |
 | --- | --- | --- |
-| Stvarna revizija PCB-a/SoC-a, modul, COM i raspoloživost ploče | Prije fizičkog boota | Bez pristupa uređaju |
+| Oznaka modula/fotografija i ručni oporavak | Dopuniti pri sljedećem fizičkom radu | PCB V1.0, SoC v0.0 i UART COM7 zabilježeni, automatski reset provjeren |
 | ST7789 ili bez zaslona, vanjsko tipkalo | Prije P07 / ranije ako korisnik odabere | Headless/Web |
 | Koje SF2 banke/preseti su obavezni | Prije zatvaranja P05 RAM limita | Mali legalno dostupan fixture; bez bundled banke |
 | Fizička provjera 16 MiB rasporeda i NVS startup preseta | P05 | Aktivni raspored u S31 buildu i format NSP1 |

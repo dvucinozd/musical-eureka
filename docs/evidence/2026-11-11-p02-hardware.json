@@ -1,0 +1,460 @@
+{
+  "date": "2026-11-11",
+  "phase": "P02 physical audio bring-up",
+  "profile": {
+    "directory": "build-review-local",
+    "status": "PASS",
+    "enabled_flags": [],
+    "app_slot_bytes_free": 1916016,
+    "flash_files": {
+      "0x2000": "bootloader/bootloader.bin",
+      "0x8000": "partition_table/partition-table.bin",
+      "0x19000": "ota_data_initial.bin",
+      "0x20000": "nektarina_s31.bin"
+    },
+    "files": [
+      {
+        "path": "build-review-local/bootloader/bootloader.bin",
+        "bytes": 23168,
+        "sha256": "2bd0b38f2f0a70961147ad8836681f142984e04729faf863eb779ea0bae7ca71"
+      },
+      {
+        "path": "build-review-local/partition_table/partition-table.bin",
+        "bytes": 3072,
+        "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+      },
+      {
+        "path": "build-review-local/ota_data_initial.bin",
+        "bytes": 8192,
+        "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+      },
+      {
+        "path": "build-review-local/nektarina_s31.bin",
+        "bytes": 1229712,
+        "sha256": "812949217028dbbf83447be6ed12571f5514aeb53249bb427ae31748652ddfdc"
+      },
+      {
+        "path": "build-review-local/nektarina_s31.elf",
+        "bytes": 14096968,
+        "sha256": "7f31c2dbb0b98b05aefe6a81a0727c8d2e849b7e7d8a409164ee7f4365e0b0f3"
+      },
+      {
+        "path": "build-review-local/sdkconfig",
+        "bytes": 108767,
+        "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+      },
+      {
+        "path": "build-review-local/flasher_args.json",
+        "bytes": 1095,
+        "sha256": "4fde36fb8cc16846a0b75b5638556b4e6567627a21d37963a63b74817af04ab9"
+      },
+      {
+        "path": "build-review-local/flash_project_args",
+        "bytes": 188,
+        "sha256": "fa320f9c2aaa7835d46e67a4570755f2eae9eb801bc4939ccac2b1b0a90aa8d8"
+      },
+      {
+        "path": "build-review-local/build.log",
+        "bytes": 185771,
+        "sha256": "649c498c24ebea749cab29f4483f79a0435b7a4b556206828295c01c6e383ec8"
+      }
+    ]
+  },
+  "port": "COM7",
+  "board_revision": "V1.0 (user reported)",
+  "speaker_connected": true,
+  "speaker_rating": "NOT RECORDED",
+  "flash_verified_segments": 4,
+  "codec_ack": "0x18",
+  "codec_register_readback": "PASS",
+  "uart_audio_probe": "PASS",
+  "samples": [
+    {
+      "state": 2,
+      "blocks": 2444,
+      "prep_max_us": 428,
+      "deadlines": 0,
+      "dma_overflows": 0,
+      "probes": 0,
+      "fault": "ESP_OK"
+    },
+    {
+      "state": 2,
+      "blocks": 3506,
+      "prep_max_us": 428,
+      "deadlines": 0,
+      "dma_overflows": 0,
+      "probes": 0,
+      "fault": "ESP_OK"
+    },
+    {
+      "state": 2,
+      "blocks": 8711,
+      "prep_max_us": 428,
+      "deadlines": 0,
+      "dma_overflows": 0,
+      "probes": 0,
+      "fault": "ESP_OK"
+    },
+    {
+      "state": 2,
+      "blocks": 12436,
+      "prep_max_us": 499,
+      "deadlines": 0,
+      "dma_overflows": 0,
+      "probes": 1,
+      "fault": "ESP_OK"
+    }
+  ],
+  "listening": {
+    "status": "PASS for C6 and direct 1kHz",
+    "C4_sine": "NOT_AUDIBLE on supplied speaker",
+    "user_observation": "Da, čula se čisto",
+    "speaker": "J9, rating/model unknown",
+    "C4_cause": "OPEN; no proven cause assigned"
+  },
+  "physical_measurements": {
+    "pa_gpio_level": "NOT MEASURED",
+    "i2s_clocks": "NOT MEASURED"
+  },
+  "logs": [
+    {
+      "path": "docs/evidence/2026-11-11-p02-identity.log",
+      "bytes": 461,
+      "sha256": "519963d11b8eee2038f594831191ccfeed8d3c00d5e98d1378729eedc8978db2"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-flash.log",
+      "bytes": 105708,
+      "sha256": "739d8f7ed656cdd02d3cd86565a8de8e27d77a4343ebd56fca4e575f496ba16b"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-boot.log",
+      "bytes": 8947,
+      "sha256": "87e9151e56ceaa2523503ad9a6b5b2690c2d35739907f5799faaeddac8e02cb1"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-probe.log",
+      "bytes": 648,
+      "sha256": "aff727e1491428186bd4c3675207fdd63e234d49a12a4cce14eab11285d5fd20"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-probe-repeat.log",
+      "bytes": 648,
+      "sha256": "413cb6e7a9aeb3c6b3a0f8f1181ec30759348ab1ac6542628fce432a93e191d8"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-boot.log",
+      "bytes": 8906,
+      "sha256": "6d3e92be264d68e896870e972ab4851495c404204b9fdadf2b297b1b3d7e079d"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-probe.log",
+      "bytes": 805,
+      "sha256": "dfb32ea8c9b4d7151197ec0e446b1df3fc3bbcb004d27b87aebee02a828699c2"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-flash.log",
+      "bytes": 59446,
+      "sha256": "1837da0b5e22a473555e3aad9b01eb262499d1d643216cb3529a0679bd5b3956"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v2-boot.log",
+      "bytes": 11310,
+      "sha256": "045b65c0dce3fdde1ee04e09d68324da74aba35ac816d486f747e126df7aa325"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v2-probe.log",
+      "bytes": 3224,
+      "sha256": "a0255dc6ffa1ed825c7b33d2054ced2929cfd3202ba7f30c61082bd4be36daec"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v2-flash.log",
+      "bytes": 59533,
+      "sha256": "a467045fc3aa8e1fe3debdc87f03367b0ef698f51c84151daf14d27fdd5f686e"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v3-boot.log",
+      "bytes": 11302,
+      "sha256": "d4692d2996c7078c3316589de6ae4aa451b64ad87d6ea0a34b0e69b169bf1785"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v3-probe.log",
+      "bytes": 3230,
+      "sha256": "d368309dfe277060f12bcf056814c6bf66c4f9af656706b79d678821df1b74ea"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v3-flash.log",
+      "bytes": 59604,
+      "sha256": "cc7e55ef3f657ab0c4c69df33185b2c34c595267632efad60ddd0f3ee8bb7632"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v4-boot.log",
+      "bytes": 11310,
+      "sha256": "9f06fc8a58b83e50f5b4a9e2af4f626275f3987b2c44fb9c8249b5e24b78eb68"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v4-probe.log",
+      "bytes": 3675,
+      "sha256": "91aed0d1e8070579e6c3fb38b1830afc8fffae2816f2394c2264bb559ce4112b"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v4-flash.log",
+      "bytes": 59603,
+      "sha256": "cc1559c0dfa3b11e22470d957190afce5f7ac06a5db17a9780c0750e12e9c5f8"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v5-boot.log",
+      "bytes": 11409,
+      "sha256": "f4e3b744b45f692f7219693cb139c60e7a584d29ab7e46010bc19d3ae00eb080"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v5-probe.log",
+      "bytes": 3321,
+      "sha256": "b07e9e649e0e098b0518b9b76cc4cd16c40b7331111c2a248024638b70ccad67"
+    },
+    {
+      "path": "docs/evidence/2026-11-11-p02-diagnostic-v5-flash.log",
+      "bytes": 59604,
+      "sha256": "c1e8464a9bea8cf7bef27ec37ddfaa4ebf2af3b8582728945a792a78b2ec72e8"
+    }
+  ],
+  "status": "PARTIAL_PASS",
+  "active_firmware": {
+    "directory": "build-p02-diagnostic",
+    "app": {
+      "path": "build-p02-diagnostic/nektarina_s31.bin",
+      "bytes": 1234448,
+      "sha256": "d7ed40a79bc9588322082472e6e64de99db57fef3c5d9047f5bb0e26f39da274"
+    },
+    "elf": {
+      "path": "build-p02-diagnostic/nektarina_s31.elf",
+      "bytes": 14186624,
+      "sha256": "320b3a57072bcceb7e06246862964eb9fd3188379fb82145d8d1717ddd9040b4"
+    },
+    "sdkconfig": {
+      "path": "build-p02-diagnostic/sdkconfig",
+      "bytes": 108767,
+      "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+    },
+    "partition_table": {
+      "path": "build-p02-diagnostic/partition_table/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+    },
+    "bootloader": "build-review-local remains installed",
+    "flashed_region": "0x20000 app only",
+    "flash_verification": "PASS",
+    "build": "PASS"
+  },
+  "diagnostic_probe": {
+    "pcm16_peak": 457,
+    "note_accepted": true,
+    "pa_enable_command_ok": true,
+    "prepare_max_us": 516,
+    "deadlines": 0,
+    "dma_overflows": 0,
+    "completed_probes": 1,
+    "final_state": 2,
+    "fault": "ESP_OK",
+    "pa_pin_voltage": "NOT MEASURED",
+    "i2s_pin_signals": "NOT MEASURED",
+    "listen_result": "FAIL_NO_AUDIBLE_NOTE"
+  },
+  "firmware_history": [
+    {
+      "directory": "build-p02-diagnostic",
+      "app": {
+        "path": "build-device-p02-20261111/diagnostic-v1/nektarina_s31.bin",
+        "bytes": 1230192,
+        "sha256": "c66de95a17c6d9be61316e3a00d0c5bcba23fb4facc9ed48799def086b41e8e9"
+      },
+      "elf": {
+        "path": "build-device-p02-20261111/diagnostic-v1/nektarina_s31.elf",
+        "bytes": 14099436,
+        "sha256": "d028e98286489d6f70def960d37289c8799bf7a2fc5f05269a442d26dd2c3738"
+      },
+      "sdkconfig": {
+        "path": "build-device-p02-20261111/diagnostic-v1/sdkconfig",
+        "bytes": 108767,
+        "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+      },
+      "partition_table": {
+        "path": "build-p02-diagnostic/partition_table/partition-table.bin",
+        "bytes": 3072,
+        "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+      },
+      "bootloader": "unchanged from previously installed build-review-local",
+      "flashed_region": "0x20000 app only",
+      "flash_verification": "PASS",
+      "build": "PASS"
+    },
+    {
+      "directory": "build-p02-diagnostic",
+      "app": {
+        "path": "build-device-p02-20261111/diagnostic-v2/nektarina_s31.bin",
+        "bytes": 1233472,
+        "sha256": "42f74b839bf1db68124939c25bcea674cebd26a50f6672b6c5cf890a900f5542"
+      },
+      "elf": {
+        "path": "build-device-p02-20261111/diagnostic-v2/nektarina_s31.elf",
+        "bytes": 14181472,
+        "sha256": "45f33074d99a7465b78c33d041f7892d8638b6e848f208b1a2d5bc7221646a5b"
+      },
+      "sdkconfig": {
+        "path": "build-device-p02-20261111/diagnostic-v2/sdkconfig",
+        "bytes": 108767,
+        "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+      },
+      "partition_table": {
+        "path": "build-p02-diagnostic/partition_table/partition-table.bin",
+        "bytes": 3072,
+        "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+      },
+      "bootloader": "build-review-local remains installed",
+      "flashed_region": "0x20000 app only",
+      "flash_verification": "PASS",
+      "build": "PASS"
+    },
+    {
+      "directory": "build-p02-diagnostic",
+      "app": {
+        "path": "build-device-p02-20261111/diagnostic-v3/nektarina_s31.bin",
+        "bytes": 1234000,
+        "sha256": "c649a8bd87484a24878cca40ea2cad1c33738bf7f6a4a083ac27209743599b27"
+      },
+      "elf": {
+        "path": "build-device-p02-20261111/diagnostic-v3/nektarina_s31.elf",
+        "bytes": 14184172,
+        "sha256": "42f301fa46df76d105d4025e4d7ffa1bb401b6ffc3f51897ee586a725ad89bf7"
+      },
+      "sdkconfig": {
+        "path": "build-device-p02-20261111/diagnostic-v3/sdkconfig",
+        "bytes": 108767,
+        "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+      },
+      "partition_table": {
+        "path": "build-p02-diagnostic/partition_table/partition-table.bin",
+        "bytes": 3072,
+        "sha256": "2d5445e52776716ea6a314debf10d0cebee102f80bc5a2080d1eebb3360684c1"
+      },
+      "bootloader": "build-review-local remains installed",
+      "flashed_region": "0x20000 app only",
+      "flash_verification": "PASS",
+      "build": "PASS"
+    },
+    {
+      "directory": "build-device-p02-20261111/diagnostic-v4",
+      "app": {
+        "path": "build-device-p02-20261111/diagnostic-v4/nektarina_s31.bin",
+        "bytes": 1234144,
+        "sha256": "8c92da3dd4fc239a08f41caa8cbceb7e789da5215533e42dd75b1ae6c539c6fd"
+      },
+      "elf": {
+        "path": "build-device-p02-20261111/diagnostic-v4/nektarina_s31.elf",
+        "bytes": 14184700,
+        "sha256": "8c6725796b3f575956380ddd2149c17642cdf176cb16c4350ab580208ad88d6e"
+      },
+      "sdkconfig": {
+        "path": "build-device-p02-20261111/diagnostic-v4/sdkconfig",
+        "bytes": 108767,
+        "sha256": "4e783774d3aa158d6f955bccce8d9abf5396a259b73b8564a1faf4b7929ea796"
+      }
+    }
+  ],
+  "diagnostic_probe_v2": {
+    "note_hold_ms": 1000,
+    "synth_gain_units": 5,
+    "synth_gain_percent": 10,
+    "pcm16_peak": 1144,
+    "note_accepted": true,
+    "pa_enable_command_ok": true,
+    "pa_pad_high": true,
+    "prepare_max_us": 473,
+    "deadlines": 0,
+    "dma_overflows": 0,
+    "probes": 1,
+    "final_state": 2,
+    "fault": "ESP_OK",
+    "listen_result": "FAIL_NO_AUDIBLE_NOTE",
+    "gpio_and_codec_dump": "included in boot and probe logs",
+    "clock_signals": "NOT MEASURED"
+  },
+  "diagnostic_probe_v3": {
+    "kind": "1kHz direct PCM in both I2S slots",
+    "pcm16_peak": 8192,
+    "duration_ms": 1000,
+    "note_accepted": true,
+    "pa_pad_high": true,
+    "deadlines": 0,
+    "dma_overflows": 0,
+    "final_state": 2,
+    "fault": "ESP_OK",
+    "listen_result": "PASS",
+    "user_observation": "čuje se",
+    "qualification": "Direct PCM speaker test; synth C4 confirmation pending"
+  },
+  "diagnostic_probe_v4": {
+    "raw_left_1kHz": {
+      "pcm16_peak": 8192,
+      "listen_result": "PASS"
+    },
+    "synth_C4": {
+      "pcm16_peak": 5676,
+      "listen_result": "NOT_AUDIBLE"
+    },
+    "user_observation": "Samo prvi, viši ton",
+    "deadline_count": 0,
+    "dma_overflow_count": 0
+  },
+  "diagnostic_probe_v5": {
+    "kind": "C6 MIDI note 84 through production synth and left I2S slot",
+    "hold_ms": 1000,
+    "gain_units": 25,
+    "pcm16_peak": 6083,
+    "positive_zero_crossings": 1099,
+    "host_expected_positive_zero_crossings": 1099,
+    "note_accepted": true,
+    "pa_pad_high": true,
+    "deadline_count": 0,
+    "dma_overflow_count": 0,
+    "final_state": 2,
+    "fault": "ESP_OK",
+    "listen_result": "PASS",
+    "user_observation": "Da, čula se čisto"
+  },
+  "basic_audio_playback": "PASS: left-slot direct PCM and C6 synth, with user listening confirmation",
+  "remaining": [
+    "I2S physical clock measurement",
+    "PA pin voltage measurement",
+    "C4 reproduction / speaker response",
+    "USB MIDI hardware pilot",
+    "polyphony/performance/listening/soak qualification"
+  ],
+  "source_files": [
+    {
+      "path": "components/audio_hal/audio_hal.c",
+      "bytes": 25085,
+      "sha256": "596229b2f6d9c59a9ad6f77531a1a91019b9afa36a1cd24de5d0236bc1e61a62"
+    },
+    {
+      "path": "components/audio_hal/include/audio_hal.h",
+      "bytes": 1247,
+      "sha256": "01031e7cfaa8fcaf10bba2bd4b757bc6db2c0dfe05bc22dbccd15f325980f0a9"
+    },
+    {
+      "path": "components/audio_hal/es8311_readback.h",
+      "bytes": 1532,
+      "sha256": "ec326c79887eea24dca0b9a14f5d7dcd495ef08d11a0ada680ca3dd432f8de86"
+    },
+    {
+      "path": "main/app_main.c",
+      "bytes": 9491,
+      "sha256": "ad53bc3c784d35c0e2cbff078b852dbb0223a58a65c937410792bd68acd699c4"
+    }
+  ],
+  "post_diagnostic_host": {
+    "base_14_suites": "PASS",
+    "codec_readback_and_OTA_boot": "PASS"
+  }
+}

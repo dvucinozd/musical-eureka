@@ -10,6 +10,20 @@
 
 enum { RAW_BATCH = 64 };
 static atomic_bool s_paused;
+static atomic_bool s_input_open;
+static int64_t s_opened_at_us;
+
+void midi_ingress_open_input(void)
+{
+    if (atomic_load(&s_input_open)) return;
+    s_opened_at_us = esp_timer_get_time();
+    atomic_store(&s_input_open, true);
+}
+
+uint32_t midi_ingress_active_session(void)
+{
+    return atomic_load(&s_input_open) ? usb_midi_host_active_session() : 0;
+}
 
 void midi_ingress_pause(bool pause)
 {
@@ -24,7 +38,8 @@ static unsigned ingress_service(uint32_t wait_ms)
     while (received < RAW_BATCH && usb_midi_host_receive(&packet, received ? 0 : wait_ms)) {
         ++received;
         midi_event_t event;
-        if (!atomic_load(&s_paused) && packet.session == usb_midi_host_active_session() &&
+        if (atomic_load(&s_input_open) && packet.timestamp_us > s_opened_at_us &&
+            !atomic_load(&s_paused) && packet.session == usb_midi_host_active_session() &&
             midi_parser_parse_usb_packet(packet.packet, packet.session, packet.timestamp_us, &event)) {
             (void)midi_queue_push(&event);
         }
@@ -54,7 +69,7 @@ esp_err_t midi_ingress_start(void)
 
 void midi_ingress_drain(midi_ingress_state_t *state, synth_t *synth, bool live)
 {
-    const uint32_t active = usb_midi_host_active_session();
+    const uint32_t active = midi_ingress_active_session();
     const uint32_t session = live ? active : 0;
     const uint32_t dropped = midi_queue_dropped_count();
     const bool lost_events = dropped != state->dropped;
@@ -70,12 +85,12 @@ void midi_ingress_drain(midi_ingress_state_t *state, synth_t *synth, bool live)
     for (unsigned n = 0; n < MIDI_INGRESS_EVENTS_PER_BLOCK; ++n) {
         /* If input changes during the drain, leave resynchronization to the
          * next block so a burst of failures cannot cause repeated panics here. */
-        if (usb_midi_host_active_session() != active || midi_queue_dropped_count() != dropped) break;
+        if (midi_ingress_active_session() != active || midi_queue_dropped_count() != dropped) break;
         midi_event_t event;
         if (!midi_queue_pop(&event, 0)) break;
         if (!session || event.session != session || event.epoch != synth_live_epoch(synth) ||
             (state->resume_after_us && event.timestamp_us <= state->resume_after_us) ||
-            usb_midi_host_active_session() != active || midi_queue_dropped_count() != dropped) {
+            midi_ingress_active_session() != active || midi_queue_dropped_count() != dropped) {
             ++state->rejected;
             continue;
         }

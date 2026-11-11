@@ -2,6 +2,7 @@
 #include "audio_controls_internal.h"
 #include "audio_sampler.h"
 #include "audio_storage_gate.h"
+#include "es8311_readback.h"
 #ifdef NEKTAR_P06_TELEMETRY
 #include "audio_perf_internal.h"
 #endif
@@ -25,7 +26,6 @@
 #include "midi_queue.h"
 #include "synth.h"
 #include "synth_looper.h"
-#include "usb_midi_host.h"
 
 #ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
 #include "bt_output.h"
@@ -33,7 +33,7 @@
 enum {
     DMA_BLOCKS = 6,
     PROBE_LEAD_BLOCKS = 12,
-    PROBE_HOLD_BLOCKS = 75,
+    PROBE_HOLD_BLOCKS = 375,
     PROBE_RELEASE_BLOCKS = 30,
     PROBE_END = PROBE_LEAD_BLOCKS + PROBE_HOLD_BLOCKS + PROBE_RELEASE_BLOCKS + DMA_BLOCKS,
 };
@@ -41,6 +41,7 @@ enum {
 static const char *TAG = "S31_AUDIO";
 static const board_audio_pins_t *s_pins;
 static i2s_chan_handle_t s_tx;
+static const audio_codec_if_t *s_codec;
 static synth_t s_synth;
 static synth_looper_t s_looper;
 static float s_mono[AUDIO_FRAMES];
@@ -50,6 +51,12 @@ static StackType_t s_stack[4096];
 static _Atomic audio_state_t s_state;
 static _Atomic uint32_t s_blocks, s_prepare_max_us, s_prepare_deadlines;
 static _Atomic uint32_t s_dma_overflows, s_probes_completed;
+static _Atomic uint32_t s_probe_pcm_peak;
+static atomic_bool s_probe_note_accepted, s_probe_pa_enabled;
+static atomic_bool s_probe_pa_high;
+static _Atomic unsigned s_test_slots;
+static _Atomic unsigned s_probe_key = 60;
+static _Atomic uint32_t s_probe_rising_crossings;
 static _Atomic uint32_t s_midi_applied, s_midi_rejected, s_midi_panics, s_midi_dispatch_max;
 static _Atomic esp_err_t s_fault;
 static _Atomic storage_phase_t s_storage;
@@ -87,13 +94,15 @@ static bool tx_overflow(i2s_chan_handle_t chan, i2s_event_data_t *event, void *c
 }
 
 /* Exercise the project MIDI parser and the synth MIDI entry point. */
-static void probe_note(bool down)
+static bool probe_note(bool down)
 {
-    const uint8_t packet[] = {down ? 0x09 : 0x08, down ? 0x90 : 0x80, 60, down ? 64 : 0};
+    const uint8_t packet[] = {down ? 0x09 : 0x08, down ? 0x90 : 0x80,
+                              (uint8_t)atomic_load(&s_probe_key), down ? 64 : 0};
     midi_event_t event;
     if (midi_parser_parse_usb_packet(packet, 0, esp_timer_get_time(), &event)) {
-        (void)synth_sound_event_from(&s_synth, SYNTH_SOURCE_LOCAL, synth_live_epoch(&s_synth), &event);
+        return synth_sound_event_from(&s_synth, SYNTH_SOURCE_LOCAL, synth_live_epoch(&s_synth), &event);
     }
+    return false;
 }
 
 static bool storage_busy(bool replacing)
@@ -169,6 +178,9 @@ static void audio_task(void *context)
 {
     (void)context;
     unsigned probe_block = 0;
+    uint16_t probe_gain = 0;
+    unsigned test_phase = 0;
+    int16_t previous_probe_sample = 0;
     unsigned tail_blocks = 0;
     bool pa_on = false;
 #ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
@@ -186,7 +198,7 @@ static void audio_task(void *context)
         bool web = false;
 #endif
         audio_sampler_begin_block();
-        if (usb_midi_host_active_session()) (void)audio_enable_live_control();
+        if (midi_ingress_active_session()) (void)audio_enable_live_control();
         const audio_state_t mode = atomic_load(&s_state);
         midi_ingress_drain(&midi, &s_synth, mode == AUDIO_LIVE);
         atomic_store(&s_midi_applied, midi.applied);
@@ -224,7 +236,7 @@ static void audio_task(void *context)
             || mode == AUDIO_MUTED
 #endif
         ) {
-            bool wanted = usb_midi_host_active_session() || synth_is_sounding(&s_synth) ||
+            bool wanted = midi_ingress_active_session() || synth_is_sounding(&s_synth) ||
                           s_looper.transport_running;
 #ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
             if (sink.sink != BT_ROUTE_LOCAL) {
@@ -244,12 +256,23 @@ static void audio_task(void *context)
         const bool probing = mode == AUDIO_PROBE;
         if (probing) {
             if (probe_block == 0) {
+                atomic_store(&s_probe_pcm_peak, 0);
+                atomic_store(&s_probe_rising_crossings, 0);
+                previous_probe_sample = 0;
+                atomic_store(&s_probe_note_accepted, false);
+                atomic_store(&s_probe_pa_enabled, false);
+                atomic_store(&s_probe_pa_high, false);
+                test_phase = 0;
+                probe_gain = s_synth.config.master_gain_permille;
+                synth_set_master_gain(&s_synth, 25);
                 err = set_amplifier(true);
                 if (err != ESP_OK) break;
+                atomic_store(&s_probe_pa_enabled, true);
+                atomic_store(&s_probe_pa_high, gpio_get_level(s_pins->pa_enable) != 0);
             } else if (probe_block == PROBE_LEAD_BLOCKS) {
-                probe_note(true);
+                atomic_store(&s_probe_note_accepted, probe_note(true));
             } else if (probe_block == PROBE_LEAD_BLOCKS + PROBE_HOLD_BLOCKS) {
-                probe_note(false);
+                (void)probe_note(false);
             }
         }
 
@@ -265,6 +288,48 @@ static void audio_task(void *context)
             s_pcm[i][1] = 0;
         }
         if (err != ESP_OK) break;
+
+        const unsigned test_slots = probing ? atomic_load(&s_test_slots) : 0;
+        if (test_slots) {
+            /* Diagnostic 1 kHz at -12 dBFS in both slots, one second.
+             * 48 samples/cycle at 48 kHz. Fade the first/last block. */
+            static const int16_t sine[48] = {
+                0,1069,2120,3135,4096,4987,5793,6499,7094,7568,7913,8122,
+                8192,8122,7913,7568,7094,6499,5793,4987,4096,3135,2120,1069,
+                0,-1069,-2120,-3135,-4096,-4987,-5793,-6499,-7094,-7568,-7913,-8122,
+                -8192,-8122,-7913,-7568,-7094,-6499,-5793,-4987,-4096,-3135,-2120,-1069,
+            };
+            const bool hold = probe_block >= PROBE_LEAD_BLOCKS &&
+                              probe_block < PROBE_LEAD_BLOCKS + PROBE_HOLD_BLOCKS;
+            for (unsigned i = 0; i < AUDIO_FRAMES; ++i) {
+                int32_t value = 0;
+                if (hold) {
+                    value = sine[test_phase];
+                    test_phase = (test_phase + 1) % 48;
+                    if (probe_block == PROBE_LEAD_BLOCKS) value = value * (int32_t)(i + 1) / AUDIO_FRAMES;
+                    if (probe_block == PROBE_LEAD_BLOCKS + PROBE_HOLD_BLOCKS - 1)
+                        value = value * (int32_t)(AUDIO_FRAMES - i - 1) / AUDIO_FRAMES;
+                }
+                s_pcm[i][0] = (test_slots & 1) ? (int16_t)value : 0;
+                s_pcm[i][1] = (test_slots & 2) ? (int16_t)value : 0;
+            }
+        }
+
+        if (probing) {
+            uint32_t peak = atomic_load(&s_probe_pcm_peak);
+            uint32_t crossings = atomic_load(&s_probe_rising_crossings);
+            for (unsigned i = 0; i < AUDIO_FRAMES; ++i) {
+                if (previous_probe_sample <= 0 && s_pcm[i][0] > 0) ++crossings;
+                previous_probe_sample = s_pcm[i][0];
+                for (unsigned ch = 0; ch < 2; ++ch) {
+                    int32_t value = s_pcm[i][ch];
+                    uint32_t magnitude = value < 0 ? (uint32_t)-value : (uint32_t)value;
+                    if (magnitude > peak) peak = magnitude;
+                }
+            }
+            atomic_store(&s_probe_pcm_peak, peak);
+            atomic_store(&s_probe_rising_crossings, crossings);
+        }
 
 #ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
         if (sink.gain != BT_GAIN_STEADY && sink.sink != BT_ROUTE_MUTED) {
@@ -312,6 +377,7 @@ static void audio_task(void *context)
         if (probing && ++probe_block == PROBE_END) {
             err = set_amplifier(false);
             if (err != ESP_OK) break;
+            synth_set_master_gain(&s_synth, probe_gain);
             probe_block = 0;
             atomic_fetch_add(&s_probes_completed, 1);
             atomic_store(&s_state, AUDIO_MUTED);
@@ -330,7 +396,7 @@ esp_err_t audio_start(void)
     if (atomic_load(&s_state) != AUDIO_OFF) return ESP_ERR_INVALID_STATE;
     s_pins = board_audio_pins();
     esp_err_t err = set_amplifier(false);
-    if (err == ESP_OK) err = gpio_set_direction(s_pins->pa_enable, GPIO_MODE_OUTPUT);
+    if (err == ESP_OK) err = gpio_set_direction(s_pins->pa_enable, GPIO_MODE_INPUT_OUTPUT);
     if (err != ESP_OK) {
         latch_fault(err);
         return err;
@@ -407,14 +473,20 @@ esp_err_t audio_start(void)
     esp_codec_dev_sample_info_t samples = {
         .sample_rate = AUDIO_RATE, .bits_per_sample = 16, .channel = 1,
     };
-    int sdp = 0;
     if (codec->set_fs(codec, &samples) || codec->enable(codec, true) ||
-        codec->set_vol(codec, -12.0f) || codec->mute(codec, false) ||
-        codec->get_reg(codec, 0x09, &sdp) || (sdp & 0x1f) != 0x0c) {
+        codec->set_vol(codec, -12.0f) || codec->mute(codec, false)) {
         err = ESP_ERR_INVALID_RESPONSE;
         goto fail;
     }
-    ESP_LOGI(TAG, "ES8311 SDP=0x%02x rate=%u frames=%u slot=left", sdp, AUDIO_RATE, AUDIO_FRAMES);
+    const int failed_reg = es8311_check_playback_registers(codec);
+    if (failed_reg >= 0) {
+        ESP_LOGE(TAG, "ES8311 playback readback failed at register 0x%02x", (unsigned)failed_reg);
+        err = ESP_ERR_INVALID_RESPONSE;
+        goto fail;
+    }
+    ESP_LOGI(TAG, "ES8311 playback registers verified, rate=%u frames=%u slot=left",
+             AUDIO_RATE, AUDIO_FRAMES);
+    s_codec = codec;
 
     err = i2s_channel_disable(s_tx);
     if (err != ESP_OK) goto fail;
@@ -448,6 +520,7 @@ esp_err_t audio_start(void)
     return ESP_OK;
 
 fail:
+    s_codec = NULL;
     latch_fault(err);
     if (codec) (void)audio_codec_delete_codec_if(codec);
     if (tx_enabled) (void)i2s_channel_disable(s_tx);
@@ -457,14 +530,24 @@ fail:
     return err;
 }
 
-bool audio_request_probe(void)
+static bool request_probe(unsigned slots, unsigned key)
 {
 #ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
     if (bt_output_target() != BT_ROUTE_LOCAL || bt_output_status().route != BT_ROUTE_LOCAL) return false;
 #endif
-    if (usb_midi_host_active_session() || atomic_load(&s_storage) != STORAGE_IDLE) return false;
+    if (midi_ingress_active_session() || atomic_load(&s_storage) != STORAGE_IDLE) return false;
+    if (atomic_load(&s_state) != AUDIO_MUTED) return false;
+    atomic_store(&s_test_slots, slots);
+    atomic_store(&s_probe_key, key);
     audio_state_t expected = AUDIO_MUTED;
     return atomic_compare_exchange_strong(&s_state, &expected, AUDIO_PROBE);
+}
+
+bool audio_request_probe(void) { return request_probe(0, 60); }
+bool audio_request_high_probe(void) { return request_probe(0, 84); }
+bool audio_request_test_tone(unsigned slots)
+{
+    return slots >= 1 && slots <= 3 && request_probe(slots, 60);
 }
 
 bool audio_enable_live_control(void)
@@ -530,6 +613,11 @@ audio_status_t audio_get_status(void)
         .prepare_deadlines = atomic_load(&s_prepare_deadlines),
         .dma_overflows = atomic_load(&s_dma_overflows),
         .probes_completed = atomic_load(&s_probes_completed),
+        .probe_pcm_peak = atomic_load(&s_probe_pcm_peak),
+        .probe_rising_crossings = atomic_load(&s_probe_rising_crossings),
+        .probe_note_accepted = atomic_load(&s_probe_note_accepted),
+        .probe_pa_enabled = atomic_load(&s_probe_pa_enabled),
+        .probe_pa_high = atomic_load(&s_probe_pa_high),
         .midi_applied = atomic_load(&s_midi_applied),
         .midi_rejected = atomic_load(&s_midi_rejected),
         .midi_queue_drops = midi_queue_dropped_count(),
@@ -537,4 +625,25 @@ audio_status_t audio_get_status(void)
         .midi_receive_to_dispatch_max_us = atomic_load(&s_midi_dispatch_max),
         .fault = atomic_load(&s_fault),
     };
+}
+
+void audio_log_diagnostics(void)
+{
+    if (!s_codec || atomic_load(&s_state) != AUDIO_MUTED) {
+        ESP_LOGW(TAG, "Diagnostics require initialized, muted audio");
+        return;
+    }
+    ESP_LOGI(TAG, "PA GPIO%d pad=%d", s_pins->pa_enable, gpio_get_level(s_pins->pa_enable));
+    gpio_dump_io_configuration(stdout,
+        (UINT64_C(1) << s_pins->pa_enable) | (UINT64_C(1) << s_pins->mclk) |
+        (UINT64_C(1) << s_pins->bclk) | (UINT64_C(1) << s_pins->ws) |
+        (UINT64_C(1) << s_pins->dout));
+    static const unsigned registers[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06,
+        0x07, 0x08, 0x09, 0x0d, 0x0e, 0x12, 0x13, 0x14, 0x31, 0x32, 0x37, 0x44};
+    for (unsigned i = 0; i < sizeof(registers) / sizeof(registers[0]); ++i) {
+        int value = 0;
+        int result = s_codec->get_reg(s_codec, registers[i], &value);
+        ESP_LOGI(TAG, "codec reg=0x%02x value=0x%02x result=%d",
+                 registers[i], (unsigned)value, result);
+    }
 }

@@ -1,6 +1,9 @@
 # ESP32-S31-Function-CoreBoard-1 — hardverski ugovor
 
-Status 2026-11-09: **dokumentarno provjereno, fizički primjerak nije identificiran**.
+Status 2026-11-11: **P01 boot i memorija fizički provjereni** na PCB-u V1.0,
+UART priključak COM7. Osnovni synth izlaz potvrđen je čistom C6 notom,
+uz čujan 1 kHz ton u lijevom slotu. Clock mjerenja i C4 odziv još su otvoreni.
+[Identitet, backup i boot logovi](BOARD_BRINGUP_2026-11-11.md).
 Izvori i točne revizije su u [REFERENCES](REFERENCES.md). S31 nije ESP32-S3 niti ESP32-P4.
 
 ## Usporedba platformi
@@ -65,7 +68,8 @@ su izloženi GPIO35–49; to nije odobrena shema spajanja. Provjeriti header red
 strapping, pin capability, postojeće veze i napajanje odabranog modula prije dodjele.
 GPIO20–25 vode na SDIO oznake J2, ali ovaj projekt nema SD funkciju.
 
-Prvi fizički zapis mora sadržavati reviziju PCB-a/modula, fotografiju oznake u lokalnim
-dokazima, chip revision, flash/PSRAM očitanje, korišteni USB konektor i točan port.
+Prvi fizički zapis sadrži korisnički potvrđenu reviziju PCB-a V1.0, SoC v0.0,
+16 MiB flasha/PSRAM-a i UART COM7. Fotografija i doslovna oznaka modula još nedostaju.
+Pri sljedećem pristupu ponovno provjeriti port i identitet uređaja.
 COM4/COM6 iz P4 projekta nisu identitet nove ploče.
 

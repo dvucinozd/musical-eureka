@@ -1,0 +1,71 @@
+I (17410) S31_P03: state=2 blocks=5970 prep_max_us=411 deadlines=0 dma_overflows=0 probes=0 fault=ESP_OK
+I (17410) S31_AUDIO: probe_pcm_peak=0 note_accepted=0 pa_enable_command_ok=0 pa_pad_high=0
+I (17416) S31_P03: usb_ready=0 session=0 vid=0000 pid=0000 speed=0 raw_drops=0 stale_raw=0 in_errors=0
+I (17425) S31_P03: midi_applied=0 rejected=0 semantic_drops=0 panics=0 rx_to_dispatch_max_us=0
+I (18198) S31_AUDIO: PA GPIO57 pad=0
+================IO DUMP Start================
+IO[52] **RESERVED** -
+  Pullup: 0, Pulldown: 0, DriveCap: 2
+  InputEn: 1, OutputEn: [periph_sig_ctrl], OpenDrain: 0
+  FuncSel: 1 (GPIO)
+  GPIO Matrix SigOut ID: 26
+  GPIO Matrix SigIn ID: (simple GPIO input)
+  SleepSelEn: 1
+
+IO[53] **RESERVED** -
+  Pullup: 0, Pulldown: 0, DriveCap: 2
+  InputEn: 1, OutputEn: [periph_sig_ctrl], OpenDrain: 0
+  FuncSel: 1 (GPIO)
+  GPIO Matrix SigOut ID: 25
+  GPIO Matrix SigIn ID: (simple GPIO input)
+  SleepSelEn: 1
+
+IO[55] **RESERVED** -
+  Pullup: 0, Pulldown: 0, DriveCap: 2
+  InputEn: 1, OutputEn: [periph_sig_ctrl], OpenDrain: 0
+  FuncSel: 1 (GPIO)
+  GPIO Matrix SigOut ID: 27
+  GPIO Matrix SigIn ID: (simple GPIO input)
+  SleepSelEn: 1
+
+IO[56] **RESERVED** -
+  Pullup: 0, Pulldown: 0, DriveCap: 2
+  InputEn: 1, OutputEn: [periph_sig_ctrl], OpenDrain: 0
+  FuncSel: 1 (GPIO)
+  GPIO Matrix SigOut ID: 28
+  GPIO Matrix SigIn ID: (simple GPIO input)
+  SleepSelEn: 1
+
+IO[57] -
+  Pullup: 0, Pulldown: 0, DriveCap: 2
+  InputEn: 1, OutputEn: [periph_sig_ctrl], OpenDrain: 0
+  FuncSel: 1 (GPIO)
+  GPIO Matrix SigOut ID: 256 (simple GPIO output)
+  GPIO Matrix SigIn ID: (simple GPIO input)
+  SleepSelEn: 1
+
+=================IO DUMP End=================
+I (18301) S31_AUDIO: codec reg=0x00 value=0x80 result=0
+I (18306) S31_AUDIO: codec reg=0x01 value=0x3f result=0
+I (18311) S31_AUDIO: codec reg=0x02 value=0x00 result=0
+I (18316) S31_AUDIO: codec reg=0x03 value=0x10 result=0
+I (18321) S31_AUDIO: codec reg=0x04 value=0x10 result=0
+I (18326) S31_AUDIO: codec reg=0x05 value=0x00 result=0
+I (18331) S31_AUDIO: codec reg=0x06 value=0x03 result=0
+I (18336) S31_AUDIO: codec reg=0x07 value=0x00 result=0
+I (18341) S31_AUDIO: codec reg=0x08 value=0xff result=0
+I (18346) S31_AUDIO: codec reg=0x09 value=0x0c result=0
+I (18351) S31_AUDIO: codec reg=0x0d value=0x01 result=0
+I (18355) S31_AUDIO: codec reg=0x0e value=0x02 result=0
+I (18360) S31_AUDIO: codec reg=0x12 value=0x00 result=0
+I (18365) S31_AUDIO: codec reg=0x13 value=0x10 result=0
+I (18370) S31_AUDIO: codec reg=0x14 value=0x1a result=0
+I (18375) S31_AUDIO: codec reg=0x31 value=0x00 result=0
+I (18380) S31_AUDIO: codec reg=0x32 value=0xae result=0
+I (18385) S31_AUDIO: codec reg=0x37 value=0x08 result=0
+I (18390) S31_AUDIO: codec reg=0x44 value=0x58 result=0
+I (27321) S31_P03: Stereo test accepted
+I (29382) S31_P03: state=2 blocks=10459 prep_max_us=496 deadlines=0 dma_overflows=0 probes=1 fault=ESP_OK
+I (29383) S31_AUDIO: probe_pcm_peak=8192 note_accepted=1 pa_enable_command_ok=1 pa_pad_high=1
+I (29389) S31_P03: usb_ready=0 session=0 vid=0000 pid=0000 speed=0 raw_drops=0 stale_raw=0 in_errors=0
+I (29398) S31_P03: midi_applied=0 rejected=0 semantic_drops=0 panics=0 rx_to_dispatch_max_us=0

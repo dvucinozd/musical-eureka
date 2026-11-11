@@ -44,11 +44,14 @@ nisu dio ovog profila.
    promjene boot selekcije. Ako ne uspije, audio izlazi iz maintenancea.
 4. Nakon promjene selekcije uređaj odgovara da je firmware spreman i restartira
    se s utišanim izlazom. Na prvom bootu u stanju PENDING_VERIFY provjerava
-   Wi-Fi inicijalizaciju, PSRAM i oko jedne sekunde rada lokalnog audio taska
+   Wi-Fi inicijalizaciju, uspješan start USB MIDI hosta, start HTTP servera
+   s registriranim rutama, PSRAM i oko jedne sekunde rada lokalnog audio taska
    bez novih deadlinea, DMA prelijevanja i grešaka. Opcionalni Bluetooth
-   profil provjerava i da se Bluetooth inicijalizirao. USB i Web ulazi
-   otvaraju se nakon provjere. Uspjeh zapisuje VALID pod audio maintenanceom,
-   a neuspjeh restartira bez potvrde kako bi bootloader vratio prethodni slot.
+   profil provjerava i rezultat pokretanja Bluetootha. Tijekom provjere Web
+   naredbe vraćaju HTTP 503, a USB MIDI paketi se odbacuju. Uspjeh zapisuje
+   VALID pod audio maintenanceom i zatim otvara ulaze. Greška pri pokretanju
+   servisa ili provjeri izaziva restart u stanju PENDING_VERIFY kako bi
+   bootloader vratio prethodni slot. Za ovu provjeru USB klavijatura ne mora biti spojena.
 
 ## Fizički pilot
 

@@ -5,7 +5,7 @@ idf_component_register(SRCS "app_main.c" "app_wifi.c" "app_web.c" "app_storage.c
                   nvs_flash bank_store soundfont esp_partition mbedtls esp_timer app_update)
 
 if(CONFIG_NEKTAR_P07_OTA)
-    target_sources(${COMPONENT_LIB} PRIVATE "app_ota.c" "ota_image.c" "ota_transaction.c")
+    target_sources(${COMPONENT_LIB} PRIVATE "app_ota.c" "app_ota_boot.c" "ota_image.c" "ota_transaction.c")
     target_link_libraries(${COMPONENT_LIB} INTERFACE "-u nektar_ota_profile")
 endif()
 

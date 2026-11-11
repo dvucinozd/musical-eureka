@@ -65,6 +65,10 @@ static void log_audio(void)
              " deadlines=%" PRIu32 " dma_overflows=%" PRIu32 " probes=%" PRIu32 " fault=%s",
              (int)status.state, status.blocks, status.prepare_max_us, status.prepare_deadlines,
              status.dma_overflows, status.probes_completed, esp_err_to_name(status.fault));
+    ESP_LOGI("S31_AUDIO", "probe_pcm_peak=%" PRIu32 " note_accepted=%u pa_enable_command_ok=%u pa_pad_high=%u",
+             status.probe_pcm_peak, (unsigned)status.probe_note_accepted,
+             (unsigned)status.probe_pa_enabled, (unsigned)status.probe_pa_high);
+    ESP_LOGI("S31_AUDIO", "probe_rising_crossings=%" PRIu32, status.probe_rising_crossings);
     usb_midi_host_stats_t usb;
     usb_midi_host_get_stats(&usb);
     ESP_LOGI("S31_P03", "usb_ready=%d session=%" PRIu32 " vid=%04x pid=%04x speed=%u"
@@ -150,19 +154,23 @@ void app_main(void)
     if (err != ESP_OK) {
         ESP_LOGE("S31_P03", "Audio setup failed: %s", esp_err_to_name(err));
     } else app_storage_boot();
-#ifdef CONFIG_NEKTAR_P07_OTA
-    app_ota_check_boot(err == ESP_OK && wifi == ESP_OK
-#ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
-                       && bt == ESP_OK
-#endif
-    );
-#endif
+    esp_err_t usb = ESP_ERR_INVALID_STATE;
+    esp_err_t web = ESP_ERR_INVALID_STATE;
     if (err == ESP_OK) {
-        err = midi_ingress_start();
-        if (err != ESP_OK) ESP_LOGE("S31_P03", "USB MIDI setup failed: %s", esp_err_to_name(err));
-        err = wifi == ESP_OK ? app_web_start() : wifi;
-        if (err != ESP_OK) ESP_LOGE("S31_P04", "Web setup failed: %s", esp_err_to_name(err));
+        usb = midi_ingress_start();
+        if (usb != ESP_OK) ESP_LOGE("S31_P03", "USB MIDI setup failed: %s", esp_err_to_name(usb));
+        web = wifi == ESP_OK ? app_web_start() : wifi;
+        if (web != ESP_OK) ESP_LOGE("S31_P04", "Web setup failed: %s", esp_err_to_name(web));
     }
+#ifdef CONFIG_NEKTAR_P07_OTA
+    bool startup_ok = err == ESP_OK && wifi == ESP_OK;
+#ifdef CONFIG_NEKTAR_P06B_BLUETOOTH
+    startup_ok = startup_ok && bt == ESP_OK;
+#endif
+    app_ota_check_boot(startup_ok, usb, web);
+#endif
+    if (usb == ESP_OK) midi_ingress_open_input();
+    if (web == ESP_OK) app_web_open_commands();
 
     /* UART0 uses the same pins and baud rate as the boot console. */
     err = uart_driver_install(UART_NUM_0, 256, 0, 0, NULL, 0);
@@ -170,7 +178,7 @@ void app_main(void)
         ESP_LOGE("S31_P03", "Console setup failed: %s", esp_err_to_name(err));
         return;
     }
-    ESP_LOGI("S31_P03", "UART0 commands: ? status, t one low-level C4 probe before live MIDI");
+    ESP_LOGI("S31_P03", "UART0 commands: ? status, d diagnostics, t C4, h C6, s/l/r 1kHz both/left/right");
 #ifdef CONFIG_NEKTAR_P06_TELEMETRY
     ESP_LOGI("S31_P06", "UART0 commands: p arm timing window, P read completed window");
 #endif
@@ -179,12 +187,18 @@ void app_main(void)
         if (uart_read_bytes(UART_NUM_0, &command, 1, pdMS_TO_TICKS(100)) != 1) continue;
         if (command == '?') {
             log_audio();
-        } else if (command == 't') {
-            if (audio_request_probe()) {
+        } else if (command == 'd') {
+            audio_log_diagnostics();
+        } else if (command == 't' || command == 'h') {
+            if (command == 'h' ? audio_request_high_probe() : audio_request_probe()) {
                 ESP_LOGI("S31_P03", "Probe accepted");
             } else {
                 ESP_LOGW("S31_P03", "Probe rejected. Query audio status with ?");
             }
+        } else if (command == 's' || command == 'l' || command == 'r') {
+            unsigned slots = command == 's' ? 3 : command == 'l' ? 1 : 2;
+            if (audio_request_test_tone(slots)) ESP_LOGI("S31_P03", "Stereo test accepted slots=%u", slots);
+            else ESP_LOGW("S31_P03", "Stereo test rejected");
 #ifdef CONFIG_NEKTAR_P06_TELEMETRY
         } else if (command == 'p') {
             arm_perf();

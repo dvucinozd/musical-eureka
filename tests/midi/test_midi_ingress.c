@@ -27,7 +27,7 @@ bool usb_midi_host_receive(usb_midi_packet_t *out, uint32_t timeout_ms)
 static void packet(uint32_t session, uint8_t cin, uint8_t status, uint8_t a, uint8_t b)
 {
     s_packet = (usb_midi_packet_t){
-        .session = session, .timestamp_us = 1, .packet = {cin, status, a, b},
+        .session = session, .timestamp_us = esp_timer_get_time(), .packet = {cin, status, a, b},
     };
     s_packet_pending = true;
     assert(ingress_service(0) == 1);
@@ -50,6 +50,16 @@ int main(void)
     assert(midi_queue_init() == ESP_OK);
 
     s_active = 1;
+    assert(midi_ingress_active_session() == 0);
+    packet(1, 9, 0x90, 60, 64);
+    midi_ingress_drain(&state, &synth, true);
+    assert(state.applied == 0 && !synth_is_sounding(&synth));
+    midi_ingress_open_input();
+    assert(midi_ingress_active_session() == 1);
+    s_packet_pending = true; /* A packet buffered before the input gate opened. */
+    assert(ingress_service(0) == 1);
+    midi_ingress_drain(&state, &synth, true);
+    assert(state.applied == 0 && !synth_is_sounding(&synth));
     packet(1, 9, 0x90, 60, 64);
     midi_ingress_drain(&state, &synth, true);
     assert(state.applied == 1 && state.panics == 0);
@@ -120,12 +130,13 @@ int main(void)
     packet(3, 9, 0x90, 68, 64);
     assert(!midi_queue_pop(&event, 0));
     midi_ingress_pause(false);
-    state.resume_after_us = 2;
+    state.resume_after_us = esp_timer_get_time() + 1000;
     midi_queue_set_capture_epoch(synth_live_epoch(&synth));
     packet(3, 9, 0x90, 68, 64); /* Raw packet captured before resume, stamped with new epoch. */
     midi_ingress_drain(&state, &synth, true);
     assert(state.rejected == 4 && !synth_is_sounding(&synth));
-    event = (midi_event_t){.type = MIDI_EVENT_NOTE_ON, .timestamp_us = 3, .session = 3, .note = {68, 64}};
+    event = (midi_event_t){.type = MIDI_EVENT_NOTE_ON, .timestamp_us = esp_timer_get_time(),
+                           .session = 3, .note = {68, 64}};
     assert(midi_queue_push(&event));
     midi_ingress_drain(&state, &synth, true);
     assert(synth_is_sounding(&synth));

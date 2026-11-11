@@ -26,6 +26,11 @@ typedef struct {
     uint32_t prepare_deadlines;
     uint32_t dma_overflows;
     uint32_t probes_completed;
+    uint32_t probe_pcm_peak;
+    uint32_t probe_rising_crossings;
+    bool probe_note_accepted;
+    bool probe_pa_enabled;
+    bool probe_pa_high;
     uint32_t midi_applied;
     uint32_t midi_rejected;
     uint32_t midi_queue_drops;
@@ -37,4 +42,9 @@ typedef struct {
 /* One startup attempt per boot. Primes muted before allowing probe or live MIDI. */
 esp_err_t audio_start(void);
 bool audio_request_probe(void);
+bool audio_request_high_probe(void);
+/* Diagnostic slot mask: 1 left, 2 right, 3 both. */
+bool audio_request_test_tone(unsigned slots);
+/* UART control task, while muted. Prints codec and GPIO readbacks. */
+void audio_log_diagnostics(void);
 audio_status_t audio_get_status(void);

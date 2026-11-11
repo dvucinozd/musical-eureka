@@ -3,7 +3,7 @@ idf_component_register(
     INCLUDE_DIRS "include"
     REQUIRES synth soundfont
     PRIV_REQUIRES board_esp32s31_coreboard bt_output esp_driver_gpio esp_driver_i2c
-                  esp_driver_i2s esp_timer freertos midi midi_ingress log usb_midi_host
+                  esp_driver_i2s esp_timer freertos midi midi_ingress log
 )
 
 if(CONFIG_NEKTAR_P06_TELEMETRY)
